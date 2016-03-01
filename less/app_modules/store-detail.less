@@ -55,6 +55,7 @@
 	}
 	&-tab.buttons-tab .button {
 		color: #999;
+		font-size: 12/@ppr;
 	}
 	&-tab.buttons-tab .button.active {
 		color: #000;
@@ -113,6 +114,43 @@
 			height: 0;
 		}
 
+	}
+	.card-footer {
+		> span {
+			&:first-child {
+				> a {
+					margin-right: 20/@ppr;
+				}
+			}
+			> a {
+				color: rgba(153, 153, 153, 1);
+				font-size: 12/@ppr;
+				> i {
+					margin-right: 5/@ppr;
+				}
+			}
+		}
+	}
+	&-other {
+		padding-top: 1px;
+		> h5 {
+			font-size: 12/@ppr;
+			font-weight: normal;
+			margin: 22/@ppr 0;
+			text-align: center;
+		}
+	}
+	.zfw-title {
+		width: 100%;
+		text-align: center;
+		font-size: 12/@ppr;
+		color: rgba(0, 0, 0, 1);
+	}
+}
+.bar-tab.store-detail-bar {
+	background-color: rgba(255, 90, 95, 1);
+	a {
+		color: #fff;
 	}
 }
 .circle {
