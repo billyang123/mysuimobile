@@ -8,6 +8,14 @@
 .text-center {
   text-align: center !important;
 }
+.myicon-num {
+  background-color: #dee2e5;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1.2rem;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
