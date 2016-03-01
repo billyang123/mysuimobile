@@ -357,4 +357,6 @@ $(function () {
   $.init();
 });
 
-var i = 1;
+(function(){
+	
+})()

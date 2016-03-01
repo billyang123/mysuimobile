@@ -143,3 +143,20 @@
 .circle {
   border-radius: 9999px;
 }
+.service-detail-container .icon-zanfuwutubiao09,
+.service-detail-container .icon-zanfuwutubiao19 {
+  font-size: 0.8rem;
+}
+.service-detail-container .service-inner {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.service-detail-container .service-list {
+  border-top: 1px solid #e1e1e1;
+  margin: 0 !important;
+}
+.service-detail-container .service-list .item-text {
+  font-size: 0.55rem;
+  line-height: 0.55rem;
+  color: #999999;
+}
