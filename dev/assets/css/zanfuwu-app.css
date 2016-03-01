@@ -5,6 +5,9 @@
  * =====================================================
  */
 
+.text-center {
+  text-align: center !important;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
@@ -53,6 +56,7 @@
 }
 .zfw-detail-tab.buttons-tab .button {
   color: #999;
+  font-size: 0.6rem;
 }
 .zfw-detail-tab.buttons-tab .button.active {
   color: #000;
@@ -104,6 +108,37 @@
 }
 .zfw-card-user .item-inner:after {
   height: 0;
+}
+.zfw-card .card-footer > span:first-child > a {
+  margin-right: 1rem;
+}
+.zfw-card .card-footer > span > a {
+  color: #999999;
+  font-size: 0.6rem;
+}
+.zfw-card .card-footer > span > a > i {
+  margin-right: 0.25rem;
+}
+.zfw-card-other {
+  padding-top: 1px;
+}
+.zfw-card-other > h5 {
+  font-size: 0.6rem;
+  font-weight: normal;
+  margin: 1.1rem 0;
+  text-align: center;
+}
+.zfw-card .zfw-title {
+  width: 100%;
+  text-align: center;
+  font-size: 0.6rem;
+  color: #000000;
+}
+.bar-tab.store-detail-bar {
+  background-color: #ff5a5f;
+}
+.bar-tab.store-detail-bar a {
+  color: #fff;
 }
 .circle {
   border-radius: 9999px;
