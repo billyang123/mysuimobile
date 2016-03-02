@@ -8,13 +8,8 @@
 .text-center {
   text-align: center !important;
 }
-.myicon-num {
-  background-color: #dee2e5;
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 1.2rem;
+.userimg {
+  border-radius: 999rem;
 }
 .zfw-detail-header {
   position: relative;
@@ -50,8 +45,8 @@
 }
 .zfw-detail-user-title {
   color: #000;
-  font-size: 0.75rem;
-  line-height: 0.75rem;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
   margin-bottom: 0.75rem;
 }
 .zfw-detail-user-info {
@@ -80,6 +75,9 @@
   font-size: 0.6rem;
   margin: 0 0.75rem 0.5rem 0;
 }
+.zfw-card {
+  font-size: 0.7rem;
+}
 .zfw-card-title {
   width: 64%;
   font-size: 0.75rem;
@@ -90,7 +88,7 @@
 }
 .zfw-card-price {
   color: #ff5a5f;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   line-height: 0.85rem;
   margin: 0.75rem 0;
   text-align: right;
@@ -107,7 +105,7 @@
   padding-bottom: 0.25rem !important;
 }
 .zfw-card-user .item-inner {
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   line-height: 1.2rem;
   color: #999999;
   padding-top: 0.25rem !important;
@@ -141,6 +139,44 @@
   text-align: center;
   font-size: 0.6rem;
   color: #000000;
+}
+.zfw-card .myicon-num {
+  background-color: #dee2e5;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1.2rem;
+  display: inline-block;
+  margin-right: 0.9rem;
+  font-style: normal;
+}
+.zfw-card-wblink {
+  text-align: center;
+  padding: 1rem 0;
+}
+.zfw-card-wblink a {
+  color: #ff5a5f;
+  font-size: 0.7rem;
+}
+.zfw-card .media-list .item-title {
+  font-size: 0.8rem;
+}
+.zfw-card .media-list .myitem-subtitle {
+  font-size: 0.7rem;
+  color: #6d777f;
+}
+.zfw-card .zfw-commit {
+  font-size: 0.7rem;
+}
+.zfw-card .zfw-commit .item-title,
+.zfw-card .zfw-commit .item-subtitle {
+  font-size: 0.6rem;
+  color: #999999;
+  font-weight: normal;
+}
+.zfw-card .zfw-commit li {
+  padding-top: 0.45rem;
 }
 .bar-tab.store-detail-bar {
   background-color: #ff5a5f;
