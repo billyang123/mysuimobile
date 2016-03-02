@@ -321,3 +321,20 @@
   font-size: 0.65rem;
   color: #6D777F;
 }
+.zfw-top-search {
+  background-color: #fff;
+}
+.zfw-top-search .searchbar {
+  background: #fff;
+  margin-right: 1.6rem;
+  position: relative;
+}
+.zfw-top-search > .iconfont {
+  font-size: 1.6rem;
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
+}
+.zfw-top-search .search-input input {
+  background-color: #ecf0f3;
+}
