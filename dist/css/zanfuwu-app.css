@@ -14,6 +14,10 @@
 .zfw-card-wblink div {
   margin: 1rem 0;
 }
+.bar-bottom-nav .tab-item.active,
+.bar-bottom-nav .tab-item:active {
+  color: #FF5A5F !important;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
