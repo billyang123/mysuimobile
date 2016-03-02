@@ -118,6 +118,12 @@ module.exports = function(grunt) {
                     'js/zepto.js'
                 ],
                 dest: '<%= meta.distPath %>js/zepto.js'
+            },
+            videojs:{
+                src: [
+                    'js/videojs/video.js'
+                ],
+                dest: '<%= meta.distPath %>js/video.js'
             }
         },
 
@@ -138,6 +144,10 @@ module.exports = function(grunt) {
             dev: {
                 src: '<%= meta.lessPath %>/zanfuwu-app.less',
                 dest: '<%= meta.distPath %>css/<%= pkg.name %>-app.css'
+            },
+            videojs: {
+                src: '<%= meta.lessPath %>/videojs/videojs.less',
+                dest: '<%= meta.distPath %>css/videojs.css'
             }
         },
 
@@ -157,13 +167,12 @@ module.exports = function(grunt) {
         },
 
         copy: {
-            /*
+            
             fonts: {
                 expand: true,
                 src: 'fonts/*',
                 dest: '<%= meta.docsDistPath %>'
-            },
-            */
+            },    
             img: {
                 expand: true,
                 src: 'img/*',
@@ -218,6 +227,10 @@ module.exports = function(grunt) {
                     '<%= meta.distPath %>css/zanfuwu-app.css'
                 ],
                 dest: '<%= meta.distPath %>css/<%= pkg.name %>-app.min.css'
+            },
+            videojs: {
+                src: '<%= meta.distPath %>css/videojs.css',
+                dest: '<%= meta.distPath %>css/videojs.min.css'
             }
         },
 
@@ -253,6 +266,10 @@ module.exports = function(grunt) {
             zepto:{
             	src: '<%= concat.zepto.dest %>',
                 dest: '<%= meta.distPath %>js/zepto.min.js'
+            },
+            videojs:{
+                src:'<%= concat.videojs.dest %>',
+                dest: '<%= meta.distPath %>js/video.min.js'
             }
         },
 
