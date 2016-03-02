@@ -79,9 +79,9 @@ module.exports = function(grunt) {
                     banner: '<%= banner %>'
                 },
                 src: [
-                    'js/swiper.js',
-                    'js/swiper-init.js',
-                    'js/photo-browser.js'
+                    'js/'+suiPath+'swiper.js',
+                    'js/'+suiPath+'swiper-init.js',
+                    'js/'+suiPath+'photo-browser.js'
                 ],
                 dest: '<%= meta.distPath %>js/<%= pkg.name %>-extend.js'
             },
@@ -90,8 +90,8 @@ module.exports = function(grunt) {
                     banner: '<%= banner %>'
                 },
                 src: [
-                    'js/city-data.js',
-                    'js/city-picker.js'
+                    'js/'+suiPath+'city-data.js',
+                    'js/'+suiPath+'city-picker.js'
                 ],
                 dest: '<%= meta.distPath %>js/<%= pkg.name %>-city-picker.js'
             },
