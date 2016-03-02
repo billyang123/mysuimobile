@@ -11,7 +11,7 @@ title: 店铺详情
 			  <span class="icon icon-left"></span>
 			  返回
 			</a>
-			<a class="icon icon-refresh pull-right"></a>
+			<a class="iconfont icon icon-xiangqing pull-right" href="#"></a>
 			<h1 class="title">店铺详情</h1>
 		</header>
 		
@@ -172,7 +172,20 @@ title: 店铺详情
 						<div class="card-content">
 							<div class="zfw-card-other">
 						  		<!-- <h5>精选服务</h5> -->
-						  		<img src="http://7fv9ar.com1.z0.glb.clouddn.com/20141022_1413965194_Jellyfish.jpg" alt="" style="width: 100%;">
+						  		<script>
+						  			__app.ImageData = [
+								        {
+								          url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'
+								        },
+								        {
+								          url:'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg'
+								        },
+								        {
+								          url:'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+								        }
+								      ]
+						  		</script>
+						  		<a href="#" class="js-pb-standalone" data-pb-filed="ImageData"><img src="http://7fv9ar.com1.z0.glb.clouddn.com/20141022_1413965194_Jellyfish.jpg" alt="" style="width: 100%;"></a>
 						  	</div>
 						</div>
 					</div>
@@ -182,10 +195,7 @@ title: 店铺详情
 						</div>
 						<div class="card-content">
 							<div class="zfw-card-other">
-								<!-- 腾讯视频 -->
-								<iframe class="video_iframe" style="z-index: 1; width: 17.75rem !important;height:12rem !important;overflow: hidden;" frameborder="0" data-src="https://v.qq.com/iframe/preview.html?vid=s0019194c3s&amp;width=500&amp;height=375&amp;auto=0" allowfullscreen="" src="http://v.qq.com/iframe/player.html?vid=s0019194c3s&amp;width=345&amp;height=258.75&amp;auto=0" scrolling="no"></iframe>
-								<!-- 优酷视频 -->
-								<iframe class="video_iframe" style="z-index: 1; width: 17.75rem !important;height:10.8rem !important;overflow: hidden;" src="http://player.youku.com/embed/XMTQzMTM0OTI5Ng==" frameborder=0 allowfullscreen></iframe>
+								{% include video.html %}
 						  	</div>
 						</div>
 					</div>

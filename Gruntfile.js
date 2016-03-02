@@ -79,9 +79,9 @@ module.exports = function(grunt) {
                     banner: '<%= banner %>'
                 },
                 src: [
-                    'js/swiper.js',
-                    'js/swiper-init.js',
-                    'js/photo-browser.js'
+                    'js/'+suiPath+'swiper.js',
+                    'js/'+suiPath+'swiper-init.js',
+                    'js/'+suiPath+'photo-browser.js'
                 ],
                 dest: '<%= meta.distPath %>js/<%= pkg.name %>-extend.js'
             },
@@ -90,8 +90,8 @@ module.exports = function(grunt) {
                     banner: '<%= banner %>'
                 },
                 src: [
-                    'js/city-data.js',
-                    'js/city-picker.js'
+                    'js/'+suiPath+'city-data.js',
+                    'js/'+suiPath+'city-picker.js'
                 ],
                 dest: '<%= meta.distPath %>js/<%= pkg.name %>-city-picker.js'
             },
@@ -346,8 +346,8 @@ module.exports = function(grunt) {
     grunt.registerTask('validate-html', ['jekyll']);
     grunt.registerTask('build', ['dist']);
     grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
-    //grunt.registerTask('server', ['dist', 'jekyll', 'watch']);
-    grunt.registerTask('server', ['dist', 'jekyll',"connect", 'watch']);
+    grunt.registerTask('server', ['dist', 'jekyll', 'watch']);
+    //grunt.registerTask('server', ['dist', 'jekyll',"connect", 'watch']);
     if (buildTo) {
         //CDN发布环境
         grunt.registerTask('default', ['build-js', 'build-css', 'copy']);

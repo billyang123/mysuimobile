@@ -9,6 +9,7 @@
  *
  * Created by bd on 15/12/21.
  */
+window.__app = {}
 $.config = {
     // 路由功能开关过滤器，返回 false 表示当前点击链接不使用路由
     routerFilter: function($link) {
