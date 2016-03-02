@@ -3,18 +3,17 @@ layout: default
 title: 服务详情
 ---
 <div class="page-group service-detail-container">
-
-	<div class="page" id="pageStoreDetail">
+	<div class="page" id="pageServiceDetail">
 	<!-- 你的html代码 -->
 		<header class="bar bar-nav">
 			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
 			  <span class="icon icon-left"></span>
 			  返回
 			</a>
-			<a class="pull-right">
-				<span class="icon iconfont icon-zanfuwutubiao09 danger"></span>
-				<span class="icon iconfont icon-zanfuwutubiao19 danger"></span>
-			</a>
+			<div class="pull-right">
+				<a class="icon iconfont icon-zanfuwutubiao09 danger button"  href="#"></a>
+				<a class="icon iconfont icon-zanfuwutubiao19 danger button"  href="#"></a>
+			</div>
 			<h1 class="title">服务详情</h1>
 		</header>		
 		<nav class="bar bar-tab store-detail-bar">
@@ -22,6 +21,7 @@ title: 服务详情
 			  咨询
 			</a>
 		</nav>
+		<!-- {% include index-bottom-nav.html %} -->
 		<div class="content">
 			<div class="card service-card">
 				<div class="card-content">
