@@ -11,6 +11,9 @@
 .userimg {
   border-radius: 999rem;
 }
+.zfw-card-wblink div {
+  margin: 1rem 0;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
@@ -178,6 +181,14 @@
 .zfw-card .zfw-commit li {
   padding-top: 0.45rem;
 }
+.zfw-card .zfw-commit .item-content:nth-child(2) {
+  padding-left: 0;
+  margin: 0 0.75rem;
+  border-bottom: 1px solid #e7e7e7;
+}
+.zfw-card .zfw-commit .item-content:nth-child(2) .item-inner:after {
+  background-color: #fff;
+}
 .bar-tab.store-detail-bar {
   background-color: #ff5a5f;
 }
@@ -186,4 +197,127 @@
 }
 .circle {
   border-radius: 9999px;
+}
+.service-detail-container .icon-zanfuwutubiao09,
+.service-detail-container .icon-zanfuwutubiao19 {
+  font-size: 0.8rem;
+}
+.service-detail-container .danger {
+  color: #FF5A5F;
+}
+.service-detail-container .ft-gray {
+  font-size: 0.55rem;
+  color: #999;
+}
+.service-detail-container .service-card {
+  margin: 0 !important;
+}
+.service-detail-container .service-inner {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.service-detail-container .service-inner .border-top {
+  margin: 0 !important;
+  border-top: 1px solid #e1e1e1;
+}
+.service-detail-container .service-inner .border-top .item-content {
+  padding-left: 0 !important;
+}
+.service-detail-container .service-inner .row .col-50 {
+  margin-left: 0 !important;
+}
+.service-detail-container .service-media-list .item-text {
+  font-size: 0.55rem;
+  color: #999999;
+  height: 1.5rem;
+}
+.service-detail-container .service-block-content .pull-right {
+  font-size: 0.55rem;
+  color: #000;
+}
+.service-detail-container .service-block-content .pull-left {
+  margin-right: 0.5rem;
+}
+.service-detail-container .service-block-content .item-inner {
+  padding: 1rem 0rem 1.5rem 0rem;
+}
+.service-detail-container .service-detail-tab {
+  border-top: 1px solid #e1e1e1;
+  height: 2.05rem;
+  line-height: 1.9rem;
+}
+.service-detail-container .service-detail-tab li {
+  list-style: none;
+  width: 33.33333333%;
+  text-align: center;
+}
+.service-detail-container .service-detail-tab li a {
+  display: inline-block;
+  padding: 0 0.5rem;
+  color: #999;
+}
+.service-detail-container .service-detail-tab li a.active {
+  border-bottom: 2px solid #ff5a5f;
+  color: #000;
+}
+.service-detail-container .buttons-tab:after {
+  background-color: #fff !important;
+}
+.service-detail-container .stage-left {
+  position: relative;
+}
+.service-detail-container .stage-left .media-stage-list {
+  top: 1.5rem;
+  left: 1.5rem;
+  position: absolute;
+}
+.service-detail-container .stage-left .stage-bg-content {
+  top: 0.5rem;
+  padding: 0.1rem 0.5rem 0 5.5rem;
+  margin: 0.5rem 0rem 0rem 0.5rem;
+}
+.service-detail-container .stage-right .media-stage-list {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+.service-detail-container .stage-right .stage-bg-content {
+  top: 0.5rem;
+  left: 0;
+  padding: 0.1rem 5.5rem 0 0.5rem;
+  margin: 0.5rem 0.5rem 0rem 0rem;
+}
+.service-detail-container .stage-content {
+  position: relative;
+}
+.service-detail-container .stage-content .media-stage-list {
+  width: 5.5rem;
+  height: 5.5rem;
+  background-color: #FF5A5F;
+  z-index: 1;
+}
+.service-detail-container .stage-content .media-stage-list div {
+  color: #fff;
+}
+.service-detail-container .stage-content .media-stage-list .item-media {
+  font-size: 2rem;
+}
+.service-detail-container .stage-content .media-stage-list .item-title {
+  font-size: 0.55rem;
+}
+.service-detail-container .stage-content .media-stage-list .price {
+  font-size: 0.65rem;
+  min-height: 0.65rem;
+  margin-top: -0.5rem;
+}
+.service-detail-container .stage-content .stage-bg-content {
+  background-color: #F8F8F8;
+  height: 5.5rem;
+}
+.service-detail-container .stage-content .stage-bg-content .stage-bg-title {
+  font-size: 0.75rem;
+}
+.service-detail-container .stage-content .stage-bg-content p {
+  font-size: 0.65rem;
+  color: #6D777F;
 }
