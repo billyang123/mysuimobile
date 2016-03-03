@@ -67,6 +67,11 @@ Swiper
             s.classNames.push('swiper-container-no-flexbox');
             s.params.slidesPerColumn = 1;
         }
+
+        if (s.params.autoHeight) {
+            s.classNames.push('swiper-container-autoheight');
+        }
+
         // Enable slides progress when required
         if (s.params.parallax || s.params.watchSlidesVisibility) {
             s.params.watchSlidesProgress = true;
@@ -303,6 +308,15 @@ Swiper
         /*=========================
           Slider/slides sizes
           ===========================*/
+        s.updateAutoHeight = function () {
+            // Update Height
+            var slide = s.slides.eq(s.activeIndex)[0];
+            if (typeof slide !== 'undefined') {
+                var newHeight = slide.offsetHeight;
+                if (newHeight) s.wrapper.css('height', newHeight + 'px');
+            }
+        };
+
         s.updateContainerSize = function () {
             s.width = s.container[0].clientWidth;
             s.height = s.container[0].clientHeight;
@@ -668,6 +682,10 @@ Swiper
                 var translated, newTranslate;
                 if (s.params.freeMode) {
                     forceSetTranslate();
+                    //autoHeight
+                    if (s.params.autoHeight) {
+                        s.updateAutoHeight();
+                    }
                 }
                 else {
                     if (s.params.slidesPerView === 'auto' && s.isEnd && !s.params.centeredSlides) {
@@ -681,6 +699,8 @@ Swiper
                     }
                 }
 
+            }else if (s.params.autoHeight) {
+                s.updateAutoHeight();
             }
         };
 
@@ -700,6 +720,10 @@ Swiper
                 s.setWrapperTranslate(newTranslate);
                 s.updateActiveIndex();
                 s.updateClasses();
+
+                if (s.params.autoHeight) {
+                    s.updateAutoHeight();
+                }
             }
             else {
                 s.updateClasses();
@@ -1350,14 +1374,32 @@ Swiper
                 }
             }
 
+            // Directions locks
+            if (!s.params.allowSwipeToNext && translate < s.translate && translate < s.minTranslate()) {
+                return false;
+            }
+            if (!s.params.allowSwipeToPrev && translate > s.translate && translate > s.maxTranslate()) {
+                if ((s.activeIndex || 0) !== slideIndex ) return false;
+            }
+
+
+
             if (typeof speed === 'undefined') speed = s.params.speed;
             s.previousIndex = s.activeIndex || 0;
             s.activeIndex = slideIndex;
 
-            if (translate === s.translate) {
+            if ((s.rtl && -translate === s.translate) || (!s.rtl && translate === s.translate)) {
+                // Update Height
+                if (s.params.autoHeight) {
+                    s.updateAutoHeight();
+                }
                 s.updateClasses();
+                if (s.params.effect !== 'slide') {
+                    s.setWrapperTranslate(translate);
+                }
                 return false;
             }
+            s.updateClasses();
             s.onTransitionStart(runCallbacks);
             if (speed === 0) {
                 s.setWrapperTransition(0);
@@ -1370,12 +1412,13 @@ Swiper
                 if (!s.animating) {
                     s.animating = true;
                     s.wrapper.transitionEnd(function () {
+                        if (!s) return;
                         s.onTransitionEnd(runCallbacks);
                     });
                 }
 
             }
-            s.updateClasses();
+            //s.updateClasses();
             return true;
         };
 
@@ -1393,6 +1436,9 @@ Swiper
             s.animating = false;
             s.setWrapperTransition(0);
             if (typeof runCallbacks === 'undefined') runCallbacks = true;
+            if (s.params.autoHeight) {
+                s.updateAutoHeight();
+            }
             if (s.lazy) s.lazy.onTransitionEnd();
             if (runCallbacks) {
                 s.emit('onTransitionEnd', s);
