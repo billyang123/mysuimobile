@@ -1,0 +1,75 @@
+---
+layout: default
+title: 订单
+---
+<div class="page-group order-container">
+
+	<div class="page  page-current" id="pageOrder">
+	<!-- 你的html代码 -->
+		<header class="bar bar-nav">
+			<button class="button button-link button-nav pull-right danger">卖家订单</button>
+			<h1 class="title">订单</h1>
+		</header>
+		{% include index-bottom-nav.html %}
+		<div class="content">
+			<!-- 这里是页面头部结束 -->
+			<div class="buttons-tab service-detail-tab">
+			    <li><a href="#tab1" class="tab-link active">进行中</a></li>
+			    <li><a href="#tab2" class="tab-link">已完成</a></li>
+			    <li><a href="#tab3" class="tab-link">全部</a></li>
+			</div>
+			<div class="tabs">
+				<div id="tab1" class="tab active">
+					<div class="card zfw-card">
+						<div class="card-content">
+						  <div class="card-content-inner">
+						  	<div class="row">
+						  		<h3 class="zfw-card-title col-60">说了这么多其实我们是量身定做产品</h3>
+						  		<div class="zfw-card-price col-40">¥ 9998</div>
+						  	</div>
+						  	<div class="zfw-tags">
+								<span class="tag">营销</span>
+								<span class="tag">策划</span>
+								<span class="tag">产品战略路径规划</span>
+							</div>
+						  </div>
+						</div>
+						<div class="card-footer">
+							<span>等待卖家接受订单</span>
+							<span>
+								<a href="#" class="button button-fill button-danger">接受</a
+							</span>
+						</div>
+					</div>
+					<div class="card zfw-card">
+						<div class="card-content">
+						  <div class="card-content-inner">
+						  	<div class="row">
+						  		<h3 class="zfw-card-title col-60">说了这么多其实我们是量身定做产品</h3>
+						  		<div class="zfw-card-price col-40">¥ 9998</div>
+						  	</div>
+						  	<div class="zfw-tags">
+								<span class="tag">营销</span>
+								<span class="tag">策划</span>
+								<span class="tag">产品战略路径规划</span>
+							</div>
+						  </div>
+						</div>
+						<div class="card-footer">
+							<span>卖家已经完成阶段服务</span>
+							<span>
+								<a href="#" class="button button-fill button-danger">确定</a
+							</span>
+						</div>
+					</div>
+				</div>
+				<div id="tab2" class="tab">
+				</div>
+				<div id="tab3" class="tab">
+				</div>
+			</div>
+			<!-- 这里是页面内容区 -->
+		</div>
+	</div>
+
+</div>
