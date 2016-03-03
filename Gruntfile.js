@@ -345,8 +345,8 @@ module.exports = function(grunt) {
     grunt.registerTask('dist', ['clean', 'build-css', 'build-js', 'copy']);
     grunt.registerTask('validate-html', ['jekyll']);
     grunt.registerTask('build', ['dist']);
-    grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
-    //grunt.registerTask('server', ['dist', 'jekyll', 'watch']);
+    //grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
+    grunt.registerTask('server', ['dist', 'jekyll', 'watch']);
     grunt.registerTask('server', ['dist', 'jekyll',"connect", 'watch']);
     if (buildTo) {
         //CDN发布环境
