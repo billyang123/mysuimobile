@@ -16,5 +16,11 @@ $(function () {
         _thisPhotoBrowser.open();
       });
   })
+  $(document).on("pageInit", "#pageIndex", function(e, id, page) {
+      // if ($.initSwiper) {
+      //   $.initSwiper($('.js-banner-swiper'));
+      //   $.initSwiper($('.js-shutdown-swiper'));
+      // }
+  })
   $.init();
 });

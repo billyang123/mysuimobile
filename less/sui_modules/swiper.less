@@ -6,6 +6,9 @@
     padding-bottom: 30px; //for pagination
     /* Fix of Webkit flickering */
     z-index:1;
+    -webkit-transition: height .3s;
+    transition: height .3s;
+    //transition: height .3s;
 }
 .swiper-container-no-flexbox {
     .swiper-slide {
@@ -341,4 +344,22 @@
 
 .swiper-slide img {
   display: block;
+}
+
+
+/* Auto Height */
+.swiper-container-autoheight,
+.swiper-container-autoheight .swiper-slide {
+  height: auto;
+}
+.swiper-container-autoheight .swiper-wrapper {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-transition-property: -webkit-transform, height;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -ms-transition-property: -ms-transform;
+  transition-property: transform, height;
 }

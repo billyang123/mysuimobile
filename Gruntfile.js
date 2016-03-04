@@ -346,7 +346,6 @@ module.exports = function(grunt) {
     grunt.registerTask('validate-html', ['jekyll']);
     grunt.registerTask('build', ['dist']);
     grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
-
     //grunt.registerTask('server', ['dist', 'jekyll', 'watch']);
     grunt.registerTask('server', ['dist', 'jekyll',"connect", 'watch']);
     if (buildTo) {

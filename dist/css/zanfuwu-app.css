@@ -433,3 +433,34 @@
 .account-info-container ul:after {
   background-color: #fff;
 }
+.zfw-color-red {
+  color: #FF5A5F !important;
+}
+.zfw-index-nav {
+  background-color: #fff;
+  padding: 1.25rem 0;
+}
+.zfw-index-nav .clf-item {
+  text-align: center;
+  padding: 0.3rem 0 0.55rem 0;
+}
+.zfw-index-nav .clf-item > span {
+  display: block;
+}
+.zfw-index-nav .clf-item .iconfont {
+  color: #000;
+  font-size: 1.6rem;
+}
+.zfw-index-nav .clf-item .txt {
+  color: rgba(0, 0, 0, 0.7);
+}
+.zfw-shutdown .swiper-container {
+  padding-top: 1.25rem;
+}
+.zfw-shutdown .swiper-container .swiper-pagination {
+  bottom: inherit;
+  top: 0;
+}
+.zfw-shutdown .card-header:after {
+  height: 0;
+}
