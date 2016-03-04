@@ -10,3 +10,4 @@ dev_new/*
 *.orig
 docs/demos/test.html
 docs/assets/js/test.js
+_config.yml
