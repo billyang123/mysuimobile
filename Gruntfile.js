@@ -323,7 +323,7 @@ module.exports = function(grunt) {
         connect: {
             site: {
                 options: {
-                    base: '_site/',
+                    base: 'dev_new/',
                     hostname: '0.0.0.0',
                     livereload: true,
                     open: true,
@@ -346,8 +346,8 @@ module.exports = function(grunt) {
     grunt.registerTask('validate-html', ['jekyll']);
     grunt.registerTask('build', ['dist']);
     grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
-    grunt.registerTask('server', ['dist', 'jekyll', 'watch']);
-    //grunt.registerTask('server', ['dist', 'jekyll',"connect", 'watch']);
+    //grunt.registerTask('server', ['dist', 'jekyll', 'watch']);
+    grunt.registerTask('server', ['dist', 'jekyll',"connect", 'watch']);
     if (buildTo) {
         //CDN发布环境
         grunt.registerTask('default', ['build-js', 'build-css', 'copy']);
