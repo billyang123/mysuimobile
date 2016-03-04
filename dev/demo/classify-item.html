@@ -1,0 +1,40 @@
+---
+layout: default
+title: 子分类
+---
+<div class="page-group">
+  
+  <div class="page classify-container" id="pageClassifyItem">
+    <header class="bar bar-nav">
+		<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
+		  <span class="icon icon-left"></span>
+		  返回
+		</a>
+		<h1 class="title">子分类</h1>
+	</header>
+    <div class="content">
+    	<div class="buttons-tab zfw-detail-tab">
+		    <a href="#renxiaoTab1" class="tab-link active button">热销</a>
+		    <a href="#xinxianTab2" class="tab-link button">新鲜</a>
+		    <a href="#shihuiTab3" class="tab-link button">实惠</a>
+		</div> 
+		<div class="tabs">
+			<div class="tab active" id="renxiaoTab1">
+			
+				{% include fw-card.html %}
+				{% include fw-card.html %}
+				{% include fw-card.html %}
+			</div>
+			<div class="tab" id="xinxianTab2">
+				{% include fw-card.html %}
+				{% include fw-card.html %}
+				{% include fw-card.html %}
+			</div>
+			<div class="tab" id="shihuiTab3">
+				{% include fw-card.html %}
+				{% include fw-card.html %}
+				{% include fw-card.html %}
+			</div>
+		</div>
+  	</div>
+</div>
