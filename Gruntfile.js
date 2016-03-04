@@ -323,7 +323,7 @@ module.exports = function(grunt) {
         connect: {
             site: {
                 options: {
-                    base: 'dev_new/',
+                    base: '_site/',
                     hostname: '0.0.0.0',
                     livereload: true,
                     open: true,
