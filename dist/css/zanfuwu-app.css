@@ -365,6 +365,32 @@
 .zfw-top-search .search-input input {
   background-color: #ecf0f3;
 }
+.zfw-hotsearchkey .keytag {
+  display: inline-block;
+  padding: 0 1.25rem;
+  line-height: 1.8rem;
+  font-size: 0.6rem;
+  color: #5c6d7a;
+  border-radius: 5rem;
+  border: 1px solid #dfe3e6;
+  margin: 0.3rem;
+}
+.zfw-clear-searchhistory {
+  position: absolute;
+  right: 0.6rem;
+  top: 0.6rem;
+  color: #ff5a5f;
+  font-size: 0.6rem;
+}
+.zfw-list-text-redcolor.list-block .item-content {
+  padding-right: 0.75rem;
+}
+.zfw-list-text-redcolor .item-title {
+  color: #ff5a5f;
+  font-size: 0.6rem;
+  text-align: center;
+  width: 100%;
+}
 .order-container .bar-nav:after {
   background-color: #fff;
 }
@@ -459,4 +485,33 @@
 }
 .zfw-shutdown .card-header:after {
   height: 0;
+}
+.my-user-card .item-title {
+  color: #000;
+  font-size: 0.8rem;
+  line-height: 1.8rem;
+}
+.my-user-card .item-subtitle {
+  color: #000;
+  font-size: 0.6rem;
+}
+.my-user-card .item-media,
+.my-user-card .item-inner {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+.my-num-red {
+  display: inline-block;
+  border-radius: 50%;
+  line-height: 1rem;
+  background-color: #ff5a5f;
+  color: #fff;
+  font-size: 0.6rem;
+  text-align: center;
+  height: 1rem;
+  min-width: 1rem;
+}
+.my-media-list .item-title {
+  font-size: 0.7rem;
+  font-weight: normal;
 }
