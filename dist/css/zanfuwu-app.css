@@ -8,15 +8,64 @@
 .text-center {
   text-align: center !important;
 }
+.icon-left,
+.icon-right {
+  color: #999;
+  font-size: 0.65rem !important;
+}
 .userimg {
   border-radius: 999rem;
 }
 .zfw-card-wblink div {
   margin: 1rem 0;
 }
-.bar-bottom-nav .tab-item.active,
-.bar-bottom-nav .tab-item:active {
+.bar-bottom-nav li {
+  list-style: none;
+  width: 25%;
+  text-align: center;
+  float: left;
+}
+.bar-bottom-nav li .tab-item {
+  width: auto;
+  display: inline-block;
+  line-height: 2.45rem;
+}
+.bar-bottom-nav li .tab-item.active,
+.bar-bottom-nav li .tab-item:active {
   color: #FF5A5F !important;
+  border-bottom: 2px solid #ff5a5f;
+}
+.bar {
+  background-color: #fff;
+}
+.bar-nav .title {
+  font-size: 0.65rem;
+}
+.bar-nav .button {
+  font-size: 0.65rem;
+}
+.service-detail-tab {
+  border-top: 1px solid #e1e1e1;
+  height: 2.05rem;
+  line-height: 1.9rem;
+}
+.service-detail-tab li {
+  list-style: none;
+  width: 33.33333333%;
+  text-align: center;
+}
+.service-detail-tab li a {
+  display: inline-block;
+  padding: 0 0.5rem;
+  color: #999;
+  font-size: 0.55rem;
+}
+.service-detail-tab li a.active {
+  border-bottom: 2px solid #ff5a5f;
+  color: #000;
+}
+.danger {
+  color: #FF5A5F;
 }
 .zfw-detail-header {
   position: relative;
@@ -202,13 +251,6 @@
 .circle {
   border-radius: 9999px;
 }
-.service-detail-container .icon-zanfuwutubiao09,
-.service-detail-container .icon-zanfuwutubiao19 {
-  font-size: 0.8rem;
-}
-.service-detail-container .danger {
-  color: #FF5A5F;
-}
 .service-detail-container .ft-gray {
   font-size: 0.55rem;
   color: #999;
@@ -244,25 +286,6 @@
 }
 .service-detail-container .service-block-content .item-inner {
   padding: 1rem 0rem 1.5rem 0rem;
-}
-.service-detail-container .service-detail-tab {
-  border-top: 1px solid #e1e1e1;
-  height: 2.05rem;
-  line-height: 1.9rem;
-}
-.service-detail-container .service-detail-tab li {
-  list-style: none;
-  width: 33.33333333%;
-  text-align: center;
-}
-.service-detail-container .service-detail-tab li a {
-  display: inline-block;
-  padding: 0 0.5rem;
-  color: #999;
-}
-.service-detail-container .service-detail-tab li a.active {
-  border-bottom: 2px solid #ff5a5f;
-  color: #000;
 }
 .service-detail-container .buttons-tab:after {
   background-color: #fff !important;
@@ -341,4 +364,99 @@
 }
 .zfw-top-search .search-input input {
   background-color: #ecf0f3;
+}
+.order-container .bar-nav:after {
+  background-color: #fff;
+}
+.order-container .bar-nav .danger {
+  color: #FF5A5F;
+}
+.order-container .service-detail-tab {
+  border-top: none;
+}
+.order-container .service-detail-tab:after {
+  background-color: #fff;
+}
+.order-container .card-footer .button-danger {
+  width: 4rem;
+  height: 1.6rem;
+  background-color: #FF5A5F;
+  color: #fff;
+  line-height: 1.6rem;
+  border-radius: 0;
+}
+.account-info-container .list-block .item-title {
+  font-size: 0.65rem;
+  color: #000;
+}
+.account-info-container .list-block .item-after {
+  font-size: 0.65rem;
+  color: #999;
+}
+.account-info-container .text-center {
+  text-align: center;
+  background-color: #fff;
+}
+.account-info-container .text-center .userimg {
+  display: inline-block;
+  margin-top: 2.7rem;
+  margin-bottom: 0.95rem;
+}
+.account-info-container .list-block {
+  background-color: #fff;
+  padding: 1.75rem 0;
+  margin: 0;
+}
+.account-info-container .list-block .item-link .item-inner:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #e7e7e7;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+.account-info-container .list-block .item-content {
+  padding-right: 0.75rem;
+}
+.account-info-container ul:before,
+.account-info-container ul:after {
+  background-color: #fff;
+}
+.zfw-color-red {
+  color: #FF5A5F !important;
+}
+.zfw-index-nav {
+  background-color: #fff;
+  padding: 1.25rem 0;
+}
+.zfw-index-nav .clf-item {
+  text-align: center;
+  padding: 0.3rem 0 0.55rem 0;
+}
+.zfw-index-nav .clf-item > span {
+  display: block;
+}
+.zfw-index-nav .clf-item .iconfont {
+  color: #000;
+  font-size: 1.6rem;
+}
+.zfw-index-nav .clf-item .txt {
+  color: rgba(0, 0, 0, 0.7);
+}
+.zfw-shutdown .swiper-container {
+  padding-top: 1.25rem;
+}
+.zfw-shutdown .swiper-container .swiper-pagination {
+  bottom: inherit;
+  top: 0;
+}
+.zfw-shutdown .card-header:after {
+  height: 0;
 }

@@ -1,0 +1,48 @@
+.account-info-container{
+	.list-block{
+		.item-title{
+			font-size: 13/@ppr;
+			color: #000;
+		}
+		.item-after{
+			font-size: 13/@ppr;
+			color: #999;
+		}
+	}
+	.text-center{
+		text-align: center;
+		background-color: #fff;
+		.userimg{
+			display: inline-block;
+			margin-top: 54/@ppr;
+			margin-bottom: 19/@ppr;
+		}
+	}
+	.list-block{
+		background-color: #fff;
+		padding: 35/@ppr 0;
+		margin: 0;
+		.item-link .item-inner:after {
+		    content: '';
+		    position: absolute;
+		    left: 0;
+		    bottom: 0;
+		    right: auto;
+		    top: auto;
+		    height: 1px;
+		    width: 100%;
+		    background-color: #e7e7e7;
+		    display: block;
+		    z-index: 15;
+		    -webkit-transform-origin: 50% 100%;
+		    transform-origin: 50% 100%;
+		}
+		.item-content{
+			padding-right: 15/@ppr;
+		}
+	}
+
+	ul:before, ul:after{
+		background-color: #fff;
+	}
+}
