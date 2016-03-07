@@ -306,6 +306,9 @@
   padding: 0.1rem 0.5rem 0.5rem 5.5rem;
   margin: 0.5rem 0rem 0rem 0.5rem;
 }
+.stage-left span.iconfont {
+  right: 0.75rem;
+}
 .stage-right .media-stage-list {
   position: absolute;
   top: 1.5rem;
@@ -316,6 +319,9 @@
   left: 0;
   padding: 0.1rem 5.5rem 0.5rem 0.5rem;
   margin: 0.5rem 0.5rem 0rem 0rem;
+}
+.stage-right span.iconfont {
+  left: 0.75rem;
 }
 .stage-content {
   position: relative;
@@ -354,6 +360,12 @@
 .stage-content .stage-bg-content .success-tip {
   color: #0AE6B8;
   font-size: 0.65rem;
+}
+.stage-content .stage-bg-content span.iconfont {
+  position: absolute;
+  color: #0AE6B8;
+  font-size: 1.6rem;
+  top: 0.85rem;
 }
 .stage-content .stage-bg-content .ribbon {
   position: absolute;
