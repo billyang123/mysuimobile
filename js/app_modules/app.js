@@ -1,5 +1,6 @@
 $(function () {
   'use strict';
+
   $(document).on("pageInit", "#pageStoreDetail", function(e, id, page) {
       var ImageData = [{url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'}]
       $(document).on('click','.js-pb-standalone',function () {
@@ -15,12 +16,28 @@ $(function () {
         }
         _thisPhotoBrowser.open();
       });
+      var mySwiper = $('#storeDetailswiper')[0].swiper;
+      var oldTabLink = $('.mytab-link.active');
+      $('.mytab-link').on('click',function(){
+          mySwiper.slideTo($(this).attr("href").substr(4)*1-1);
+          return false;
+      })
+      mySwiper.on("slideChangeEnd",function(n){
+        oldTabLink.removeClass("active");
+        oldTabLink = $('.mytab-link[href="#tab'+(n.activeIndex+1)+'"]').addClass("active")
+      })
   })
-  $(document).on("pageInit", "#pageIndex", function(e, id, page) {
-      // if ($.initSwiper) {
-      //   $.initSwiper($('.js-banner-swiper'));
-      //   $.initSwiper($('.js-shutdown-swiper'));
-      // }
+  $(document).on("pageInit", "#pagePayResult_1", function(e, id, page) {
+      $.modal({
+        title:  '支付结果',
+        text: '<div class="content-block">'+
+                  '<p><a href="#" class="button button-big button-danger">支付成功</a></p>'+
+                  '<p><a href="#" class="button button-big button-danger">支付遇到问题</a></p>'+
+              '</div>'
+      })
+  })
+  $(document).on("pageInit", "#pagePayResult_3", function(e, id, page) {
+      $.pickerModal('#pagePayResult_picker');
   })
   $.init();
 });

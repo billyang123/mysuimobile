@@ -1,0 +1,73 @@
+.payresult {
+	&-icon {
+		margin: 39/@ppr 0 47/@ppr;
+		text-align: center;
+		.iconfont {
+			color: rgba(10, 230, 184, 1);
+			font-size: 60/@ppr;
+		}
+	}
+	&-text {
+		text-align: center;
+		.tt {
+			font-size: 16/@ppr;
+			color: rgba(10, 230, 184, 1);
+		}
+		.tx {
+			font-size: 12/@ppr;
+			color: rgba(153, 153, 153, 1);
+		}
+		.tb {
+			margin-top: 160/@ppr;
+			.button {
+				color: rgba(255, 90, 95, 1);
+			}
+		}
+	}
+	.picker-modal&-picker {
+		height: 335/@ppr;
+		background-color: #fff;
+		.toolbar-inner:after {
+			content: '';
+		    position: absolute;
+		    left: 0;
+		    bottom: 0;
+		    right: auto;
+		    top: auto;
+		    height: 1px;
+		    width: 100%;
+		    background-color: #e7e7e7;
+		    display: block;
+		    z-index: 15;
+		    -webkit-transform-origin: 50% 100%;
+		    transform-origin: 50% 100%;
+		}
+		.toolbar-inner > div {
+			width: 100%;
+    		line-height: 44/@ppr;
+    		font-size: 12/@ppr;
+    		color: #000;
+		}
+		.close-picker {
+    		color: #000;
+		}
+	}
+	&-zifubao {
+		.button {
+			background-color: rgba(33, 184, 255, 1);
+			color: #fff;
+		}
+	}
+	&-weixin {
+		.button {
+			color: #fff;
+			background-color: rgba(24, 226, 131, 1);
+		}
+	}
+	&-yinglian {
+		.button {
+			color: #fff;
+			background-color: rgba(97, 155, 218, 1);
+		}
+	}
+}

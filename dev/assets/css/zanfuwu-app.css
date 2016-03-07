@@ -610,3 +610,79 @@
   height: 2.25rem;
   line-height: 2.25rem;
 }
+.messages-list a {
+  color: #000;
+}
+.messages-list .item-title {
+  font-size: 0.7rem;
+}
+.messages-list .item-after,
+.messages-list .item-subtitle {
+  color: #999999;
+  font-size: 0.6rem;
+}
+.payresult-icon {
+  margin: 1.95rem 0 2.35rem;
+  text-align: center;
+}
+.payresult-icon .iconfont {
+  color: #0ae6b8;
+  font-size: 3rem;
+}
+.payresult-text {
+  text-align: center;
+}
+.payresult-text .tt {
+  font-size: 0.8rem;
+  color: #0ae6b8;
+}
+.payresult-text .tx {
+  font-size: 0.6rem;
+  color: #999999;
+}
+.payresult-text .tb {
+  margin-top: 8rem;
+}
+.payresult-text .tb .button {
+  color: #ff5a5f;
+}
+.picker-modal.payresult-picker {
+  height: 16.75rem;
+  background-color: #fff;
+}
+.picker-modal.payresult-picker .toolbar-inner:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #e7e7e7;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+.picker-modal.payresult-picker .toolbar-inner > div {
+  width: 100%;
+  line-height: 2.2rem;
+  font-size: 0.6rem;
+  color: #000;
+}
+.picker-modal.payresult-picker .close-picker {
+  color: #000;
+}
+.payresult-zifubao .button {
+  background-color: #21b8ff;
+  color: #fff;
+}
+.payresult-weixin .button {
+  color: #fff;
+  background-color: #18e283;
+}
+.payresult-yinglian .button {
+  color: #fff;
+  background-color: #619bda;
+}
