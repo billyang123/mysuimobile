@@ -1,0 +1,83 @@
+.balance-container{
+	.balance-list{
+		padding-bottom: 30/@ppr;
+		.item-title{
+			font-size: 13/@ppr;
+			color: #000;
+		}		
+		.item-subtitle{
+			font-size: 11/@ppr;
+			color: #999;
+		}
+		.item-inner{
+			padding: 20/@ppr 0/@ppr 20/@ppr 0/@ppr;			
+		}
+		.item-content{
+			padding: 0 26/@ppr;
+			&:last-child{
+				.item-after:after {
+				    content: '';
+				    position: absolute;
+				    left: 0;
+				    bottom: 0;
+				    right: auto;
+				    top: auto;
+				    height: 1px;
+				    width: 100%;
+				    background-color: #e7e7e7;
+				    display: block;
+				    z-index: 15;
+				    -webkit-transform-origin: 50% 100%;
+				    transform-origin: 50% 100%;
+				}
+			}
+		}		
+		.total-num{
+			padding: 0;
+			.item-inner{
+				padding: 0 26/@ppr;
+				div{
+					font-weight: bold;
+				}
+			}
+		}
+		&{
+		 ul:after{
+		 	display: none;
+		 }			
+		}
+
+	}
+	//余额为空
+	
+	//提现
+	.balance-extract{
+		.danger{
+			font-size: 20/@ppr;
+			color: #FF5A5F;
+		}
+		/* webkit solution */
+		::-webkit-input-placeholder {
+			text-align:right;
+			font-size: 13/@ppr;
+			color: #DFDFDF;
+		}
+		/* mozilla solution */
+		input:-moz-placeholder {
+			text-align:right;
+			font-size: 13/@ppr;
+			color: #DFDFDF;
+		}
+		.remark-text{
+			font-size: 11/@ppr;
+			color: #999;
+			line-height: 20/@ppr;
+		}
+		.item-content{
+			padding: 0;
+			.item-inner{
+				padding: 20/@ppr 26/@ppr;
+			}
+		}
+	}
+}
