@@ -1,0 +1,33 @@
+---
+layout: default
+title: 收藏
+---
+<div class="page-group">
+
+	<div class="page collect-container" id="pageCollect">
+	<!-- 你的html代码 -->
+		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
+			  <span class="icon icon-left"></span>
+			</a>
+			<h1 class="title">收藏</h1>
+		</header>
+		<div class="content">
+			<div class="buttons-tab service-detail-tab">
+			    <li><a href="#tab1" class="tab-link active">服务：12</a></li>
+			    <li><a href="#tab2" class="tab-link">店铺</a></li>
+			</div>
+			<div class="tabs">
+				<div id="tab1" class="tab active">
+					{% include fw-card.html %}
+					{% include fw-card.html %}
+				</div>
+				<div id="tab2" class="tab">
+					{% include fw-card.html %}
+				</div>
+			</div>
+			<!-- 这里是页面内容区 -->
+		</div>
+	</div>
+
+</div>
