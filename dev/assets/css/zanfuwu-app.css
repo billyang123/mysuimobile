@@ -781,3 +781,28 @@
   line-height: 1rem;
   margin: 1.25rem 0 2rem 0;
 }
+.zfw-login {
+  background-color: #fff;
+}
+.zfw-login-title {
+  height: 4.75rem;
+  position: relative;
+}
+.zfw-login-close {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  color: #ff5a5f;
+}
+.zfw-login .list-block .item-content {
+  padding-right: 0.75rem;
+}
+.zfw-login .list-block .item-inner {
+  padding-right: 0;
+  padding-top: 0.6rem;
+  padding-bottom: 0.55rem;
+}
+.zfw-login .button-danger.button-fill {
+  height: 2.25rem;
+  line-height: 2.25rem;
+}
