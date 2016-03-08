@@ -13386,7 +13386,6 @@ $.smConfig.rawCitiesData = [
         }
         ]
     };
-
     $.fn.cityPicker = function(params) {
         return this.each(function() {
             if(!this) return;

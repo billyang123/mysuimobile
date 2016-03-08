@@ -6,7 +6,53 @@
  */
 $(function () {
   'use strict';
+  $.loadMoreLink = function(options){
+      // 加载flag
+      var self = this;
+      this.options = options;
+      this.loading = false;
+      this.loaded = false;
+      this.$container = $(this.options.container) || $('.infinite-scroll-bottom .list-container');
+      this.$infinite = $('.infinite-scroll');
+      this.page = 2;
+      this.addItems = function(){
+        $.ajax({
+            url:self.$infinite.data("url"),
+            type:"get",
+            data:self.$infinite.data("params").replace('{index}',self.page),
+            success:function(html){
+              if($.trim(html) == ""){
+                self.loaded = true;
+              }
+              self.$container.append(html);
+              self.page++;
+            }
+        })
+      }
+      $(document).on('infinite', '.infinite-scroll-bottom',function() {
+        // 如果正在加载，则退出
+        if (self.loading) return;
+        // 设置flag
+        self.loading = true;
+        // 模拟1s的加载过程
+        setTimeout(function() {
+            // 重置加载flag
+            self.loading = false;
 
+            if (self.loaded) {
+                // 加载完毕，则注销无限加载事件，以防不必要的加载
+                $.detachInfiniteScroll($('.infinite-scroll'));
+                // 删除加载提示符
+                $('.infinite-scroll-preloader').remove();
+                return;
+            }
+            // 添加新条目
+            self.addItems();
+            //容器发生改变,如果是js滚动，需要刷新滚动
+            $.refreshScroller();
+        }, 1000);
+    });
+  }
   $(document).on("pageInit", "#pageStoreDetail", function(e, id, page) {
       var ImageData = [{url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'}]
       $(document).on('click','.js-pb-standalone',function () {
@@ -44,6 +90,11 @@ $(function () {
   })
   $(document).on("pageInit", "#pagePayResult_3", function(e, id, page) {
       $.pickerModal('#pagePayResult_picker');
+  })
+  $(document).on("pageInit", "#pageClassifyItem", function(e, id, page) {
+      $.loadMoreLink({
+        container:"#pageClassifyItemList"
+      })
   })
   $.init();
 });
