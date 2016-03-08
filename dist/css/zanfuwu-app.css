@@ -109,6 +109,12 @@
   color: #fff;
   line-height: 1.2rem;
 }
+.actions-modal span {
+  font-size: 0.65rem;
+}
+.tabs .tab.active {
+  z-index: 999999999;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
@@ -607,8 +613,6 @@
   background-image: -webkit-linear-gradient(to right, #F9F9F9, #fff 1.5rem);
   background-image: -webkit-linear-gradient(left, #F9F9F9, #fff 1.5rem);
   background-image: linear-gradient(to right, #F9F9F9, #fff 1.5rem);
-  max-height: 27.6rem;
-  overflow: auto;
   padding-bottom: 50px;
 }
 .classify-container .classify-right-nav .right-nav-top {
@@ -633,12 +637,19 @@
   border: none;
   margin-top: 1.15rem;
 }
+.classify-container .classify-right-nav .right-nav-content {
+  max-height: 20rem;
+  overflow: auto;
+}
 .classify-container .classify-right-nav .right-nav-content ul li {
   list-style: none;
   padding-left: 1.3rem;
+  margin: 2rem 0;
+}
+.classify-container .classify-right-nav .right-nav-content ul li a {
   line-height: 0.8rem;
   font-size: 0.65rem;
-  margin: 2rem 0;
+  color: #000;
 }
 .my-user-card .item-title {
   color: #000;

@@ -35,9 +35,7 @@
 	}
 	.classify-right-nav{
 		background-image:-webkit-linear-gradient(to right, #F9F9F9, #fff 30/@ppr);
-		background-image:linear-gradient(to right,#F9F9F9, #fff 30/@ppr);
-		max-height: 552/@ppr;
-	    overflow: auto;
+		background-image:linear-gradient(to right,#F9F9F9, #fff 30/@ppr);		
 	    padding-bottom: 50px;
 		.right-nav-top{
 			height: 120/@ppr;
@@ -62,13 +60,18 @@
 			}
 		}
 		.right-nav-content{
+			max-height: 400/@ppr;
+			overflow: auto;
 			ul{
 				li{
 					list-style: none;
-					padding-left: 26/@ppr;
-					line-height: 16/@ppr;
-					font-size: 13/@ppr;
+					padding-left: 26/@ppr;					
 					margin: 40/@ppr 0;
+					a{
+						line-height: 16/@ppr;
+						font-size: 13/@ppr;
+						color: #000;
+					}					
 				}
 			}
 		}
