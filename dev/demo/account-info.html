@@ -2,6 +2,7 @@
 layout: default
 title: 账号信息
 ---
+<script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
 <div class="page-group">
 
 	<div class="page account-info-container" id="pageAccountInfo">
@@ -40,14 +41,14 @@ title: 账号信息
 			      </li>
 			      <li class="item-content item-link">
 			        <div class="item-media"><i class="icon icon-f7"></i></div>
-			        <div class="item-inner">
+			        <div class="item-inner" id="city-picker">
 			          <div class="item-title">地区</div>
 			          <div class="item-after">杭州</div>
 			        </div>
 			      </li>
 			      <li class="item-content item-link">
 			        <div class="item-media"><i class="icon icon-f7"></i></div>
-			        <div class="item-inner">
+			        <div class="item-inner" id="">
 			          <div class="item-title">行业</div>
 			          <div class="item-after">互联网</div>
 			        </div>
@@ -94,5 +95,11 @@ title: 账号信息
       ];
       var groups = [buttons1, buttons2];
       $.actions(groups);
+      $("#city-picker").cityPicker({
+	    toolbarTemplate: '<header class="bar bar-nav">\
+	    <button class="button button-link pull-right close-picker">确定</button>\
+	    <h1 class="title">选择收货地址</h1>\
+	    </header>'
+	  });
   });
 </script>

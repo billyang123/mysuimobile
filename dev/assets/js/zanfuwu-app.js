@@ -22,7 +22,9 @@ $(function () {
             data:self.$infinite.data("params").replace('{index}',self.page),
             success:function(html){
               if($.trim(html) == ""){
-                self.loaded = true;
+                $.detachInfiniteScroll($('.infinite-scroll'));
+                // 删除加载提示符
+                $('.infinite-scroll-preloader').remove();
               }
               self.$container.append(html);
               self.page++;
@@ -39,13 +41,6 @@ $(function () {
             // 重置加载flag
             self.loading = false;
 
-            if (self.loaded) {
-                // 加载完毕，则注销无限加载事件，以防不必要的加载
-                $.detachInfiniteScroll($('.infinite-scroll'));
-                // 删除加载提示符
-                $('.infinite-scroll-preloader').remove();
-                return;
-            }
             // 添加新条目
             self.addItems();
             //容器发生改变,如果是js滚动，需要刷新滚动
@@ -53,6 +48,16 @@ $(function () {
         }, 1000);
     });
   }
+  $(document).delegate('[data-link]:not(a)',"click",function(evt){
+    if($(evt.target).closest("a").length>0) return;
+    if(evt.target.tagName=="A") return;
+    // var t = new Date().getTime();
+    // var id = 'linkTo'+t;
+    // var link = $('<a>').attr("id",id).attr("href",$(this).data("link")).attr("target",$(this).data("link-target")||"_self").css({visibility:"hidden"});
+    // link.appendTo("body");
+    // link[0].click();
+    window.location.href= $(this).data("link");
+  });
   $(document).on("pageInit", "#pageStoreDetail", function(e, id, page) {
       var ImageData = [{url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'}]
       $(document).on('click','.js-pb-standalone',function () {
@@ -92,6 +97,7 @@ $(function () {
       $.pickerModal('#pagePayResult_picker');
   })
   $(document).on("pageInit", "#pageClassifyItem", function(e, id, page) {
+      $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()});
       $.loadMoreLink({
         container:"#pageClassifyItemList"
       })
