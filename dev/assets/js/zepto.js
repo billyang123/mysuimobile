@@ -69,6 +69,7 @@ var Zepto = (function() {
   function isWindow(obj)     { return obj != null && obj == obj.window }
   function isDocument(obj)   { return obj != null && obj.nodeType == obj.DOCUMENT_NODE }
   function isObject(obj)     { return type(obj) == "object" }
+
   function isPlainObject(obj) {
     return isObject(obj) && !isWindow(obj) && Object.getPrototypeOf(obj) == Object.prototype
   }
@@ -319,6 +320,7 @@ var Zepto = (function() {
   $.type = type
   $.isFunction = isFunction
   $.isWindow = isWindow
+  $.isObject = isObject
   $.isArray = isArray
   $.isPlainObject = isPlainObject
 
@@ -1221,7 +1223,7 @@ window.$ === undefined && (window.$ = Zepto)
   }
 
   $.fn.animate = function(properties, duration, ease, callback){
-    if (isObject(duration))
+    if ($.isObject(duration))
       ease = duration.easing, callback = duration.complete, duration = duration.duration
     if (duration) duration = duration / 1000
     return this.anim(properties, duration, ease, callback)
