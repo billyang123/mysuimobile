@@ -151,6 +151,37 @@ $(function () {
       $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()});
       __app.tabLoadMore;
   })
+  $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
+      $(document).on('click','.userimg', function () {
+          var buttons1 = [
+          {
+            text: '拍个照',
+            bold: true,
+            color: 'danger',
+            onClick: function() {
+              $.alert("拍个照");
+            }
+          },
+          {
+            text: '去相册选',
+            color: 'danger',
+            onClick: function() {
+              $.alert("去相册选");
+            }
+          }
+        ];
+        var buttons2 = [
+          {
+            text: '取消',
+            color: 'danger'
+          }
+        ];
+        var groups = [buttons1, buttons2];
+        $.actions(groups);
+      })
+      $("#city-picker").cityPicker({
+      })
+  })
   $.init();
 });
 

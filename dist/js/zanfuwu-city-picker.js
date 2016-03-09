@@ -6,7 +6,9 @@
  */
 // jshint ignore: start
 +function($){
-
+if(!$.smConfig){
+    $.smConfig = {};
+}
 $.smConfig.rawCitiesData = [
     {
         "name":"北京",
