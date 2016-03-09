@@ -1,14 +1,4 @@
 .account-info-container{
-	.list-block{
-		.item-title{
-			font-size: 13/@ppr;
-			color: #000;
-		}
-		.item-after{
-			font-size: 13/@ppr;
-			color: #999;
-		}
-	}
 	.text-center{
 		text-align: center;
 		background-color: #fff;
@@ -44,5 +34,30 @@
 
 	ul:before, ul:after{
 		background-color: #fff;
+	}	
+	.account-info-list{
+		.item-title{
+			width: 30%;
+			color: #000;
+			font-size: 13/@ppr;
+		}
+		.item-after{
+			width: 70%;
+			color: #999;
+			font-size: 13/@ppr;
+			text-align: right;
+		}
+		/* webkit solution */
+		::-webkit-input-placeholder {
+			text-align:right;
+			font-size: 13/@ppr;
+			color: #DFDFDF;
+		}
+		/* mozilla solution */
+		input:-moz-placeholder {
+			text-align:right;
+			font-size: 13/@ppr;
+			color: #DFDFDF;
+		}
 	}
 }

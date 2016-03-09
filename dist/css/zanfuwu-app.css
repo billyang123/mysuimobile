@@ -119,6 +119,9 @@
 .tabs .tab.active {
   z-index: 999999999;
 }
+.content.none-scroll {
+  overflow: hidden;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
@@ -503,14 +506,6 @@
   line-height: 1.6rem;
   border-radius: 0;
 }
-.account-info-container .list-block .item-title {
-  font-size: 0.65rem;
-  color: #000;
-}
-.account-info-container .list-block .item-after {
-  font-size: 0.65rem;
-  color: #999;
-}
 .account-info-container .text-center {
   text-align: center;
   background-color: #fff;
@@ -546,6 +541,31 @@
 .account-info-container ul:before,
 .account-info-container ul:after {
   background-color: #fff;
+}
+.account-info-container .account-info-list {
+  /* webkit solution */
+  /* mozilla solution */
+}
+.account-info-container .account-info-list .item-title {
+  width: 30%;
+  color: #000;
+  font-size: 0.65rem;
+}
+.account-info-container .account-info-list .item-after {
+  width: 70%;
+  color: #999;
+  font-size: 0.65rem;
+  text-align: right;
+}
+.account-info-container .account-info-list ::-webkit-input-placeholder {
+  text-align: right;
+  font-size: 0.65rem;
+  color: #DFDFDF;
+}
+.account-info-container .account-info-list input:-moz-placeholder {
+  text-align: right;
+  font-size: 0.65rem;
+  color: #DFDFDF;
 }
 .zfw-color-red {
   color: #FF5A5F !important;
@@ -919,4 +939,48 @@
   color: #999;
   line-height: 1rem;
   margin: 1.25rem 0 2rem 0;
+}
+.collect-container .store-list {
+  margin: 0.5rem 0;
+}
+.collect-container .store-list li {
+  width: 100%;
+}
+.collect-container .store-list .user-img {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+}
+.collect-container .store-list .item-title {
+  font-size: 0.75rem;
+  color: #000;
+  margin-top: 0.75rem;
+}
+.collect-container .store-list .item-subtitle {
+  font-size: 0.6rem;
+  color: #999;
+  margin: 0.75rem 0;
+}
+.collect-container .common-tip i {
+  margin: 5rem 0 0 0;
+}
+.collect-container .common-tip .ft15 {
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 0.9rem;
+}
+.collect-container .common-tip .ft13 {
+  font-size: 0.65rem;
+  color: #999;
+  margin-bottom: 1.25rem;
+}
+.collect-container .common-tip .btn-link {
+  width: 5.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  color: #666;
+  font-size: 0.65rem;
+  border-radius: 0.1rem;
+  border: 1px solid #666;
+  background: #fff;
 }
