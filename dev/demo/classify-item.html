@@ -4,7 +4,7 @@ title: 子分类
 ---
 <div class="page-group">
   
-  <div class="page classify-container" id="pageClassifyItem">
+  <div class="page" id="pageClassifyItem">
     <header class="bar bar-nav">
 		<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
 		  <span class="icon icon-left"></span>
@@ -12,29 +12,18 @@ title: 子分类
 		</a>
 		<h1 class="title">子分类</h1>
 	</header>
-    <div class="content">
+    <div class="content infinite-scroll infinite-scroll-bottom">
     	<div class="buttons-tab zfw-detail-tab">
-		    <a href="#renxiaoTab1" class="tab-link active button">热销</a>
-		    <a href="#xinxianTab2" class="tab-link button">新鲜</a>
-		    <a href="#shihuiTab3" class="tab-link button">实惠</a>
+		    <a href="javascript:void(0);" data-url="/ajax/class-item/index.html?index=1" data-params="pageNo={index}" class="mytab-link active button">热销</a>
+		    <a href="javascript:void(0);" data-url="/ajax/class-item/index.html?index=2" data-params="pageNo={index}" class="mytab-link button">新鲜</a>
+		    <a href="javascript:void(0);" data-url="/ajax/class-item/index.html?index=3" data-params="pageNo={index}" class="mytab-link button">实惠</a>
 		</div> 
-		<div class="tabs">
-			<div class="tab active" id="renxiaoTab1">
+		<div id="pageClassifyItemList">
 			
-				{% include fw-card.html %}
-				{% include fw-card.html %}
-				{% include fw-card.html %}
-			</div>
-			<div class="tab" id="xinxianTab2">
-				{% include fw-card.html %}
-				{% include fw-card.html %}
-				{% include fw-card.html %}
-			</div>
-			<div class="tab" id="shihuiTab3">
-				{% include fw-card.html %}
-				{% include fw-card.html %}
-				{% include fw-card.html %}
-			</div>
+		</div>
+		<!-- 加载提示符 -->
+		<div class="infinite-scroll-preloader">
+		  <div class="preloader"></div>
 		</div>
   	</div>
 </div>

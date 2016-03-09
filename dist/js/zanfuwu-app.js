@@ -6,29 +6,57 @@
  */
 $(function () {
   'use strict';
-  $.loadMoreLink = function(options){
+  if(!__app) __app = {};
+  __app.loadMoreLink = function(options){
       // 加载flag
       var self = this;
       this.options = options;
+      //容器
+      this.$infinite = $('.infinite-scroll');
+      this._loadEl = $('.infinite-scroll-preloader');
       this.loading = false;
       this.loaded = false;
-      this.$container = $(this.options.container) || $('.infinite-scroll-bottom .list-container');
-      this.$infinite = $('.infinite-scroll');
-      this.page = 2;
-      this.addItems = function(){
+      this.container = $(this.options.container) || $('.infinite-scroll-bottom .list-container');
+      this.page = 1;
+      this.data = this.options.data;
+      this.url = this.options.url;
+
+      this.addItems = function(type){
         $.ajax({
-            url:self.$infinite.data("url"),
+            url:this.url,
             type:"get",
-            data:self.$infinite.data("params").replace('{index}',self.page),
+            data:this.data.replace('{index}',self.page),
             success:function(html){
               if($.trim(html) == ""){
-                $.detachInfiniteScroll($('.infinite-scroll'));
+                $.detachInfiniteScroll(self.$infinite);
                 // 删除加载提示符
-                $('.infinite-scroll-preloader').remove();
+                self._loadEl.hide();
               }
-              self.$container.append(html);
+              self.container[type](html);
               self.page++;
             }
+        })
+      }
+      this.init = function(){
+        $.detachInfiniteScroll(self.$infinite);
+        $.attachInfiniteScroll(self.$infinite);
+        self.addItems("html")
+      }
+      this._remove = function(){
+        $.detachInfiniteScroll(self.$infinite);
+      }
+      this.set = function(obg){
+        $.each(obg,function(index,item){
+            self[index] = item;
+        })
+      }
+      this.reset = function(){
+        self.set({
+          loading:false,
+          loaded:false,
+          container:"#renxiaoTab1",
+          url:"/ajax/class-item/index.html",
+          data:"pageNo={index}"
         })
       }
       $(document).on('infinite', '.infinite-scroll-bottom',function() {
@@ -42,11 +70,34 @@ $(function () {
             self.loading = false;
 
             // 添加新条目
-            self.addItems();
+            self.addItems("append");
             //容器发生改变,如果是js滚动，需要刷新滚动
             $.refreshScroller();
         }, 1000);
     });
+  }
+  __app.tabLoadMore = function(){
+    var _loadMoreLink = new __app.loadMoreLink({
+        container:"#pageClassifyItemList",
+        url:"/ajax/class-item/index.html",
+        data:"pageNo={index}"
+    })
+    _loadMoreLink.init();
+    var oldTabLink = $('.mytab-link.active');
+    $('.mytab-link').on('click',function(){
+        oldTabLink.removeClass("active");
+        _loadMoreLink.set({
+          "page":1,
+          "data":$(this).data("params"),
+          "url":$(this).data("url"),
+          "loading":false,
+          "loaded":false,
+        });
+        _loadMoreLink.init();
+        oldTabLink = $(this).addClass("active");
+        $("html,body,.content").scrollTop(0)
+        return false;
+    })
   }
   $(document).delegate('[data-link]:not(a)',"click",function(evt){
     if($(evt.target).closest("a").length>0) return;
@@ -58,7 +109,7 @@ $(function () {
     // link[0].click();
     window.location.href= $(this).data("link");
   });
-  $(document).on("pageInit", "#pageStoreDetail", function(e, id, page) {
+  $(document).on("pageInit", "#pageStoreDetail,#pageServiceDetail", function(e, id, page) {
       var ImageData = [{url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'}]
       $(document).on('click','.js-pb-standalone',function () {
         var _filed = $(this).attr("data-pb-filed");
@@ -79,9 +130,9 @@ $(function () {
           mySwiper.slideTo($(this).attr("href").substr(4)*1-1);
           return false;
       })
-      mySwiper.on("slideChangeEnd",function(n){
+      mySwiper.on("slideChangeStart",function(n,e){
         oldTabLink.removeClass("active");
-        oldTabLink = $('.mytab-link[href="#tab'+(n.activeIndex+1)+'"]').addClass("active")
+        oldTabLink = $('.mytab-link[href="#tab'+(n.activeIndex+1)+'"]').addClass("active");
       })
   })
   $(document).on("pageInit", "#pagePayResult_1", function(e, id, page) {
@@ -98,9 +149,7 @@ $(function () {
   })
   $(document).on("pageInit", "#pageClassifyItem", function(e, id, page) {
       $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()});
-      $.loadMoreLink({
-        container:"#pageClassifyItemList"
-      })
+      __app.tabLoadMore;
   })
   $.init();
 });
