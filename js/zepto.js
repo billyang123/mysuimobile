@@ -1221,7 +1221,7 @@ window.$ === undefined && (window.$ = Zepto)
   }
 
   $.fn.animate = function(properties, duration, ease, callback){
-    if ($.isObject(duration))
+    if (isObject(duration))
       ease = duration.easing, callback = duration.complete, duration = duration.duration
     if (duration) duration = duration / 1000
     return this.anim(properties, duration, ease, callback)
