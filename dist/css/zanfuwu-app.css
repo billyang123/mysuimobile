@@ -44,6 +44,10 @@
 .bar-nav .button {
   font-size: 0.65rem;
 }
+.bar-nav a.pull-right {
+  font-size: 0.65rem;
+  line-height: 2.2rem;
+}
 .service-detail-tab {
   border-top: 1px solid #e1e1e1;
   height: 2.05rem;
@@ -290,11 +294,12 @@
 .zfw-card .zfw-commit .item-content:nth-child(2) .item-inner:after {
   background-color: #fff;
 }
-.bar-tab.store-detail-bar {
-  background-color: #ff5a5f;
-}
-.bar-tab.store-detail-bar a {
+.bar-tab.store-detail-bar button {
+  width: 100%;
+  height: 100%;
   color: #fff;
+  background-color: #ff5a5f;
+  border: none;
 }
 .circle {
   border-radius: 9999px;
@@ -797,21 +802,23 @@
 }
 .balance-container .balance-list .item-content {
   padding: 0 1.3rem;
-}
-.balance-container .balance-list .item-content:last-child .item-after:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: auto;
-  top: auto;
-  height: 1px;
-  width: 100%;
-  background-color: #e7e7e7;
-  display: block;
-  z-index: 15;
-  -webkit-transform-origin: 50% 100%;
-  transform-origin: 50% 100%;
+  /* &:last-child{
+				.item-after:after {
+				    content: '';
+				    position: absolute;
+				    left: 0;
+				    bottom: 0;
+				    right: auto;
+				    top: auto;
+				    height: 1px;
+				    width: 100%;
+				    background-color: #e7e7e7;
+				    display: block;
+				    z-index: 15;
+				    -webkit-transform-origin: 50% 100%;
+				    transform-origin: 50% 100%;
+				}
+			} */
 }
 .balance-container .balance-list .total-num {
   padding: 0;
@@ -853,6 +860,14 @@
 }
 .balance-container .balance-extract .item-content .item-inner {
   padding: 1rem 1.3rem;
+}
+.common-input {
+  padding: 0.5rem;
+  height: 2.2rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  border: none;
+  font-size: 0.65rem;
 }
 .buy-container .label-checkbox .item-title {
   font-size: 0.65rem;
