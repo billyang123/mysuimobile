@@ -129,9 +129,25 @@ $(function () {
         ];
         var groups = [buttons1, buttons2];
         $.actions(groups);
-      })
-      $("#city-picker").cityPicker({
-      })
+      });
+      $("#city-picker").cityPicker({});
+      $("#industry-picker").picker({
+        toolbarTemplate: '<header class="bar bar-nav">\
+        </button>\
+        <button class="button button-link pull-right close-picker">\
+        完成\
+        </button>\
+        <h1 class="title">选择行业</h1>\
+        </header>',
+        cols: [
+          {
+            textAlign: 'center',
+            values: ['互联网','营销', '设计', '软件开发', '管理咨询', '人力资源', '金融理财', '营销', '设计', '软件开发', '管理咨询', '人力资源', '金融理财'],
+            cssClass: 'picker-items-col-normal'
+          }
+        ]
+      });
+      
   })
   $.init();
 });
