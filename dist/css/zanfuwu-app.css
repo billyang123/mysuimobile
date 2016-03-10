@@ -101,7 +101,7 @@
   color: #000;
 }
 .danger {
-  color: #FF5A5F;
+  color: #FF5A5F !important;
 }
 .collect-container li {
   width: 50%;
