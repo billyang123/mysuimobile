@@ -150,6 +150,44 @@
 .content.none-scroll {
   overflow: hidden;
 }
+.picker-modal {
+  background: #fff;
+}
+.picker-item.picker-selected {
+  color: #FF5A5F;
+}
+.picker-center-highlight {
+  height: 1.8rem;
+  line-height: 1.8rem;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  margin-top: -0.9rem;
+  pointer-events: none;
+}
+.picker-center-highlight:before,
+.picker-center-highlight:after {
+  background-color: #FF5A5F;
+}
+.picker-item {
+  height: 1.8rem;
+  line-height: 1.8rem;
+  padding: 0 0.5rem;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  font-size: 0.65rem;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
@@ -458,9 +496,16 @@
   color: #999999;
   height: 1.5rem;
 }
+.service-detail-container .col-45 {
+  width: 45%;
+}
+.service-detail-container .col-55 {
+  width: 55%;
+}
 .service-detail-container .service-block-content .pull-right {
   font-size: 0.55rem;
   color: #000;
+  margin-top: 0.1rem;
 }
 .service-detail-container .service-block-content .pull-left {
   margin-right: 0.5rem;
@@ -527,7 +572,6 @@
   background-color: #fff;
 }
 .order-container .card-footer .button-danger {
-  width: 4rem;
   height: 1.6rem;
   background-color: #FF5A5F;
   color: #fff;
@@ -967,6 +1011,12 @@
   color: #999;
   line-height: 1rem;
   margin: 1.25rem 0 2rem 0;
+}
+.collect-container .bar:after {
+  background: #fff;
+}
+.collect-container .service-detail-tab {
+  border-top: none;
 }
 .collect-container .store-list {
   margin: 0.5rem 0;

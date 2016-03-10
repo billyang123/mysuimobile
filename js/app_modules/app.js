@@ -105,8 +105,49 @@ $(function () {
       var _loadMoreLink = new __app.loadMoreLink(options);
       return _loadMoreLink;
   }
+  __app.industryPick = function(options,callback){
+    var __industryData = [];
+    var __industryDisplayData = [];
+    var __element = options.element || "#industry-picker"
+    var industryData = [{id:1,name:"互联网"}]
+    var __instryinit = function(){
+        $.each(industryData,function(index,item){
+            __industryData.push(item.id)
+            __industryDisplayData.push(item.name)
+        })
+        $(__element).picker({
+          toolbarTemplate: toolbarTmp.replace("{{text}}",__element.data("title")),
+
+          formatValue:function(picker, value, displayValue){
+            callback && callback(picker, value, displayValue)
+            return displayValue[0];
+          },
+          cssClass:"industry-pick-modal",
+          cols: [
+            {
+              textAlign: 'center',
+              values: __industryData,
+              displayValues:__industryDisplayData,
+              cssClass: 'picker-items-col-normal'
+            }
+          ]
+        });
+    }
+    if($(__element).data("url")){
+        $.ajax({
+            url:$(__element).data("url"),
+            dataType:"json",
+            type:"get",
+            success:function(res){
+                industryData = res;
+                __instryinit();
+            }
+        })
+    }else{
+      __instryinit();
+    }
+  }
   $(document).on("pageInit", function(e, pageId, $page) {
-      console.log(e, pageId, $page)
       var title = $page.data("title");
       if($(".js-loadding-more").length>0){
         __app.loadMore();
@@ -123,12 +164,16 @@ $(function () {
       $(document).delegate('[data-link]:not(a)',"click",function(evt){
         if($(evt.target).closest("a").length>0) return;
         if(evt.target.tagName=="A") return;
-        // var t = new Date().getTime();
-        // var id = 'linkTo'+t;
-        // var link = $('<a>').attr("id",id).attr("href",$(this).data("link")).attr("target",$(this).data("link-target")||"_self").css({visibility:"hidden"});
-        // link.appendTo("body");
-        // link[0].click();
         window.location.href= $(this).data("link");
+
+      });
+      $(document).on('click','.js-confirm-dirlink', function () {
+          var title = $(this).data("title");
+          var text = $(this).data("text");
+          var dirLink = $(this).attr("data-dir-link");
+          $.confirm(title,text,function () {
+              $.router.load(dirLink);
+          });
       });
   });
   $(document).on("pageInit", "#pageStoreDetail,#pageServiceDetail", function(e, id, page) {
@@ -156,6 +201,116 @@ $(function () {
         oldTabLink.removeClass("active");
         oldTabLink = $('.mytab-link[href="#tab'+(n.activeIndex+1)+'"]').addClass("active");
       })
+
+
+      //收藏店铺和咨询
+
+      // if(id=="pageStoreDetail"){
+      //   $(document).delegate("click","#chatStore",function(){
+      //       var sellerId = $(this).data("sellerid");
+      //       $.post("/app/chat", function(data) {
+      //           var res = $.parseJSON(data);
+      //           if (res.errorCode == 0) {
+      //               selfId = res.ref;
+      //               if(window.android){
+      //                   window.android.chat(sellerId);
+      //               }else if(window.chat){
+      //                   //ios打开
+      //                   window.chat(sellerId);
+      //               }
+      //           } else if (res.errorCode == 40000) {
+      //               if(window.android){
+      //                   window.android.login();
+      //               }else if(window.login){
+      //                   //ios打开
+      //                   window.login();
+      //               }
+      //           }
+      //       });
+      //   })
+      //   $(document).delegate("click",'#collectStore',function(){
+      //       var sellerId = $(this).data("sellerid");
+      //       $.post("/app/store/"+sellerId+"/collect", function(data) {
+      //           var res = $.parseJSON(data);
+      //           if (res.errorCode == 0) {
+      //               alert("collect success");
+      //               // 收藏或者取消收藏成功后，修改页面上的图标状态
+      //               if (res.ref.collectStatus == 1) {
+      //                   $('#collectStore').removeClass("icon-shiliangzhinengduixiang103");
+      //                   $('#collectStore').addClass("icon-shiliangzhinengduixiang102");
+      //               } else {
+      //                   $('#collectStore').removeClass("icon-shiliangzhinengduixiang102");
+      //                   $('#collectStore').addClass("icon-shiliangzhinengduixiang103");
+      //               }
+      //               // 调用app的本地方法通知app刷新收藏列表
+      //               if(window.android){
+      //                   window.android.refreshCollection();
+      //               }else if(window.refreshCollection){
+      //                   //ios打开
+      //                   window.refreshCollection();
+      //               }
+      //           } else if (res.errorCode == 40000) {
+      //               alert("no login");
+      //               if(window.android){
+      //                   window.android.login();
+      //               }else if(window.login){
+      //                   //ios打开
+      //                   window.login();
+      //               }
+      //           }
+      //       });
+      //   })
+      // }
+      // if(id=="pageServiceDetail"){
+      //   $(document).delegate("click","#chatFuwu",function(){
+      //       var fuwuId = $(this).data("fuwuid");
+      //       $.post("/app/chat", function(data) {
+      //           var res = $.parseJSON(data);
+      //           if (res.errorCode == 0) {
+      //               selfId = res.ref;
+      //               if(window.android){
+      //                   window.android.chat(fuwuId);
+      //               }else if(window.chat){
+      //                   //ios打开
+      //                   window.chat(fuwuId);
+      //               }
+      //           } else if (res.errorCode == 40000) {
+      //               // 未登录时调起app登录
+      //               if(window.android){
+      //                   window.android.login();
+      //               }else if(window.login){
+      //                   //ios打开
+      //                   window.login();
+      //               }
+      //           }
+      //       });
+      //   })
+      //   $(document).delegate("click","#buy'",function(){
+      //       var fuwuId = $(this).data("fuwuid");
+      //       $.post("/app/buy", function(data) {
+      //           var res = $.parseJSON(data);
+      //           if (res.errorCode == 0) {
+      //               selfId = res.ref;
+      //               if(window.android){
+      //                   window.android.buy(fuwuId);
+      //               }else if(window.buy){
+      //                   //ios打开
+      //                   window.buy(fuwuId);
+      //               }
+      //           } else if (res.errorCode == 40000) {
+      //               //未登录时调起app登录
+      //               if(window.android){
+      //                   window.android.login();
+      //               }else if(window.login){
+      //                   //ios打开
+      //                   window.login();
+      //               }
+      //           }
+      //       });
+      //   })
+      // }
+
+
   })
   $(document).on("pageInit", "#pagePayResult_1", function(e, id, page) {
       $.modal({
@@ -176,7 +331,12 @@ $(function () {
   $(document).on("pageInit", "#pageIndex", function(e, id, page) {
       
   })
+  $(document).on("pageInit", "#pageOrder", function(e, id, page) {
+      $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()});
+  })
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
+      var toolbarTmp = '<header class="bar bar-nav"></button><button class="button button-link pull-right close-picker">完成</button><h1 class="title">{{text}}</h1></header>'
+      
       $(document).on('click','.userimg', function () {
           var buttons1 = [
           {
@@ -203,9 +363,14 @@ $(function () {
         ];
         var groups = [buttons1, buttons2];
         $.actions(groups);
-      })
+      });
       $("#city-picker").cityPicker({
+        toolbarTemplate: toolbarTmp.replace("{{text}}","请选择地区")
+      });
+      industryPick({element:"#industry-picker"},function(picker, value, displayValue){
+          $('[name="industry"]').val(value.join(" "));
       })
+      
   })
   $.init();
 });

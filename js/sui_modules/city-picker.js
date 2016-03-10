@@ -37,7 +37,6 @@
         }
         return [""];
     };
-
     var raw = $.smConfig.rawCitiesData;
     var provinces = raw.map(function(d) {
         return d.name;
