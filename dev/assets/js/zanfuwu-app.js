@@ -17,7 +17,7 @@ $(function () {
       this.loading = false;
       this.loaded = false;
       this.container = $(this.options.container) || $('.infinite-scroll-bottom .list-container');
-      this.page = 1;
+      this.page = this.options.page || 1;
       this.data = this.options.data;
       this.url = this.options.url;
 
@@ -76,14 +76,15 @@ $(function () {
         }, 1000);
     });
   }
-  __app.tabLoadMore = function(){
-    var _loadMoreLink = new __app.loadMoreLink({
-        container:"#pageClassifyItemList",
-        url:"/ajax/class-item/index.html",
-        data:"pageNo={index}"
-    })
-    _loadMoreLink.init();
+  __app.tabLoadMore = function(options){
     var oldTabLink = $('.mytab-link.active');
+    var options = $.extend({
+        container:"#pageClassifyItemList",
+        url:oldTabLink.data("url"),
+        data:oldTabLink.data("params")
+    },options)
+    var _loadMoreLink = new __app.loadMoreLink(options)
+    _loadMoreLink.init();
     $('.mytab-link').on('click',function(){
         oldTabLink.removeClass("active");
         _loadMoreLink.set({
@@ -99,15 +100,42 @@ $(function () {
         return false;
     })
   }
-  $(document).delegate('[data-link]:not(a)',"click",function(evt){
-    if($(evt.target).closest("a").length>0) return;
-    if(evt.target.tagName=="A") return;
-    // var t = new Date().getTime();
-    // var id = 'linkTo'+t;
-    // var link = $('<a>').attr("id",id).attr("href",$(this).data("link")).attr("target",$(this).data("link-target")||"_self").css({visibility:"hidden"});
-    // link.appendTo("body");
-    // link[0].click();
-    window.location.href= $(this).data("link");
+  __app.loadMore = function(){
+      var _jloadding = $(".js-loadding-more");
+      var options = $.extend({
+          container:_jloadding.data("target"),
+          url:_jloadding.data("url"),
+          data:_jloadding.data("params"),
+          page:2
+      },options)
+      var _loadMoreLink = new __app.loadMoreLink(options);
+      return _loadMoreLink;
+  }
+  $(document).on("pageInit", function(e, pageId, $page) {
+      console.log(e, pageId, $page)
+      var title = $page.data("title");
+      if($(".js-loadding-more").length>0){
+        __app.loadMore();
+      }
+      if($(".js-tab-loadding-more").length>0){
+        $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()});
+        __app.tabLoadMore({
+          container:$(".js-tab-loadding-more").data("target") || "#pageClassifyItemList"
+        });
+      }
+      if(title){
+        $("title").html(title);
+      }
+      $(document).delegate('[data-link]:not(a)',"click",function(evt){
+        if($(evt.target).closest("a").length>0) return;
+        if(evt.target.tagName=="A") return;
+        // var t = new Date().getTime();
+        // var id = 'linkTo'+t;
+        // var link = $('<a>').attr("id",id).attr("href",$(this).data("link")).attr("target",$(this).data("link-target")||"_self").css({visibility:"hidden"});
+        // link.appendTo("body");
+        // link[0].click();
+        window.location.href= $(this).data("link");
+      });
   });
   $(document).on("pageInit", "#pageStoreDetail,#pageServiceDetail", function(e, id, page) {
       var ImageData = [{url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'}]
@@ -149,7 +177,10 @@ $(function () {
   })
   $(document).on("pageInit", "#pageClassifyItem", function(e, id, page) {
       $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()});
-      __app.tabLoadMore;
+      __app.tabLoadMore();
+  })
+  $(document).on("pageInit", "#pageIndex", function(e, id, page) {
+      
   })
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
       $(document).on('click','.userimg', function () {
