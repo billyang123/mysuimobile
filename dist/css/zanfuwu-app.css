@@ -37,6 +37,10 @@
 }
 .service-bottom-nav .wd20 {
   width: 20%;
+  border-right: 1px solid #e5e5e5 !important;
+}
+.service-bottom-nav .wd20:last-child {
+  border-right: none;
 }
 .service-bottom-nav .wd40 {
   width: 40%;
@@ -187,6 +191,10 @@
   -webkit-transition: 300ms;
   transition: 300ms;
   font-size: 0.65rem;
+}
+.page,
+.page-group {
+  background-color: #DFE3E6;
 }
 .zfw-detail-header {
   position: relative;
@@ -509,6 +517,7 @@
 }
 .service-detail-container .service-block-content .pull-left {
   margin-right: 0.5rem;
+  margin-left: 0.05rem;
 }
 .service-detail-container .service-block-content .item-inner {
   padding: 1rem 0rem 1.5rem 0rem;
