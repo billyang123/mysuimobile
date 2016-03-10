@@ -34,6 +34,10 @@
 .service-bottom-nav{
 	.wd20{
 		width: 20%;
+		border-right: 1px solid #e5e5e5 !important;
+		&:last-child{
+			border-right: none;
+		}
 	}
 	.wd40{
 		width: 40%;
@@ -96,7 +100,7 @@
 	}
 }
 .danger{
-	color: #FF5A5F;
+	color: #FF5A5F !important;
 }
 .collect-container{
 	li{
@@ -193,4 +197,7 @@
     -webkit-transition: 300ms;
     transition: 300ms;
     font-size: 13/@ppr;
+}
+.page, .page-group{
+	background-color: #DFE3E6;
 }
