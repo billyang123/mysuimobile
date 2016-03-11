@@ -1,18 +1,23 @@
 ---
 layout: default
-title: 购买详情
+title: 订单详情
 ---
 <div class="page-group">
-	<div class="page buy-container" id="pageBuyDetail">
+	<div class="page order-container" id="pageBuyDetail">
 	<!-- 你的html代码 -->
 		<header class="bar bar-nav">
 			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
 			  <span class="icon icon-left"></span>
 			</a>
-			<h1 class="title">购买</h1>
-		</header>
+			<h1 class="title">订单详情</h1>
+		</header>		
+		<nav class="bar bar-tab store-detail-bar">
+		   	<button class="tab-item external btn-white" href="#">
+			  等待卖家接受预约
+			</button>
+		</nav>
 		<div class="content">
-			<div class="card service-card">
+			<div class="card order-card">
 				<div class="card-content">
 				  <div class="card-content-inner">
 				  	<div class="row">
@@ -27,6 +32,20 @@ title: 购买详情
 				  </div>
 				</div>
 			</div>
+			<div class="list-block media-list order-media-list card">
+			    <ul>
+			      <li>
+			        <a href="#" class="item-link item-content">
+			          <div class="item-inner">
+			            <div class="item-title-row">
+			              <div class="item-title">您支付阶段1费用到平台</div>
+			            </div>
+			            <div class="item-subtitle">2016-02-24 14:39:02</div>
+			          </div>
+			        </a>
+			      </li>
+			    </ul>
+			  </div>
 			<!-- 这里是切换内容区结束 -->
 			<div class="card zfw-card">
 				<div class="card-header">
@@ -125,16 +144,74 @@ title: 购买详情
 			</div>
 			<div class="card zfw-card">
 				<div class="card-header">
-					<div class="zfw-title">- 需求描述 -</div>
+					<div class="zfw-title">- 买家信息 -</div>
 				</div>
 				<div class="card-content">
-					<textarea class="description" name="" placeholder="请输入你的具体需求...">您好，我目前从事 hr 的工作，遇到了 xxx 问题</textarea>
+					<div class="list-block order-detail-list">
+					    <ul>
+					      <!-- Text inputs -->
+					      <li>
+					        <div class="item-content">
+					          <div class="item-media"><i class="icon icon-form-name"></i></div>
+					          <div class="item-inner">
+					            <div class="item-title label">姓名</div>
+					            <div class="item-input">
+					              <input type="text" value="赵晓亮" readonly="true">
+					            </div>
+					          </div>
+					        </div>
+					      </li>
+					      <li>
+					        <div class="item-content">
+					          <div class="item-media"><i class="icon icon-form-name"></i></div>
+					          <div class="item-inner">
+					            <div class="item-title label">电话</div>
+					            <div class="item-input">
+					              <input type="text" value="00000000000" readonly="true">
+					            </div>
+					          </div>
+					        </div>
+					      </li>
+					      <li>
+					        <div class="item-content">
+					          <div class="item-media"><i class="icon icon-form-name"></i></div>
+					          <div class="item-inner">
+					            <div class="item-title label">需求</div>
+					            <div class="item-input">
+					            	<textarea name="" id="" readonly="true" class="requirement">从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，</textarea>
+					            </div>
+					          </div>
+					        </div>
+					      </li>
+					    </ul>
+  					</div>
 				</div>
 			</div>
-			<div class="common-remark text-center">
-				支付保障<br>
-支付款项将先支付到赞服务平台，在您确认服务完成后才会支付给<br>
-卖家。如有疑问，请联系客服：400-0697055
+			<div class="card btn-bar-tab row">
+				<a href="">
+					<li class="col-50">					
+						<span class="tab-span">
+			            	<span class="icon iconfont danger">&#xe62a;</span>
+				            <span class="tab-label">联系卖家</span>
+				        </span>				    
+					</li>
+				</a>
+				<a href="">
+					<li  class="col-50">
+						<span class="tab-span">
+			            	<span class="icon iconfont danger">&#xe62e;</span>
+				            <span class="tab-label">拨打电话</span>
+				        </span>
+					</li>
+				</a>
+			</div>
+			<div class="text-center common-remark-icon">
+				<span class="icon iconfont">&#xe62f;</span>
+				<div class="text-center">客服保障</div>
+			</div>
+			<div class="common-remark text-center no-top">
+若您在接受服务过程中，遇到无法协商解决的问题，<br>
+请与赞服务工作人员联系。联系电话：4000697055
 			</div>	
 				
 			</div>
