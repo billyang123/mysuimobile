@@ -1072,3 +1072,15 @@
   border: 1px solid #666;
   background: #fff;
 }
+.set-container .list-block {
+  margin: 0.5rem 0;
+}
+.set-container a {
+  color: #000;
+  font-size: 0.65rem;
+}
+.set-container .quit {
+  height: 2.2rem;
+  line-height: 2.2rem;
+  background-color: #fff;
+}
