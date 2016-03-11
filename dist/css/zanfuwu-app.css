@@ -209,11 +209,12 @@
 }
 .zfw-detail-header .zfw-icon-heart {
   position: absolute;
-  right: 0.75rem;
-  top: 0.75rem;
+  right: 0;
+  top: 0;
   color: #fff;
   font-size: 0.9rem;
   z-index: 1;
+  padding: 1rem;
 }
 .zfw-detail-user {
   width: 100%;

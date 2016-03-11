@@ -32,6 +32,8 @@ $(function () {
                 $.detachInfiniteScroll(self.$infinite);
                 // 删除加载提示符
                 self._loadEl.hide();
+              }else{
+                self._loadEl.show();
               }
               self.container[type](html);
               self.page++;
