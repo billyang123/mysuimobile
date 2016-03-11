@@ -67,6 +67,30 @@
 .service-bottom-nav li .tab-item:active {
   color: #FF5A5F !important;
 }
+.store-bottom-nav {
+  padding: 0.5rem 0;
+}
+.store-bottom-nav .tab-item {
+  height: 1.5rem;
+  text-align: center;
+}
+.store-bottom-nav .tab-item:first-child {
+  border-right: 1px solid #999;
+}
+.store-bottom-nav .tab-item .tab-label {
+  font-size: 0.65rem;
+  color: #999;
+  float: left;
+}
+.store-bottom-nav .tab-item .icon {
+  color: #999;
+  margin-right: 0.5rem;
+  float: left;
+}
+.store-bottom-nav .tab-item .tab-span {
+  display: inline-block;
+  margin-top: 0.2rem;
+}
 .bar {
   background-color: #fff;
 }
@@ -1070,4 +1094,23 @@
   border-radius: 0.1rem;
   border: 1px solid #666;
   background: #fff;
+}
+.set-container .list-block {
+  margin: 0.5rem 0;
+}
+.set-container .list-block .item-title {
+  font-size: 0.7rem;
+}
+.set-container .list-block .after {
+  font-size: 0.7rem;
+}
+.set-container a {
+  color: #000;
+  font-size: 0.7rem;
+}
+.set-container .quit {
+  height: 2.2rem;
+  line-height: 2.2rem;
+  background-color: #fff;
+  font-size: 0.7rem;
 }
