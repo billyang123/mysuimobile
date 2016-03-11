@@ -1074,12 +1074,19 @@
 .set-container .list-block {
   margin: 0.5rem 0;
 }
+.set-container .list-block .item-title {
+  font-size: 0.7rem;
+}
+.set-container .list-block .after {
+  font-size: 0.7rem;
+}
 .set-container a {
   color: #000;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
 }
 .set-container .quit {
   height: 2.2rem;
   line-height: 2.2rem;
   background-color: #fff;
+  font-size: 0.7rem;
 }
