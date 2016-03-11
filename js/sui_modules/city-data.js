@@ -3,11 +3,6 @@
 if(!$.smConfig){
     $.smConfig = {};
 }
-var citiesDataConfig = $.extend({
-    type:"static",
-    url:false
-},window.citiesDataConfig)
-if(citiesDataConfig.type == "static"){
     $.smConfig.rawCitiesData = [
         {
             "name":"北京",
@@ -13281,16 +13276,5 @@ if(citiesDataConfig.type == "static"){
             "type":0
         }
     ];
-}
-if(citiesDataConfig.type == "ajax"){
-    $.ajax({
-        url:citiesDataConfig.url,
-        type:"get",
-        dataType:"json",
-        success:function(res){
-            $.smConfig.rawCitiesData = res;
-        }
-    })
-}
 }(Zepto);
 // jshint ignore: end
