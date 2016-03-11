@@ -6,7 +6,6 @@ title: 账号信息
 
 	<div class="page account-info-container" id="pageAccountInfo">
 	<!-- 你的html代码 -->
-		<script type="text/javascript" src="/assets/js/zanfuwu-city-picker.js" charset="utf-8"></script>
 		<header class="bar bar-nav">
 			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
 			  <span class="icon icon-left"></span>
@@ -43,7 +42,7 @@ title: 账号信息
 			        <div class="item-media"><i class="icon icon-f7"></i></div>
 			        <div class="item-inner">
 			          <div class="item-title">地区</div>
-			          <input type="text" placeholder="" class="item-after" id="city-picker" readonly="" value="杭州">
+			          <input type="text" placeholder="" class="item-after" id="city-picker" data-url="/ajax/city.json" data-title="请选择地区" readonly="" value="浙江 杭州 西湖区" data-url="/ajax/city.json" data-title="请选择行业">
 			        </div>
 			      </li>
 			      <li class="item-content item-link">

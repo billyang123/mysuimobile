@@ -1,3 +1,4 @@
+
 $(function () {
   'use strict';
   if(!__app) __app = {};
@@ -25,6 +26,8 @@ $(function () {
                 $.detachInfiniteScroll(self.$infinite);
                 // 删除加载提示符
                 self._loadEl.hide();
+              }else{
+                self._loadEl.show();
               }
               self.container[type](html);
               self.page++;
@@ -44,14 +47,10 @@ $(function () {
             self[index] = item;
         })
       }
-      this.reset = function(){
-        self.set({
-          loading:false,
-          loaded:false,
-          container:"#renxiaoTab1",
-          url:"/ajax/class-item/index.html",
-          data:"pageNo={index}"
-        })
+      this.reset = function(obg){
+        self.set(obg)
+        $.detachInfiniteScroll(self.$infinite);
+        $.attachInfiniteScroll(self.$infinite);
       }
       $(document).on('infinite', '.infinite-scroll-bottom',function() {
         // 如果正在加载，则退出
@@ -94,8 +93,8 @@ $(function () {
         return false;
     })
   }
-  __app.loadMore = function(){
-      var _jloadding = $(".js-loadding-more");
+  __app.loadMore = function(element){
+      var _jloadding = $(element);
       var options = $.extend({
           container:_jloadding.data("target"),
           url:_jloadding.data("url"),
@@ -116,7 +115,7 @@ $(function () {
             __industryDisplayData.push(item.name)
         })
         $(__element).picker({
-          toolbarTemplate: toolbarTmp.replace("{{text}}",__element.data("title")),
+          toolbarTemplate: options.toolbarTmp.replace("{{text}}",$(__element).data("title")),
 
           formatValue:function(picker, value, displayValue){
             callback && callback(picker, value, displayValue)
@@ -147,10 +146,207 @@ $(function () {
       __instryinit();
     }
   }
+  __app.cityPicker = function(options,callback){
+      var ___element = options.element
+      var setCityInit = function(){
+          var format = function(data) {
+              var result = [];
+              for(var i=0;i<data.length;i++) {
+                  var d = data[i];
+                  if(d.name === "请选择") continue;
+                  result.push(d.name);
+              }
+              if(result.length) return result;
+              return [""];
+          };
+
+          var sub = function(data) {
+              if(!data.sub) return [""];
+              return format(data.sub);
+          };
+
+          var getCities = function(d) {
+              for(var i=0;i< raw.length;i++) {
+                  if(raw[i].name === d) return sub(raw[i]);
+              }
+              return [""];
+          };
+
+          var getDistricts = function(p, c) {
+              for(var i=0;i< raw.length;i++) {
+                  if(raw[i].name === p) {
+                      for(var j=0;j< raw[i].sub.length;j++) {
+                          if(raw[i].sub[j].name === c) {
+                              return sub(raw[i].sub[j]);
+                          }
+                      }
+                  }
+              }
+              return [""];
+          };
+          var raw = $.smConfig.rawCitiesData;
+          var provinces = raw.map(function(d) {
+              return d.name;
+          });
+          var initCities = sub(raw[0]);
+          var initDistricts = [""];
+
+          var currentProvince = provinces[0];
+          var currentCity = initCities[0];
+          var currentDistrict = initDistricts[0];
+
+          var t;
+          var defaults = {
+
+              cssClass: "city-picker",
+              rotateEffect: false,  //为了性能
+
+              onChange: function (picker, values, displayValues) {
+                  var newProvince = picker.cols[0].value;
+                  var newCity;
+                  if(newProvince !== currentProvince) {
+                      // 如果Province变化，节流以提高reRender性能
+                      clearTimeout(t);
+
+                      t = setTimeout(function(){
+                          var newCities = getCities(newProvince);
+                          newCity = newCities[0];
+                          var newDistricts = getDistricts(newProvince, newCity);
+                          picker.cols[1].replaceValues(newCities);
+                          picker.cols[2].replaceValues(newDistricts);
+                          currentProvince = newProvince;
+                          currentCity = newCity;
+                          picker.updateValue();
+                      }, 200);
+                      return;
+                  }
+                  newCity = picker.cols[1].value;
+                  if(newCity !== currentCity) {
+                      picker.cols[2].replaceValues(getDistricts(newProvince, newCity));
+                      currentCity = newCity;
+                      picker.updateValue();
+                  }
+                  callback && callback(picker, values, displayValues);
+              },
+
+              cols: [
+              {
+                  textAlign: 'center',
+                  values: provinces,
+                  cssClass: "col-province"
+              },
+              {
+                  textAlign: 'center',
+                  values: initCities,
+                  cssClass: "col-city"
+              },
+              {
+                  textAlign: 'center',
+                  values: initDistricts,
+                  cssClass: "col-district"
+              }
+              ]
+          };
+          $.fn.cityPicker = function(params) {
+            return this.each(function() {
+                if(!this) return;
+                var p = $.extend(defaults, params);
+                //计算value
+                if (p.value) {
+                    $(this).val(p.value.join(' '));
+                } else {
+                    var val = $(this).val();
+                    val && (p.value = val.split(' '));
+                }
+
+                if (p.value) {
+                    //p.value = val.split(" ");
+                    if(p.value[0]) {
+                        currentProvince = p.value[0];
+                        p.cols[1].values = getCities(p.value[0]);
+                    }
+                    if(p.value[1]) {
+                        currentCity = p.value[1];
+                        p.cols[2].values = getDistricts(p.value[0], p.value[1]);
+                    } else {
+                        p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]);
+                    }
+                    !p.value[2] && (p.value[2] = '');
+                    currentDistrict = p.value[2];
+                }
+                $(this).picker(p);
+            });
+          };
+          $(___element).cityPicker({
+            toolbarTemplate: options.toolbarTmp.replace("{{text}}",$(___element).data("title"))
+          });
+      }
+      var getAjaxCity = function(){
+          $.ajax({
+            url:$(___element).data("url"),
+            type:"get",
+            dataType:"json",
+            success:function(res){
+                $.smConfig.rawCitiesData = res;
+                setCityInit();
+            }
+        })
+      }
+      getAjaxCity();
+  }
+  __app.search = function(options){
+      var __element = $(options.element);
+      var __keyName = __element.data("key");
+      var __time = false;
+      var __content = __element.data("target");
+      var __url = __element.data("url");
+      var __params = __element.data("params");
+      var __searchHotHistry = $(options.searchHotHistry);
+
+      var _loadMoreLink = new __app.loadMoreLink({
+          container:__content,
+          url:__url,
+          data:__element.data("params"),
+          page:2
+      });
+      var __search = function(__key,callback){
+          _loadMoreLink.set({
+            "page":1,
+            "data":__params+"&"+__keyName+"="+__key,
+            "url":__url,
+            "loading":false,
+            "loaded":false,
+          });
+          _loadMoreLink.init();
+      }
+      var __cancelSearch = function(){
+          __searchHotHistry.show();
+          $(__content).hide();
+          _loadMoreLink._remove();
+      } 
+      __element.on("input propertychange",'input[type="search"]',function(e){
+          var __this = $(e.target);
+          __time && clearTimeout(__time);
+          __time = setTimeout(function(){
+              var keyWord = $.trim(__this.val());
+              if(keyWord!=""){
+                  __search(keyWord);
+                  __searchHotHistry.hide();
+                  $(__content).show();
+                  $("html,body,.content").scrollTop(0);
+              }else{
+                __cancelSearch()
+              }
+          },500)
+      })
+      __element.on("click",".searchbar-cancel",function(){
+          __cancelSearch();
+      })
+  }
   $(document).on("pageInit", function(e, pageId, $page) {
       var title = $page.data("title");
       if($(".js-loadding-more").length>0){
-        __app.loadMore();
+        __app.loadMore(".js-loadding-more");
       }
       if($(".js-tab-loadding-more").length>0){
         $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()});
@@ -364,13 +560,19 @@ $(function () {
         var groups = [buttons1, buttons2];
         $.actions(groups);
       });
-      $("#city-picker").cityPicker({
-        toolbarTemplate: toolbarTmp.replace("{{text}}","请选择地区")
-      });
-      industryPick({element:"#industry-picker"},function(picker, value, displayValue){
+      __app.cityPicker({element:"#city-picker",toolbarTmp:toolbarTmp},function(picker, value, displayValue){
+          console.log(displayValue)
+      })
+      __app.industryPick({element:"#industry-picker",toolbarTmp:toolbarTmp},function(picker, value, displayValue){
           $('[name="industry"]').val(value.join(" "));
       })
       
+  })
+  $(document).on("pageInit","#pageSearch",function(e, id, page){
+      __app.search({
+          element:"#searchBars",
+          searchHotHistry:"#searchHotHistry"
+      })
   })
   $.init();
 });
