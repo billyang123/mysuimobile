@@ -1207,3 +1207,48 @@
   background-color: #fff;
   font-size: 0.7rem;
 }
+.record-container .record-list li {
+  padding-left: 1rem;
+  border-left: 2px solid #a4aeb5;
+  position: relative;
+  list-style: none;
+}
+.record-container .record-list li p {
+  color: #888;
+  font-size: 0.65rem;
+  margin-top: 0;
+}
+.record-container .record-list li .time {
+  color: #888;
+  font-size: 0.6rem;
+  margin-top: 0.5rem;
+  padding-bottom: 1.75rem;
+}
+.record-container .record-list li.active p {
+  color: #0ae6b8;
+  font-size: 0.65rem;
+}
+.record-container .record-list li.active:after {
+  background-color: #0ae6b8;
+  content: " ";
+  position: absolute;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  left: -0.4rem;
+  top: 0;
+  border: 2px  solid #AFFAE8;
+}
+.record-container .record-list li:after {
+  content: " ";
+  position: absolute;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: #ddd;
+  border-radius: 50%;
+  left: -0.225rem;
+  top: 0;
+}
+.record-container .record-list li:last-child {
+  border: none !important;
+}

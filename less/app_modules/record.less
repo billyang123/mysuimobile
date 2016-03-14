@@ -1,0 +1,52 @@
+.record-container{
+	.record-list{
+		li{
+			padding-left: 20/@ppr;
+			border-left: 2px solid #a4aeb5;		
+			position: relative;	
+			list-style: none;	
+			p {
+				color: #888;
+				font-size: 13/@ppr;
+				margin-top: 0;
+			}
+			.time {
+				color: #888;
+				font-size: 12/@ppr;
+				margin-top: 10/@ppr;
+				padding-bottom: 35/@ppr;
+			}
+			&.active {
+				p {
+					color: #0ae6b8;
+					font-size: 13/@ppr;
+				}
+				&:after {
+					background-color: #0ae6b8;
+					content: " ";
+					position: absolute;
+					width: 12/@ppr;
+					height: 12/@ppr;
+					border-radius: 50%;
+					left: -8/@ppr;
+					top: 0;
+					border:2px  solid #AFFAE8;
+				}
+			}
+			&:after {
+				content: " ";
+				position: absolute;
+				width: 8/@ppr;
+				height: 8/@ppr;
+				background-color: #ddd;
+				border-radius: 50%;
+				left: -4.5/@ppr;
+				top: 0;
+			}
+
+			&:last-child{
+				border: none !important;
+			}
+		}
+	}
+}
