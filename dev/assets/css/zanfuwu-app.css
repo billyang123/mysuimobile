@@ -145,12 +145,12 @@
 .service-detail-tab {
   border-top: 1px solid #e1e1e1;
   height: 2.05rem;
-  line-height: 1.9rem;
 }
 .service-detail-tab li {
   list-style: none;
   width: 33.33333333%;
   text-align: center;
+  line-height: 1.9rem;
 }
 .service-detail-tab li a {
   display: inline-block;
@@ -159,7 +159,7 @@
   font-size: 0.6rem;
 }
 .service-detail-tab li a.active {
-  border-bottom: 2px solid #ff5a5f;
+  border-bottom: 0.1rem solid #ff5a5f;
   color: #000;
 }
 .danger {
