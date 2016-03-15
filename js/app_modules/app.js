@@ -1,7 +1,7 @@
 
 $(function () {
   'use strict';
-  if(!__app) __app = {};
+  if(!__app) __app = {};  
   __app.loadMoreLink = function(options){
       // 加载flag
       var self = this;
