@@ -301,6 +301,23 @@ textarea::-webkit-input-placeholder:after {
 textarea::-moz-placeholder:after {
   font-size: 0.65rem;
 }
+.mymodal-picker {
+  background-color: #fff;
+}
+.mymodal-picker .close-picker {
+  color: #000 !important;
+}
+.mymodal-picker.updateprice-pick .list-block {
+  margin: 0;
+}
+.mymodal-picker.updateprice-pick .content-block {
+  overflow: scroll;
+  margin: 1.75rem 0;
+  max-height: 5rem;
+}
+.mymodal-picker.updateprice-pick .picker-modal-inner {
+  padding-top: 1px;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;

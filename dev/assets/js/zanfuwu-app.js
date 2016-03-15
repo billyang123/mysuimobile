@@ -47,6 +47,7 @@ $(function () {
       }
       this._remove = function(){
         $.detachInfiniteScroll(self.$infinite);
+        self._loadEl.hide();
       }
       this.set = function(obg){
         $.each(obg,function(index,item){
@@ -96,6 +97,9 @@ $(function () {
         _loadMoreLink.init();
         oldTabLink = $(this).addClass("active");
         $("html,body,.content").scrollTop(0)
+        if(oldTabLink.attr("data-more-pages")=="N"){
+          _loadMoreLink._remove();
+        }
         return false;
     })
   }
@@ -396,6 +400,58 @@ $(function () {
           __cancelSearch();
       })
   }
+
+  //data-link
+  $(document).on("click",'[data-link]:not(a)',function(evt){
+    if($(evt.target).closest("a").length>0) return;
+    if(evt.target.tagName=="A") return;
+    window.location.href= $(this).data("link");
+
+  });
+  $(document).on('click','.js-confirm-dirlink', function () {
+      var title = $(this).data("title");
+      var text = $(this).data("text");
+      var dirLink = $(this).attr("data-dir-link");
+      $.confirm(title,text,function () {
+          window.location.href = dirLink;
+      });
+  });
+
+  //修改价格
+  var pageUpdatePrice = null;
+  $(document).on("click",'.closeUpdatePrice',function(e){
+      var upPriceType = $(this).data("role");
+      if(upPriceType == "submit"){
+        var newPrice = [];
+        var ajaxUrl = $(this).data("url");
+        var dirUrl = $(this).data("dirurl");
+        $("#pageUpdatePrice").find('.newPrice').each(function(){
+          newPrice.push($(this).val());
+        })
+        $.ajax({
+          url:ajaxUrl,
+          dataType:"json",
+          data:{
+            newPrice:newPrice.join(",")
+          },
+          type:"post",
+          success:function(res){
+              if (res.errorCode == 0) {
+                  $.alert("修改价格成功", function() {
+                     $.router.load(dirUrl);
+                  });
+              } else {
+                  $.alert(res.errorInfo);
+              }
+          }
+        })
+      }
+      $.closeModal('#pageUpdatePrice');
+  })
+  $(document).on("click",".js-update-price",function(){
+      $.pickerModal('#pageUpdatePrice');
+  })
+  
   $(document).on("pageInit", function(e, pageId, $page) {
       var title = $page.data("title");
       if($(".js-loadding-more").length>0){
@@ -410,20 +466,6 @@ $(function () {
       if(title){
         $("title").html(title);
       }
-      $(document).delegate('[data-link]:not(a)',"click",function(evt){
-        if($(evt.target).closest("a").length>0) return;
-        if(evt.target.tagName=="A") return;
-        window.location.href= $(this).data("link");
-
-      });
-      $(document).on('click','.js-confirm-dirlink', function () {
-          var title = $(this).data("title");
-          var text = $(this).data("text");
-          var dirLink = $(this).attr("data-dir-link");
-          $.confirm(title,text,function () {
-              window.location.href = dirLink;
-          });
-      });
   });
   $(document).on("pageInit", "#pageStoreDetail,#pageServiceDetail", function(e, id, page) {
       var ImageData = [{url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'}]
@@ -450,115 +492,6 @@ $(function () {
         oldTabLink.removeClass("active");
         oldTabLink = $('.mytab-link[href="#tab'+(n.activeIndex+1)+'"]').addClass("active");
       })
-
-
-      //收藏店铺和咨询
-
-      // if(id=="pageStoreDetail"){
-      //   $(document).delegate("click","#chatStore",function(){
-      //       var sellerId = $(this).data("sellerid");
-      //       $.post("/app/chat", function(data) {
-      //           var res = $.parseJSON(data);
-      //           if (res.errorCode == 0) {
-      //               selfId = res.ref;
-      //               if(window.android){
-      //                   window.android.chat(sellerId);
-      //               }else if(window.chat){
-      //                   //ios打开
-      //                   window.chat(sellerId);
-      //               }
-      //           } else if (res.errorCode == 40000) {
-      //               if(window.android){
-      //                   window.android.login();
-      //               }else if(window.login){
-      //                   //ios打开
-      //                   window.login();
-      //               }
-      //           }
-      //       });
-      //   })
-      //   $(document).delegate("click",'#collectStore',function(){
-      //       var sellerId = $(this).data("sellerid");
-      //       $.post("/app/store/"+sellerId+"/collect", function(data) {
-      //           var res = $.parseJSON(data);
-      //           if (res.errorCode == 0) {
-      //               alert("collect success");
-      //               // 收藏或者取消收藏成功后，修改页面上的图标状态
-      //               if (res.ref.collectStatus == 1) {
-      //                   $('#collectStore').removeClass("icon-shiliangzhinengduixiang103");
-      //                   $('#collectStore').addClass("icon-shiliangzhinengduixiang102");
-      //               } else {
-      //                   $('#collectStore').removeClass("icon-shiliangzhinengduixiang102");
-      //                   $('#collectStore').addClass("icon-shiliangzhinengduixiang103");
-      //               }
-      //               // 调用app的本地方法通知app刷新收藏列表
-      //               if(window.android){
-      //                   window.android.refreshCollection();
-      //               }else if(window.refreshCollection){
-      //                   //ios打开
-      //                   window.refreshCollection();
-      //               }
-      //           } else if (res.errorCode == 40000) {
-      //               alert("no login");
-      //               if(window.android){
-      //                   window.android.login();
-      //               }else if(window.login){
-      //                   //ios打开
-      //                   window.login();
-      //               }
-      //           }
-      //       });
-      //   })
-      // }
-      // if(id=="pageServiceDetail"){
-      //   $(document).delegate("click","#chatFuwu",function(){
-      //       var fuwuId = $(this).data("fuwuid");
-      //       $.post("/app/chat", function(data) {
-      //           var res = $.parseJSON(data);
-      //           if (res.errorCode == 0) {
-      //               selfId = res.ref;
-      //               if(window.android){
-      //                   window.android.chat(fuwuId);
-      //               }else if(window.chat){
-      //                   //ios打开
-      //                   window.chat(fuwuId);
-      //               }
-      //           } else if (res.errorCode == 40000) {
-      //               // 未登录时调起app登录
-      //               if(window.android){
-      //                   window.android.login();
-      //               }else if(window.login){
-      //                   //ios打开
-      //                   window.login();
-      //               }
-      //           }
-      //       });
-      //   })
-      //   $(document).delegate("click","#buy'",function(){
-      //       var fuwuId = $(this).data("fuwuid");
-      //       $.post("/app/buy", function(data) {
-      //           var res = $.parseJSON(data);
-      //           if (res.errorCode == 0) {
-      //               selfId = res.ref;
-      //               if(window.android){
-      //                   window.android.buy(fuwuId);
-      //               }else if(window.buy){
-      //                   //ios打开
-      //                   window.buy(fuwuId);
-      //               }
-      //           } else if (res.errorCode == 40000) {
-      //               //未登录时调起app登录
-      //               if(window.android){
-      //                   window.android.login();
-      //               }else if(window.login){
-      //                   //ios打开
-      //                   window.login();
-      //               }
-      //           }
-      //       });
-      //   })
-      // }
-
 
   })
   $(document).on("pageInit", "#pagePayResult_1", function(e, id, page) {
