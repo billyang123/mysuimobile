@@ -3432,12 +3432,13 @@ Swiper
 
 	function Plugin(element, options) {
 	    this.element = element;
-	    this.$element = $(element);
+	    this.$element = $(element);	    
 	    this.init();
 	}
 
 	Plugin.prototype = {
 	  init: function() {
+	  	console.info(this.$element.outerHeight());
 	    var height = this.$element.outerHeight();
 	    var diff = parseInt(this.$element.css('paddingBottom')) +
 	               parseInt(this.$element.css('paddingTop')) || 0;

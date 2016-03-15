@@ -183,13 +183,42 @@ title: 订单详情
 					          <div class="item-inner">
 					            <div class="item-title label">需求</div>
 					            <div class="item-input">
-					            	<textarea name="" id="" readonly="true" class="requirement">从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，</textarea>
+					            	<textarea name="" id="" readonly="true" class="requirement">从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，从我们实际中对需求的描述来看，</textarea>
 					            </div>
 					          </div>
 					        </div>
 					      </li>
+					      <div class="item-or-show">
+						     <li>
+						        <div class="item-content">
+						          <div class="item-media"><i class="icon icon-form-name"></i></div>
+						          <div class="item-inner">
+						            <div class="item-title label">姓名</div>
+						            <div class="item-input">
+						              <input type="text" value="赵晓亮" readonly="true">
+						            </div>
+						          </div>
+						        </div>
+						      </li>
+						      <li>
+						        <div class="item-content">
+						          <div class="item-media"><i class="icon icon-form-name"></i></div>
+						          <div class="item-inner">
+						            <div class="item-title label">电话</div>
+						            <div class="item-input">
+						              <input type="text" value="00000000000" readonly="true">
+						            </div>
+						          </div>
+						        </div>
+						      </li>
+					      </div>					      
 					    </ul>
   					</div>
+  					<div class="panel-footer">
+						<p class="text-center ft-gray">
+							<i class="iconfont pack-up-down">&#xe632;</i><!-- 展开详情 -->
+						</p>
+					</div>
 				</div>
 			</div>
 			<div class="card btn-bar-tab row">
@@ -222,12 +251,22 @@ title: 订单详情
 			</div>
 			<script type="text/javascript">
 				$(function($){
-					$('textarea').textareaAutoSize()
+					$('.requirement').textareaAutoSize("");
+					$(".panel-footer").click(function(){
+						var panelthis = $(this);
+						if(panelthis.hasClass("unfold")){
+							$(".item-or-show").hide();
+							$(".panel-footer").removeClass("unfold");
+							panelthis.find(".text-center").html('<i class="iconfont pack-up-down">&#xe632;</i>');		
+						} else {				
+							$(".item-or-show").show();
+							$(".panel-footer").addClass("unfold");
+							panelthis.find(".text-center").html('<i class="iconfont pack-up-down">&#xe633;</i>');	
+						}
+					});
 				})
 			</script>
 		</div>
-
-		
 	</div>
 
 </div>

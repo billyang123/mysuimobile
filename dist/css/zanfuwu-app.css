@@ -78,7 +78,7 @@
   border-right: 1px solid #e5e5e5;
 }
 .store-bottom-nav .tab-item .tab-label {
-  font-size: 0.6rem !important;
+  font-size: 0.65rem !important;
   color: #999;
   float: left;
 }
@@ -733,6 +733,7 @@ textarea::-moz-placeholder:after {
   font-size: 0.65rem;
   color: #000;
   padding: 0.5rem 0;
+  height: auto;
 }
 .order-container .order-detail-list .item-title,
 .order-container .order-detail-list input {
@@ -741,6 +742,9 @@ textarea::-moz-placeholder:after {
 }
 .order-container .order-detail-list .label {
   color: #999;
+}
+.order-container .item-or-show {
+  display: none;
 }
 .account-info-container .text-center {
   text-align: center;
