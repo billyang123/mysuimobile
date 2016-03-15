@@ -12,9 +12,14 @@ title: 订单详情
 			<h1 class="title">订单详情</h1>
 		</header>		
 		<nav class="bar bar-tab store-detail-bar">
-		   	<button class="tab-item external btn-white" href="#">
+		   	<a class="tab-item external btn-white" href="#">
 			  等待卖家接受预约
-			</button>
+			</a>
+		</nav>
+		<nav class="bar bar-tab store-detail-bar">
+		   	<a class="tab-item external" href="#">
+			  修改价格<br><span>如果你和买家协商好最终价格，可以再次修改价格</span>
+			</a>
 		</nav>
 		<div class="content">
 			<div class="card order-card">
@@ -215,6 +220,11 @@ title: 订单详情
 			</div>	
 				
 			</div>
+			<script type="text/javascript">
+				(function($){
+					$('textarea').textareaAutoSize()
+				})(Zepto)
+			</script>
 		</div>
 
 		

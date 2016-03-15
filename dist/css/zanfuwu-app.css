@@ -144,19 +144,19 @@
 }
 .service-detail-tab {
   border-top: 1px solid #e1e1e1;
-  height: 2.05rem;
+  height: 2rem;
 }
 .service-detail-tab li {
   list-style: none;
   width: 33.33333333%;
   text-align: center;
-  line-height: 1.9rem;
 }
 .service-detail-tab li a {
   display: inline-block;
   padding: 0 0.5rem;
   color: #999;
   font-size: 0.6rem;
+  line-height: 1.9rem;
 }
 .service-detail-tab li a.active {
   border-bottom: 0.1rem solid #ff5a5f;
@@ -282,6 +282,24 @@
 .btn-white {
   background-color: #fff !important;
   color: #000 !important;
+}
+.card {
+  border-radius: 0;
+  box-shadow: none;
+}
+/* webkit solution */
+::-webkit-input-placeholder {
+  font-size: 0.65rem;
+}
+/* mozilla solution */
+input:-moz-placeholder {
+  font-size: 0.65rem;
+}
+textarea::-webkit-input-placeholder:after {
+  font-size: 0.65rem;
+}
+textarea::-moz-placeholder:after {
+  font-size: 0.65rem;
 }
 .zfw-detail-header {
   position: relative;
@@ -459,12 +477,15 @@
 .zfw-card .zfw-commit .item-content:nth-child(2) .item-inner:after {
   background-color: #fff;
 }
-.bar-tab.store-detail-bar button {
-  width: 100%;
-  height: 100%;
+.bar-tab.store-detail-bar a {
   color: #fff;
   background-color: #ff5a5f;
   border: none;
+  font-size: 0.65rem;
+}
+.bar-tab.store-detail-bar a span {
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 .circle {
   border-radius: 9999px;
@@ -565,6 +586,10 @@
   -moz-transform: rotate(45deg) translate3d(0, 0, 0);
   -ms-transform: rotate(45deg) translate3d(0, 0, 0);
   -o-transform: rotate(45deg) translate3d(0, 0, 0);
+}
+.service-detail-container .service-header-img {
+  width: 100%;
+  height: 10.55rem;
 }
 .service-detail-container .ft-gray {
   font-size: 0.6rem;
@@ -1256,4 +1281,24 @@
 }
 .record-container .record-list li:last-child {
   border: none !important;
+}
+.appraise-container .appraise-content {
+  width: 100%;
+  padding: 0.75rem;
+  height: 10rem;
+  border: none;
+}
+.appraise-container .list-block {
+  margin: 0;
+}
+.appraise-container .list-block .item-title {
+  font-size: 0.65rem;
+  color: #000;
+}
+.appraise-container .list-block .panel-comment i {
+  margin-right: 1rem;
+  color: #c2c2c2;
+}
+.appraise-container .list-block .panel-comment i:last-child {
+  margin-right: 0.25rem;
 }

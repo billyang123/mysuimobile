@@ -145,23 +145,22 @@
 }
 .service-detail-tab{
 	border-top: 1px solid #e1e1e1;
-	height: 41/@ppr;
+	height: 40/@ppr;
 	li{
 		list-style: none;
 		width: 100/3%;
 		text-align: center;
-		line-height: 38/@ppr;
 		a{
 			display: inline-block;
 			padding: 0 10/@ppr;
 			color: #999;
 			font-size: 12/@ppr;
+			line-height: 38/@ppr;
 		}
 		a.active{
 			border-bottom:2/@ppr solid #ff5a5f;
 			color: #000;
 		}
-		
 	}
 }
 .danger{
@@ -292,3 +291,21 @@
 	background-color: #fff !important;
 	color: #000 !important;
 }
+.card{
+	border-radius: 0;
+	box-shadow: none;
+}
+/* webkit solution */
+::-webkit-input-placeholder {
+	font-size: 13/@ppr;
+}
+/* mozilla solution */
+input:-moz-placeholder {
+	font-size: 13/@ppr;
+}
+textarea::-webkit-input-placeholder:after{   
+	font-size: 13/@ppr;
+};
+textarea::-moz-placeholder:after{   
+	font-size: 13/@ppr;
+}; 
