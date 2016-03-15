@@ -726,6 +726,9 @@ textarea::-moz-placeholder:after {
 .order-container .order-detail-list .label {
   color: #999;
 }
+.order-container .item-or-show {
+  display: none;
+}
 .account-info-container .text-center {
   text-align: center;
   background-color: #fff;
