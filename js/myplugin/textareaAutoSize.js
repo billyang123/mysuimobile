@@ -1,6 +1,5 @@
 +function ($) {
-  	if(!__app) __app = {};  
-	var pluginName = "textareaAutoSize";
+    "use strict";
 	var pluginDataName = "plugin_" + pluginName;
 
 	var containsText = function (value) {
@@ -28,10 +27,7 @@
 	      var $window = $(window);
 	      var currentScrollPosition = $window.scrollTop();
 
-	      $(this)
-	        .height(0)
-	        .height(this.scrollHeight - diff);
-
+	      $(this).height(0).height(this.scrollHeight - diff);
 	      $window.scrollTop(currentScrollPosition);
 	    });
 	  }
