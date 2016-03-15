@@ -415,7 +415,7 @@ $(function () {
           var text = $(this).data("text");
           var dirLink = $(this).attr("data-dir-link");
           $.confirm(title,text,function () {
-              $.router.load(dirLink);
+              window.location.href = dirLink;
           });
       });
   });
