@@ -3423,6 +3423,7 @@ Swiper
 
 +function ($) {
     "use strict";
+    var pluginName = "textareaAutoSize";
 	var pluginDataName = "plugin_" + pluginName;
 
 	var containsText = function (value) {
