@@ -301,6 +301,9 @@ textarea::-webkit-input-placeholder:after {
 textarea::-moz-placeholder:after {
   font-size: 0.65rem;
 }
+h3 {
+  font-weight: normal !important;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
@@ -1150,6 +1153,9 @@ textarea::-moz-placeholder:after {
   font-size: 0.7rem;
   color: #0AE6B8;
   display: inherit;
+}
+.buy-container .buy-card .icon-checked {
+  background: #0AE6B8;
 }
 .buy-container .description {
   width: 100%;
