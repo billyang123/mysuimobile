@@ -1,0 +1,76 @@
+---
+layout: default
+title: 修改价格
+---
+<div class="page-group">
+	<div class="page" id="updatePrice" data-title="修改价格">
+		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
+			  <span class="icon icon-left"></span>
+			  返回
+			</a>
+			<h1 class="title">修改价格</h1>
+		</header>
+		<div class="bar bar-footer">
+		  <button class="button button-block js-update-price">修改价格</button>
+		</div>
+		<div class="content">
+			<div class="picker-modal mymodal-picker updateprice-pick"  id="pageUpdatePrice" >
+				<header class="bar bar-nav">      
+					<button class="button button-link pull-left closeUpdatePrice" data-role="close">关闭</button>
+					<h1 class="title">－修改价格－</h1>
+					<button class="button button-link pull-right closeUpdatePrice" data-role="submit" data-url="/ajax/city.json" data-dirurl="#">确定</button>
+				</header>
+				<div class="picker-modal-inner">
+					<div class="content-block">
+						<div class="list-block">
+							<ul>
+								<!-- Text inputs -->
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">阶段1</div>
+											<div class="item-input">
+											  <input type="text" class="newPrice" placeholder="请输入修改价格">
+											</div>
+										</div>	
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">阶段2</div>
+											<div class="item-input">
+											  <input type="text" class="newPrice" placeholder="请输入修改价格">
+											</div>
+										</div>	
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">阶段3</div>
+											<div class="item-input">
+											  <input type="text" class="newPrice" placeholder="请输入修改价格">
+											</div>
+										</div>	
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">阶段4</div>
+											<div class="item-input">
+											  <input type="text" class="newPrice" placeholder="请输入修改价格">
+											</div>
+										</div>	
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

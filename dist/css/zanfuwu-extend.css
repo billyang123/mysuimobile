@@ -1,10 +1,3 @@
-/*!
- * =====================================================
- * zanfuwu by yangbinbin - http://m.zanfuwu.com/
- *
- * =====================================================
- */
-
 /*.transition(@d) {
     -webkit-transition-duration: @d;
     transition-duration: @d;
@@ -75,13 +68,11 @@
 }
 .photo-browser.photo-browser-in {
   display: block;
-  -webkit-animation: photoBrowserIn 400ms forwards;
-          animation: photoBrowserIn 400ms forwards;
+  animation: photoBrowserIn 400ms forwards;
 }
 .photo-browser.photo-browser-out {
   display: block;
-  -webkit-animation: photoBrowserOut 400ms forwards;
-          animation: photoBrowserOut 400ms forwards;
+  animation: photoBrowserOut 400ms forwards;
 }
 html.with-statusbar-overlay .photo-browser {
   height: -webkit-calc(100% - 1rem);
@@ -92,8 +83,7 @@ html.with-statusbar-overlay .photo-browser {
 body > .photo-browser .navbar,
 .popup > .photo-browser .toolbar,
 body > .photo-browser .toolbar {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 .photo-browser .page[data-page="photo-browser-slides"] {
   background: none;
@@ -109,6 +99,8 @@ body > .photo-browser .toolbar {
 }
 .photo-browser .view {
   overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
   width: 100%;
@@ -126,13 +118,11 @@ body > .photo-browser .toolbar {
 .photo-browser .toolbar,
 .view[data-page="photo-browser-slides"] .toolbar {
   background: rgba(247, 247, 247, 0.95);
-  -webkit-transition: 400ms;
-          transition: 400ms;
+  transition: 400ms;
 }
 .view[data-page="photo-browser-slides"] .page[data-page="photo-browser-slides"] .navbar,
 .view[data-page="photo-browser-slides"] .page[data-page="photo-browser-slides"] .toolbar {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 .photo-browser-exposed .navbar,
 .photo-browser-exposed .toolbar {
@@ -154,28 +144,24 @@ body > .photo-browser .toolbar {
   bottom: 0;
   z-index: 10;
   opacity: 1;
-  -webkit-transition: 400ms;
-          transition: 400ms;
+  transition: 400ms;
 }
 .photo-browser-captions.photo-browser-captions-exposed {
   opacity: 0;
 }
 .toolbar ~ .photo-browser-captions {
   bottom: 2.2rem;
-  -webkit-transform: translate3d(0, 0rem, 0);
-          transform: translate3d(0, 0rem, 0);
+  transform: translate3d(0, 0rem, 0);
 }
 .photo-browser-exposed .toolbar ~ .photo-browser-captions {
-  -webkit-transform: translate3d(0, 2.2rem, 0);
-          transform: translate3d(0, 2.2rem, 0);
+  transform: translate3d(0, 2.2rem, 0);
 }
 .toolbar ~ .photo-browser-captions.photo-browser-captions-exposed {
   transformt: ranslate3d(0, 0rem, 0);
 }
 .photo-browser-caption {
   box-sizing: border-box;
-  -webkit-transition: 300ms;
-          transition: 300ms;
+  transition: 300ms;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -208,8 +194,7 @@ body > .photo-browser .toolbar {
   height: 100%;
   overflow: hidden;
   background: #fff;
-  -webkit-transition: 400ms;
-          transition: 400ms;
+  transition: 400ms;
 }
 .photo-browser-swiper-wrapper {
   position: absolute;
@@ -218,8 +203,6 @@ body > .photo-browser .toolbar {
   width: 100%;
   height: 100%;
   padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
 }
 .photo-browser-link-inactive {
@@ -230,22 +213,14 @@ body > .photo-browser .toolbar {
   height: 100%;
   position: relative;
   overflow: hidden;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-flex-shrink: 0;
-          flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
   box-sizing: border-box;
 }
 .photo-browser-slide.transitioning {
-  -webkit-transition: 400ms;
-          transition: 400ms;
+  transition: 400ms;
 }
 .photo-browser-slide span.photo-browser-zoom-container {
   width: 100%;
@@ -308,51 +283,23 @@ body > .photo-browser .toolbar {
 .photo-browser-dark .photo-browser-swiper-container {
   background: #000;
 }
-@-webkit-keyframes photoBrowserIn {
-  0% {
-    -webkit-transform: translate3d(0, 0, 0) scale(0.5);
-            transform: translate3d(0, 0, 0) scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translate3d(0, 0, 0) scale(1);
-            transform: translate3d(0, 0, 0) scale(1);
-    opacity: 1;
-  }
-}
 @keyframes photoBrowserIn {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) scale(0.5);
-            transform: translate3d(0, 0, 0) scale(0.5);
+    transform: translate3d(0, 0, 0) scale(0.5);
     opacity: 0;
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 0) scale(1);
-            transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
     opacity: 1;
-  }
-}
-@-webkit-keyframes photoBrowserOut {
-  0% {
-    -webkit-transform: translate3d(0, 0, 0) scale(1);
-            transform: translate3d(0, 0, 0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translate3d(0, 0, 0) scale(0.5);
-            transform: translate3d(0, 0, 0) scale(0.5);
-    opacity: 0;
   }
 }
 @keyframes photoBrowserOut {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) scale(1);
-            transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
     opacity: 1;
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 0) scale(0.5);
-            transform: translate3d(0, 0, 0) scale(0.5);
+    transform: translate3d(0, 0, 0) scale(0.5);
     opacity: 0;
   }
 }
@@ -372,6 +319,8 @@ body > .photo-browser .toolbar {
 }
 .swiper-container-vertical > .swiper-wrapper {
   -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-flex-direction: column;
   -webkit-flex-direction: column;
   flex-direction: column;
 }
@@ -381,18 +330,29 @@ body > .photo-browser .toolbar {
   height: 100%;
   z-index: 1;
   display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -ms-transition-property: -ms-transform;
   transition-property: transform;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
 .swiper-container-android .swiper-slide,
 .swiper-wrapper {
   -webkit-transform: translate3d(0px, 0, 0);
+  -moz-transform: translate3d(0px, 0, 0);
+  -o-transform: translate(0px, 0px);
+  -ms-transform: translate3d(0px, 0, 0);
   transform: translate3d(0px, 0, 0);
 }
 .swiper-container-multirow > .swiper-wrapper {
@@ -404,17 +364,20 @@ body > .photo-browser .toolbar {
 }
 .swiper-container-free-mode > .swiper-wrapper {
   -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
   margin: 0 auto;
 }
 .swiper-slide {
   -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-flex-shrink: 0;
   -ms-flex: 0 0 auto;
-  -webkit-flex-shrink: 0;
-          flex-shrink: 0;
+  flex-shrink: 0;
   width: 100%;
   height: 100%;
   position: relative;
@@ -430,9 +393,11 @@ body > .photo-browser .toolbar {
 }
 /* IE10 Windows Phone 8 Fixes */
 .swiper-wp8-horizontal {
+  -ms-touch-action: pan-y;
   touch-action: pan-y;
 }
 .swiper-wp8-vertical {
+  -ms-touch-action: pan-x;
   touch-action: pan-x;
 }
 /* Arrows */
@@ -445,6 +410,8 @@ body > .photo-browser .toolbar {
   margin-top: -22px;
   z-index: 10;
   cursor: pointer;
+  -moz-background-size: 27px 44px;
+  -webkit-background-size: 27px 44px;
   background-size: 27px 44px;
   background-position: center;
   background-repeat: no-repeat;
@@ -472,8 +439,12 @@ body > .photo-browser .toolbar {
   position: absolute;
   text-align: center;
   -webkit-transition: 300ms;
+  -moz-transition: 300ms;
+  -o-transition: 300ms;
   transition: 300ms;
   -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   z-index: 10;
 }
@@ -496,6 +467,9 @@ body > .photo-browser .toolbar {
   right: 10px;
   top: 50%;
   -webkit-transform: translate3d(0px, -50%, 0);
+  -moz-transform: translate3d(0px, -50%, 0);
+  -o-transform: translate(0px, -50%);
+  -ms-transform: translate3d(0px, -50%, 0);
   transform: translate3d(0px, -50%, 0);
 }
 .swiper-container-vertical > .swiper-pagination .swiper-pagination-bullet {
@@ -513,6 +487,7 @@ body > .photo-browser .toolbar {
 /* 3D Container */
 .swiper-container-3d {
   -webkit-perspective: 1200px;
+  -moz-perspective: 1200px;
   -o-perspective: 1200px;
   perspective: 1200px;
 }
@@ -524,6 +499,7 @@ body > .photo-browser .toolbar {
 .swiper-container-3d .swiper-slide-shadow-bottom,
 .swiper-container-3d .swiper-cube-shadow {
   -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
@@ -544,7 +520,9 @@ body > .photo-browser .toolbar {
   /* Safari 4+, Chrome */
   background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Chrome 10+, Safari 5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Firefox 3.6-15 */
+  background-image: -o-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Opera 11.10-12.00 */
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Firefox 16+, IE10, Opera 12.50+ */
@@ -554,7 +532,9 @@ body > .photo-browser .toolbar {
   /* Safari 4+, Chrome */
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Chrome 10+, Safari 5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Firefox 3.6-15 */
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Opera 11.10-12.00 */
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Firefox 16+, IE10, Opera 12.50+ */
@@ -564,7 +544,9 @@ body > .photo-browser .toolbar {
   /* Safari 4+, Chrome */
   background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Chrome 10+, Safari 5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Firefox 3.6-15 */
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Opera 11.10-12.00 */
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Firefox 16+, IE10, Opera 12.50+ */
@@ -574,7 +556,9 @@ body > .photo-browser .toolbar {
   /* Safari 4+, Chrome */
   background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Chrome 10+, Safari 5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Firefox 3.6-15 */
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Opera 11.10-12.00 */
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   /* Firefox 16+, IE10, Opera 12.50+ */
@@ -587,6 +571,9 @@ body > .photo-browser .toolbar {
 /* Fade */
 .swiper-container-fade.swiper-container-free-mode .swiper-slide {
   -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
 .swiper-container-fade .swiper-slide {
@@ -603,8 +590,11 @@ body > .photo-browser .toolbar {
   pointer-events: none;
   visibility: hidden;
   -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
   transform-origin: 0 0;
   -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
   backface-visibility: hidden;
   width: 100%;
@@ -612,6 +602,8 @@ body > .photo-browser .toolbar {
 }
 .swiper-container-cube.swiper-container-rtl .swiper-slide {
   -webkit-transform-origin: 100% 0;
+  -moz-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
   transform-origin: 100% 0;
 }
 .swiper-container-cube .swiper-slide-active,
@@ -691,8 +683,12 @@ body > .photo-browser .toolbar {
 }
 .swiper-container-autoheight .swiper-wrapper {
   -webkit-box-align: start;
+  -ms-flex-align: start;
   -webkit-align-items: flex-start;
   align-items: flex-start;
   -webkit-transition-property: -webkit-transform, height;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -ms-transition-property: -ms-transform;
   transition-property: transform, height;
 }
