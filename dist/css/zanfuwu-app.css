@@ -735,7 +735,7 @@ h3 {
 .order-container .order-detail-list .requirement {
   font-size: 0.65rem;
   color: #000;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0rem 0.5rem 0.25rem;
   height: auto;
 }
 .order-container .order-detail-list .item-title,
