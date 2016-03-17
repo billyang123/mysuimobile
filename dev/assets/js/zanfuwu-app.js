@@ -519,7 +519,7 @@ $(function () {
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
       var toolbarTmp = '<header class="bar bar-nav"></button><button class="button button-link pull-right close-picker">完成</button><h1 class="title">{{text}}</h1></header>'
       var cityArr = [];
-      $(document).on('click','.userimg', function () {
+      /*$(document).on('click','.userimg', function () {
           var buttons1 = [
           {
             text: '拍个照',
@@ -545,7 +545,7 @@ $(function () {
         ];
         var groups = [buttons1, buttons2];
         $.actions(groups);
-      });
+      });*/
       __app.cityPicker({
           element:"#city-picker",
           toolbarTmp:toolbarTmp,
