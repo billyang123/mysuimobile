@@ -1,7 +1,12 @@
 
 $(function () {
   'use strict';
-  if(!__app) __app = {};  
+  if(!__app) {
+      __app = {};
+      if(!__app.varConfig){
+        __app.varConfig = {};
+      }
+  }
   __app.loadMoreLink = function(options){
       // 加载flag
       var self = this;
@@ -353,13 +358,17 @@ $(function () {
       var __url = __element.data("url");
       var __params = __element.data("params");
       var __searchHotHistry = $(options.searchHotHistry);
-
-      var _loadMoreLink = new __app.loadMoreLink({
-          container:__content,
-          url:__url,
-          data:__element.data("params"),
-          page:2
-      });
+      var _loadMoreLink = __element.data("_loadMoreLink");
+      var _propertychange = false;
+      if(!_loadMoreLink){
+        _loadMoreLink = new __app.loadMoreLink({
+            container:__content,
+            url:__url,
+            data:__element.data("params"),
+            page:2
+        });
+        __element.data("_loadMoreLink",_loadMoreLink);
+      }
       var __search = function(__key,callback){
           _loadMoreLink.set({
             "page":1,
@@ -374,7 +383,9 @@ $(function () {
           __searchHotHistry.show();
           $(__content).hide();
           _loadMoreLink._remove();
-      } 
+      }
+      if(_propertychange) return;
+
       __element.on("input propertychange",'input[type="search"]',function(e){
           var __this = $(e.target);
           __time && clearTimeout(__time);
@@ -393,6 +404,16 @@ $(function () {
       __element.on("click",".searchbar-cancel",function(){
           __cancelSearch();
       })
+      $(document).on("click",".js-search-tag",function(e){
+        var keyWord = $.trim($(this).data("key"));
+        __element.find("input").val(keyWord)
+          __search(keyWord);
+          __searchHotHistry.hide();
+          $(__content).show();
+          $("html,body,.content").scrollTop(0);
+          return false;
+      })
+      _propertychange = true;
   }
 
   //data-link
@@ -582,6 +603,11 @@ $(function () {
       
   })
   $(document).on("pageInit","#pageSearch",function(e, id, page){
+      // __app.varConfig.search = {
+      //   element:"#searchBars",
+      //   searchHotHistry:"#searchHotHistry"
+      // }
+
       __app.search({
           element:"#searchBars",
           searchHotHistry:"#searchHotHistry"
