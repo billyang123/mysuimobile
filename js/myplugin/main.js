@@ -36,6 +36,7 @@
         imageBit.scaleX=imageBit.scaleY=scale;
 
         console.log(imageBit.regX,imageBit.regY);
+        console.info(stage);
         //imageBit.setTransform(this.width/2*scale,this.height/2*scale,scale,scale,0,0,0,this.width/2,this.height/2);
         stage.addChild(imageBit);
         var a = new C.Shape();
@@ -157,12 +158,11 @@
     }
     //创建canvas
     function createImg(src){
-
         var img=new Image();
         img.src=src;
         img.onload=function(){
 
-
+            console.info(this);
             EXIF.getData(this,function (){
                 //console.log(EXIF.getTag(this, 'Orientation'));
                 var o=EXIF.getTag(this, 'Orientation');
@@ -179,7 +179,7 @@
                 }
                 //创建canvas到dom里
 
-                Canvas = $("<canvas id='myC' style='display:none'></canvas>").appendTo('body');
+                Canvas = $("<canvas id='myC' style='display:block'></canvas>").appendTo('body');
                 Canvas[0].width = WIDTH;
                 Canvas[0].height = HEIGHT;
                 Canvas.width(window.innerWidth);
@@ -206,19 +206,28 @@
 
 
     }
-
     $(document).ready(function () {
         //取出图片
         $("#cameraInput").on('change',function (){
             var file=this.files[0];
-            var URL = URL || webkitURL;
-            var blob = URL.createObjectURL(file);
-            createImg(blob);
+            var data = new FormData();  
+            data.append('avatar', file);
+            $.ajax({  
+                url: '/member/save/updateAvatar',  
+                type: 'POST',  
+                data: data,  
+                dataType: 'json',  
+                processData: false,  
+                contentType: false,
+                success: function(res) {
+                    if(res.success){
+                        $(".userimg").css("background-image","url("+res.picUrl+")");  
+                    }
+                }
+            }) 
         });
-        var k=Math.tan(45)
-
-        console.log(k)
     });
+
 
 })(createjs = createjs || {});
 var createjs;
