@@ -7,7 +7,45 @@
 
 $(function () {
   'use strict';
-  if(!__app) __app = {};  
+  if(!__app) {
+      __app = {};
+      if(!__app.varConfig){
+        __app.varConfig = {};
+      }
+  }
+  if(!window.localStorage){
+      alert('This browser does NOT support localStorage');
+  }
+  __app.setStorage = function(string,appString){
+    if(!__app[appString]){
+       if(!localStorage[appString] || localStorage[appString]=="") localStorage[appString] = "[]";
+       __app[appString] = JSON.parse(localStorage[appString]);
+    }
+    for (var i = __app[appString].length - 1; i >= 0; i--) {
+      if(string.indexOf(__app[appString][i])>=0){
+        __app[appString].splice(i,1);
+        break;
+      }
+      if(i==0){
+        if(__app[appString].length>=6){
+          __app[appString].pop();
+          break;
+        }
+      }
+    }
+    __app[appString].unshift(string);
+    localStorage[appString] = JSON.stringify(__app[appString]);
+  }
+  __app.setStorageToHtml = function(element,tempId,appString){
+    var template = Handlebars.compile($(tempId).html());
+    if(__app.zfwSearchHistory.length==0){
+      $(element).hide();
+      return;
+    }else{
+      $(element).show()
+    }
+    $(element).html(template(__app[appString]));
+  }
   __app.loadMoreLink = function(options){
       // 加载flag
       var self = this;
@@ -384,8 +422,10 @@ $(function () {
           __searchHotHistry.show();
           $(__content).hide();
           _loadMoreLink._remove();
+          __app.setStorageToHtml("#searchHistory ul","#searchHistoryTemplate","zfwSearchHistory")
       }
       if(_propertychange) return;
+
       __element.on("input propertychange",'input[type="search"]',function(e){
           var __this = $(e.target);
           __time && clearTimeout(__time);
@@ -396,6 +436,7 @@ $(function () {
                   __searchHotHistry.hide();
                   $(__content).show();
                   $("html,body,.content").scrollTop(0);
+                  __app.setStorage(keyWord,"zfwSearchHistory");
               }else{
                 __cancelSearch()
               }
@@ -403,6 +444,15 @@ $(function () {
       })
       __element.on("click",".searchbar-cancel",function(){
           __cancelSearch();
+      })
+      $(document).on("click",".js-search-tag",function(e){
+        var keyWord = $.trim($(this).data("key"));
+        __element.find("input").val(keyWord)
+          __search(keyWord);
+          __searchHotHistry.hide();
+          $(__content).show();
+          $("html,body,.content").scrollTop(0);
+          return false;
       })
       _propertychange = true;
   }
@@ -422,7 +472,10 @@ $(function () {
           window.location.href = dirLink;
       });
   });
-
+  $(document).on('click','.zfw-clear-searchhistory',function(){
+    __app.zfwSearchHistory = [];
+    localStorage.zfwSearchHistory = '[]';
+  })
   //修改价格
   var pageUpdatePrice = null;
   $(document).on("click",'.closeUpdatePrice',function(e){
@@ -525,7 +578,7 @@ $(function () {
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
       var toolbarTmp = '<header class="bar bar-nav"></button><button class="button button-link pull-right close-picker">完成</button><h1 class="title">{{text}}</h1></header>'
       var cityArr = [];
-      $(document).on('click','.userimg', function () {
+      /*$(document).on('click','.userimg', function () {
           var buttons1 = [
           {
             text: '拍个照',
@@ -551,7 +604,7 @@ $(function () {
         ];
         var groups = [buttons1, buttons2];
         $.actions(groups);
-      });
+      });*/
       __app.cityPicker({
           element:"#city-picker",
           toolbarTmp:toolbarTmp,
@@ -594,6 +647,7 @@ $(function () {
       
   })
   $(document).on("pageInit","#pageSearch",function(e, id, page){
+      
       __app.search({
           element:"#searchBars",
           searchHotHistry:"#searchHotHistry"
