@@ -520,6 +520,24 @@ $(function () {
         $("title").html(title);
       }
   });
+  $(document).on("change","#cameraInput",function(){
+      var file=this.files[0];
+      var data = new FormData();  
+      data.append('avatar', file);
+      $.ajax({  
+          url: '/member/save/updateAvatar',  
+          type: 'POST',  
+          data: data,  
+          dataType: 'json',  
+          processData: false,  
+          contentType: false,
+          success: function(res) {
+              if(res.success){
+                  $(".userimg").css("background-image","url("+res.picUrl+")");  
+              }
+          }
+      }) 
+  })
   $(document).on("pageInit", "#pageStoreDetail,#pageServiceDetail", function(e, id, page) {
       var ImageData = [{url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'}]
       $(document).on('click','.js-pb-standalone',function () {
@@ -572,33 +590,6 @@ $(function () {
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
       var toolbarTmp = '<header class="bar bar-nav"></button><button class="button button-link pull-right close-picker">完成</button><h1 class="title">{{text}}</h1></header>'
       var cityArr = [];
-      /*$(document).on('click','.userimg', function () {
-          var buttons1 = [
-          {
-            text: '拍个照',
-            bold: true,
-            color: 'danger',
-            onClick: function() {
-              $.alert("拍个照");
-            }
-          },
-          {
-            text: '去相册选',
-            color: 'danger',
-            onClick: function() {
-              $.alert("去相册选");
-            }
-          }
-        ];
-        var buttons2 = [
-          {
-            text: '取消',
-            color: 'danger'
-          }
-        ];
-        var groups = [buttons1, buttons2];
-        $.actions(groups);
-      });*/
       __app.cityPicker({
           element:"#city-picker",
           toolbarTmp:toolbarTmp,
