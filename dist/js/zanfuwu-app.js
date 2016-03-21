@@ -16,11 +16,14 @@ $(function () {
   if(!window.localStorage){
       alert('This browser does NOT support localStorage');
   }
-  __app.setStorage = function(string,appString){
+  __app.hasLoalStorage = function(appString){
     if(!__app[appString]){
        if(!localStorage[appString] || localStorage[appString]=="") localStorage[appString] = "[]";
        __app[appString] = JSON.parse(localStorage[appString]);
     }
+  }
+  __app.setStorage = function(string,appString){
+    __app.hasLoalStorage(appString);
     for (var i = __app[appString].length - 1; i >= 0; i--) {
       if(string.indexOf(__app[appString][i])>=0){
         __app[appString].splice(i,1);
@@ -37,6 +40,7 @@ $(function () {
     localStorage[appString] = JSON.stringify(__app[appString]);
   }
   __app.setStorageToHtml = function(element,tempId,appString){
+    __app.hasLoalStorage(appString);
     var template = Handlebars.compile($(tempId).html());
     if(__app.zfwSearchHistory.length==0){
       $(element).hide();
@@ -59,8 +63,8 @@ $(function () {
       this.page = this.options.page || 1;
       this.data = this.options.data;
       this.url = this.options.url;
-
-      this.addItems = function(type){
+      // this.callback = this.options.callback;
+      this.addItems = function(type,callback){
         $.ajax({
             url:this.url,
             type:"get",
@@ -72,16 +76,19 @@ $(function () {
                 self._loadEl.hide();
               }else{
                 self._loadEl.show();
+                callback && callback(html);
+                self.container[type](html);
               }
-              self.container[type](html);
+
               self.page++;
             }
         })
       }
-      this.init = function(){
+      this.init = function(callback){
         $.detachInfiniteScroll(self.$infinite);
         $.attachInfiniteScroll(self.$infinite);
-        self.addItems("html")
+        self.callback = callback;
+        self.addItems("html",callback);
       }
       this._remove = function(){
         $.detachInfiniteScroll(self.$infinite);
@@ -108,7 +115,7 @@ $(function () {
             self.loading = false;
 
             // 添加新条目
-            self.addItems("append");
+            self.addItems("append",self.callback);
             //容器发生改变,如果是js滚动，需要刷新滚动
             $.refreshScroller();
         }, 1000);
@@ -122,22 +129,28 @@ $(function () {
         data:oldTabLink.data("params")
     },options)
     var _loadMoreLink = new __app.loadMoreLink(options)
-    _loadMoreLink.init();
+    _loadMoreLink.init(function(){
+      if(oldTabLink.attr("data-more-pages")=="N"){
+        $('.infinite-scroll-preloader').hide();
+      }
+    });
     $('.mytab-link').on('click',function(){
         oldTabLink.removeClass("active");
+        oldTabLink = $(this).addClass("active");
         _loadMoreLink.set({
           "page":1,
           "data":$(this).data("params"),
           "url":$(this).data("url"),
           "loading":false,
-          "loaded":false,
+          "loaded":false
         });
-        _loadMoreLink.init();
-        oldTabLink = $(this).addClass("active");
+        _loadMoreLink.init(function(){
+          if(oldTabLink.attr("data-more-pages")=="N"){
+            $('.infinite-scroll-preloader').hide();
+          }
+        });
         $("html,body,.content").scrollTop(0)
-        if(oldTabLink.attr("data-more-pages")=="N"){
-          _loadMoreLink._remove();
-        }
+        
         return false;
     })
   }
@@ -399,6 +412,7 @@ $(function () {
       var __searchHotHistry = $(options.searchHotHistry);
       var _loadMoreLink = __element.data("_loadMoreLink");
       var _propertychange = false;
+      var _isCancel = true;
       if(!_loadMoreLink){
         _loadMoreLink = new __app.loadMoreLink({
             container:__content,
@@ -414,20 +428,29 @@ $(function () {
             "data":__params+"&"+__keyName+"="+__key,
             "url":__url,
             "loading":false,
-            "loaded":false,
+            "loaded":false
           });
-          _loadMoreLink.init();
+          _loadMoreLink.init(function(){
+            __app.setStorage(__key,"zfwSearchHistory");
+            if(_isCancel){
+              $('.infinite-scroll-preloader').hide();
+            }
+          });
       }
       var __cancelSearch = function(){
           __searchHotHistry.show();
           $(__content).hide();
           _loadMoreLink._remove();
-          __app.setStorageToHtml("#searchHistory ul","#searchHistoryTemplate","zfwSearchHistory")
+          __app.setStorageToHtml("#searchHistory ul","#searchHistoryTemplate","zfwSearchHistory");
+          $('input[type="search"]').val("").trigger("blur");
+          _isCancel = true;
+          $('.infinite-scroll-preloader').hide();
       }
       if(_propertychange) return;
 
       __element.on("input propertychange",'input[type="search"]',function(e){
           var __this = $(e.target);
+          _isCancel = false;
           __time && clearTimeout(__time);
           __time = setTimeout(function(){
               var keyWord = $.trim(__this.val());
@@ -436,7 +459,6 @@ $(function () {
                   __searchHotHistry.hide();
                   $(__content).show();
                   $("html,body,.content").scrollTop(0);
-                  __app.setStorage(keyWord,"zfwSearchHistory");
               }else{
                 __cancelSearch()
               }
@@ -452,6 +474,8 @@ $(function () {
           __searchHotHistry.hide();
           $(__content).show();
           $("html,body,.content").scrollTop(0);
+          $('input[type="search"]').trigger("focus");
+          _isCancel = false;
           return false;
       })
       _propertychange = true;
@@ -472,9 +496,35 @@ $(function () {
           window.location.href = dirLink;
       });
   });
+  $(document).on('click','.closeRefuseReason', function (e) {
+      var upPriceType = $(this).data("role");
+      if(upPriceType == "submit"){ 
+        var dirUrl = $(this).data("dirurl");
+        $.ajax({
+          url:$(this).data("url"),
+          type:"post",
+          dataType:"json",
+          data:{
+            refuseReason:$("#pageRefuseReason").find('textarea').val()
+          },
+          success:function(res){
+            if (res.errorCode == 0) {
+                window.location.href = dirUrl;
+            } else {
+                $.alert(res.errorInfo);
+            }
+          }
+        })
+      }
+      $.closeModal('#pageRefuseReason');
+  });
+  $(document).on('click','.js-refuse-reason', function (e) {
+      $.pickerModal('#pageRefuseReason');
+  });
   $(document).on('click','.zfw-clear-searchhistory',function(){
     __app.zfwSearchHistory = [];
     localStorage.zfwSearchHistory = '[]';
+    $("#searchHistory ul").html("");
   })
   //修改价格
   var pageUpdatePrice = null;
@@ -510,9 +560,17 @@ $(function () {
   $(document).on("click",".js-update-price",function(){
       $.pickerModal('#pageUpdatePrice');
   })
-  
+  $(document).on("pageAnimationStart",function(e, id, page){
+      var title = $("#"+id).data("title");
+      if(title){
+        $("title").text(title);
+      }
+  })
+  $(document).on("pageLoadComplete",function(){
+    $.closeModal();
+  })
   $(document).on("pageInit", function(e, pageId, $page) {
-      var title = $page.data("title");
+      
       if($(".js-loadding-more").length>0){
         __app.loadMore(".js-loadding-more");
       }
@@ -522,9 +580,7 @@ $(function () {
           container:$(".js-tab-loadding-more").data("target") || "#pageClassifyItemList"
         });
       }
-      if(title){
-        $("title").html(title);
-      }
+      
   });
   $(document).on("change","#cameraInput",function(){
       var file=this.files[0];
@@ -617,7 +673,7 @@ $(function () {
           }
         },function(picker, value, displayValue){
           cityArr = value;
-          console.log(value)
+          //console.log(value)
       })
       __app.industryPick({element:"#industry-picker",toolbarTmp:toolbarTmp,onClose:function(pick){
         $.ajax({
@@ -643,6 +699,7 @@ $(function () {
           element:"#searchBars",
           searchHotHistry:"#searchHotHistry"
       })
+      __app.setStorageToHtml("#searchHistory ul","#searchHistoryTemplate","zfwSearchHistory");
   })
   $.init();
 });

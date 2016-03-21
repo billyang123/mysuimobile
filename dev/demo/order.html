@@ -62,6 +62,27 @@ title: 订单
 							</span>
 						</div>
 					</div>
+					<div class="card zfw-card">
+						<div class="card-content">
+						  <div class="card-content-inner">
+						  	<div class="row">
+						  		<h3 class="zfw-card-title col-60">说了这么多其实我们是量身定做产品</h3>
+						  		<div class="zfw-card-price col-40">¥ 9998</div>
+						  	</div>
+						  	<div class="zfw-tags">
+								<span class="tag">营销</span>
+								<span class="tag">策划</span>
+								<span class="tag">产品战略路径规划</span>
+							</div>
+						  </div>
+						</div>
+						<div class="card-footer">
+							<span>卖家已经完成阶段服务</span>
+							<span>
+								<a href="#" class="button button-fill button-danger js-refuse-reason" data-title="是否接受" data-text="hahaha" data-dir-link="/index.html">拒绝</a>
+							</span>
+						</div>
+					</div>
 				</div>
 				<div id="tab2" class="tab">
 				</div>
@@ -69,6 +90,18 @@ title: 订单
 				</div>
 			</div>
 			<!-- 这里是页面内容区 -->
+			<div class="picker-modal mymodal-picker updateprice-pick"  id="pageRefuseReason" style="height: 9rem;">
+				<header class="bar bar-nav">      
+					<button class="button button-link pull-left closeRefuseReason" data-role="close">关闭</button>
+					<h1 class="title">－拒绝理由－</h1>
+					<button class="button button-link pull-right closeRefuseReason" data-role="submit" data-url="/ajax/city.json" data-dirurl="#">确定</button>
+				</header>
+				<div class="picker-modal-inner">
+					<div class="content-block">
+						<textarea style="width: 100%;border: 1px solid #ccc;padding: 6px 10px;"></textarea>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
