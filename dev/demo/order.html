@@ -7,6 +7,9 @@ title: 订单
 	<div class="page order-container" id="pageOrder">
 	<!-- 你的html代码 -->
 		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
+			  <span class="icon icon-left"></span>
+			</a>
 			<button class="button button-link button-nav pull-right danger">卖家订单</button>
 			<h1 class="title">订单</h1>
 		</header>
@@ -35,10 +38,8 @@ title: 订单
 						  </div>
 						</div>
 						<div class="card-footer">
-							<span>等待卖家接受订单</span>
-							<span>
-								<a href="#" class="button button-fill button-danger js-confirm-dirlink" data-title="是否接受" data-text="hahaha" data-dir-link="/index.html">接受</a>
-							</span>
+							<span class="link">等待卖家接受订单</span>
+							<a href="#" class="link button button-fill button-danger js-confirm-dirlink" data-title="是否接受" data-text="hahaha" data-dir-link="/index.html">接受</a>
 						</div>
 					</div>
 					<div class="card zfw-card">
@@ -90,7 +91,7 @@ title: 订单
 				</div>
 			</div>
 			<!-- 这里是页面内容区 -->
-			<div class="picker-modal mymodal-picker updateprice-pick"  id="pageRefuseReason" style="height: 9rem;">
+			<div class="picker-modal mymodal-picker updateprice-pick"  id="pageRefuseReason" style="height: 11rem;">
 				<header class="bar bar-nav">      
 					<button class="button button-link pull-left closeRefuseReason" data-role="close">关闭</button>
 					<h1 class="title">－拒绝理由－</h1>
