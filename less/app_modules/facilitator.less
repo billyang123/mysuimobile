@@ -14,11 +14,11 @@
 						display: inline-block;
 					}
 				}
-				textarea{
+				textarea, input{
 					font-size: 13/@ppr;
 					color: #666;
 				}
-				.alert-text{
+				.prompt-title-ok{
 					font-size: 12/@ppr;
 					color: #000;
 				}
@@ -27,7 +27,48 @@
 				}
 			}
 		}
+		.list-block-header{
+			height: 45/@ppr;
+			border-bottom: 1px solid #e7e7e7;
+			h1{
+				position: absolute;
+			    display: block;
+			    width: 100%;
+			    padding: 0;
+			    margin: 0 -0.5rem;
+			    font-size: 12/@ppr;
+			    line-height: 45/@ppr;
+			    color: #3d4145;
+			    text-align: center;
+			    white-space: nowrap;
+			}
+			.button-link {
+			    top: 0;
+			    right: 18/@ppr;
+			    padding: 0;
+			    font-size: 12/@ppr;
+			    line-height: 45/@ppr;
+			    height: 45/@ppr;
+			    color: #ff5a5f;
+			    border: 0;
+			}
+		}
+		.item-media{
+			margin-left: 15/@ppr;
+			font-size: 13/@ppr;
+		}
+	}	
+	.case-list{
+		.item-inner:after{
+			display: none;
+		}
 	}
+}
+.modal-title{
+	font-size: 13/@ppr;
+}
+.modal-text{
+	font-size: 11/@ppr;
 }
 .header-common{
 	padding: 25/@ppr 0;
