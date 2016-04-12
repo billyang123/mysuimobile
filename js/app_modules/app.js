@@ -675,6 +675,7 @@ $(function () {
       $(document).on("click",".js-send-code",function(){
         codeData['mobile'] = $('[name="mobile"]').val();
         codeData['code'] =  $("#codeImgInput").val();
+        codeData['id'] = $('.js-getimgcode').data("id");
         __app.sendCode(this,codeData)
       })
       $(document).on("click",".js-getimgcode",function(){
@@ -685,10 +686,28 @@ $(function () {
             dataType:"json",
             success:function(res){
               __target.css({'background-image':'url('+res.ref.img+')'});
-              codeData["id"] = res.ref.id;
-              //__target.data("id",res.ref.id);
+              //codeData["id"] = res.ref.id;
+              __target.data("id",res.ref.id);
             }
           })
+      })
+      $(document).on('click',"#phoneLogin",function(){
+        var __target = $(this);
+        var __form = $(this).closest("form");
+        $.ajax({
+          url:__form.attr("action"),
+          type:__form.attr('method'),
+          dataType:"json",
+          success:function(res){
+            if (res.errorCode == 0) {
+                $.toast("登录成功");
+                $.router.load(__form.data("dir"))
+                //window.location.href=__form.data("dir");
+            } else {
+                $.alert(res.errorInfo);
+            }
+          }
+        })
       })
   }
   iphoneValid();
