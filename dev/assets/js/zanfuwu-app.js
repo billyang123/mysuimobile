@@ -585,6 +585,50 @@ $(function () {
       })
       _propertychange = true;
   }
+  __app.myTime = function(num,callback,fns){
+    var self = this;
+    this.num  = num;
+    this.tm = setInterval(function(){
+      if(self.num<=0){
+        fns && fns()
+        clearInterval(self.tm);
+        return;
+      }
+      callback && callback(self.num);
+      self.num--;
+    },1000);
+    return this;
+ }
+ var __send = false;
+  __app.sendCode = function(element,data){
+      var __this = $(element);
+      var __setCodeUrl = __this.data("url");
+      if(__send) return;
+      __this.addClass("disabled").attr("disabled",true);
+      $.ajax({
+        url:__setCodeUrl,
+        dataType:"json",
+        type:"post",
+        data:data,
+        success:function(res){
+          __send = true;
+          if(res.errorCode!=0){
+            $.closeModal();
+            $.alert(res.errorInfo);
+          }else{
+            new __app.myTime(__this.data("num"),function(num){
+              __this.text(num+"秒");
+            },function(){
+              __this.text("发送验证码");
+              __send = false;
+              __this.removeClass("disabled").removeAttr("disabled");
+            })
+
+          }
+        }
+      })
+      return $(element);
+  }
   $(document).on("pageAnimationStart",function(e, id, page){
       var title = $("#"+id).data("title");
       if(title){
@@ -632,6 +676,28 @@ $(function () {
   $(document).on('click','.js-refuse-reason', function (e) {
       $.pickerModal('#pageRefuseReason');
   });
+  function iphoneValid(){
+      var codeData = {};
+      $(document).on("click",".js-send-code",function(){
+        codeData['mobile'] = $('[name="mobile"]').val();
+        codeData['code'] =  $("#codeImgInput").val();
+        __app.sendCode(this,codeData)
+      })
+      $(document).on("click",".js-getimgcode",function(){
+          var __target = $(this);
+          $.ajax({
+            url:__target.data("url"),
+            type:"post",
+            dataType:"json",
+            success:function(res){
+              __target.css({'background-image':'url('+res.ref.img+')'});
+              codeData["id"] = res.ref.id;
+              //__target.data("id",res.ref.id);
+            }
+          })
+      })
+  }
+  iphoneValid();
   $(document).on('click','.zfw-clear-searchhistory',function(){
     __app.zfwSearchHistory = [];
     localStorage.zfwSearchHistory = '[]';
@@ -681,7 +747,7 @@ $(function () {
     $.closeModal();
   })
   $(document).on("pageInit", function(e, pageId, $page) {
-      
+      __send = false;
       if($(".js-loadding-more").length>0){
         __app.loadMore(".js-loadding-more");
       }
