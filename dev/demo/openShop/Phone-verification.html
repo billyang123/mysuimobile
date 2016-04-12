@@ -1,0 +1,60 @@
+---
+layout: default
+title: 账号信息
+---
+<div class="page-group">
+	<div class="page" id="openShop-PhoneValid">
+		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
+			  <span class="icon icon-left"></span>
+			</a>
+			<h1 class="title">成为服务商</h1>
+		</header>
+		<div class="content">
+			<form action="/login" id="loginForm" method="post">
+				<div class="card openshop-validcard">
+					<div class="card-content">
+							<div class="list-block">
+							    <ul>
+									<li class="item-content">
+										<div class="item-inner">
+										  	<div class="item-title label"><span class="danger">* </span>手机号码</div>
+										    <div class="item-input">
+										      <input type="text" placeholder="请输入手机号码">
+										    </div>
+										</div>
+									</li>
+									<li class="item-content">
+										<div class="item-inner">
+										  	<div class="item-title label"><span class="danger">* </span>图形验证</div>
+										    <div class="item-input">
+										      <input type="text" placeholder="请输入图形验证码" id="codeImgInput">
+										    </div>
+										    <div class="item-after">
+										    	<button class="button image-code js-getimgcode" type="button" data-url="/ajax/sendcode.json" style="background-image: url(http://zanfuwuimg.b0.upaiyun.com/verify/1460429694787256251.jpg);width: 4.6rem;background-size: 100%;">&nbsp;</button>
+										    </div>
+										</div>
+									</li>
+							      	<li class="item-content">
+										<div class="item-inner">
+										  	<div class="item-title label"><span class="danger">* </span>验证码</div>
+										    <div class="item-input">
+										      <input type="text" placeholder="请输入验证码">
+										    </div>
+										    <div class="item-after">
+										    	<button class="button send-code js-send-code" type="button" data-num="10" data-url="/ajax/sendcode.json">发送验证码</button>
+										    </div>
+										</div>
+									</li>
+							    </ul>
+							</div>
+						
+					</div>
+				</div>
+				<div class="bar bar-footer btn-red-fixbottom">
+					<a class="button" href="#">下一步</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

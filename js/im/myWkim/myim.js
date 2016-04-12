@@ -375,7 +375,7 @@ __app.faceObj = {
 		return '<img src="'+__app.faceObj.domain+__app.faceObj.name[value]+'" style="width:1rem;"/>'
 	}
 }
-var isDev = true;
+var isDev = false;
 __app.chatHref = !isDev? "/im/conv":"/demo/messageschat/index.html";
 
 __app.staticDomain = "";
@@ -592,7 +592,7 @@ __app.myWkim.prototype = {
 	        this.authLogin(token);
 	    }else{
 	    	this.getLoginInfo(function(res){
-	    		self.authLogin(res.imSignModel);
+	    		self.authLogin(isDev?res.imSignModel:res.ref);
 	    	})
 	    }
 	},

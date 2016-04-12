@@ -1798,6 +1798,27 @@ html.retina.ios-6 .message.message-pic img {
 .appraise-container .list-block .panel-comment i:last-child {
   margin-right: 0.25rem;
 }
+.openshop-validcard {
+  color: #333;
+  font-size: 0.65rem;
+}
+.openshop-validcard .image-code,
+.openshop-validcard .send-code {
+  border: none;
+}
+.openshop-validcard .label,
+.openshop-validcard .send-code {
+  color: #333;
+  font-size: 0.65rem;
+}
+.btn-red-fixbottom {
+  background-color: #ff5a5f;
+}
+.btn-red-fixbottom .button {
+  border: none;
+  color: #fff;
+  font-size: 0.65rem;
+}
 .upServerList {
   margin: 0.5rem 0;
 }
