@@ -232,7 +232,7 @@
 .picker-center-highlight:before,
 .picker-center-highlight:after {
   background-color: #FF5A5F;
-  height: 2px;
+  height: 0.05rem;
 }
 .picker-item {
   height: 1.8rem;
@@ -286,17 +286,17 @@
 }
 /* webkit solution */
 ::-webkit-input-placeholder {
-  font-size: 0.65rem;
+  font-size: 0.65rem !important;
 }
 /* mozilla solution */
 input:-moz-placeholder {
-  font-size: 0.65rem;
+  font-size: 0.65rem !important;
 }
 textarea::-webkit-input-placeholder:after {
-  font-size: 0.65rem;
+  font-size: 0.65rem !important;
 }
 textarea::-moz-placeholder:after {
-  font-size: 0.65rem;
+  font-size: 0.65rem !important;
 }
 h3 {
   font-weight: normal !important;
@@ -1895,4 +1895,90 @@ html.retina.ios-6 .message.message-pic img {
 .upprice-singer .item-subtitle strong {
   font-weight: normal;
   color: #ff5a5f;
+}
+.facilitator-container .list-block {
+  margin: 0.5rem;
+}
+.facilitator-container .list-block .item-content {
+  padding-left: 0;
+}
+.facilitator-container .list-block .item-content .item-inner {
+  padding-left: 0.75rem;
+}
+.facilitator-container .list-block .item-content .item-inner .item-title {
+  font-size: 0.65rem;
+}
+.facilitator-container .list-block .item-content .item-inner .item-title span {
+  color: #ff5a5f;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  display: inline-block;
+}
+.facilitator-container .list-block .item-content .item-inner textarea {
+  font-size: 0.65rem;
+  color: #666;
+}
+.facilitator-container .list-block .item-content .item-inner .alert-text {
+  font-size: 0.6rem;
+  color: #000;
+}
+.facilitator-container .list-block .item-content .item-inner .add-link {
+  margin-left: 3.25rem;
+}
+.header-common {
+  padding: 1.25rem 0;
+  background: #fff;
+}
+.header-common ul {
+  margin: 0;
+  padding: 0;
+}
+.header-common ul li {
+  list-style: none;
+  font-size: 0.6rem;
+  color: #000;
+  border-top: 1px solid #ddd;
+  padding-top: 0.75rem;
+  width: 25% !important;
+  margin-left: 0 !important;
+  text-align: center;
+}
+.header-common ul li:before {
+  content: " ";
+  position: absolute;
+  background-color: #ddd;
+  border-radius: 50%;
+  top: 1.05rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-left: 0.8rem;
+  z-index: 2;
+}
+.header-common ul li.active:before {
+  content: " ";
+  width: 0.3rem;
+  height: 0.3rem;
+  background: #fff;
+  border: 0.2rem solid #ff5a5f;
+  top: 0.9rem;
+}
+.header-common ul li span {
+  position: absolute;
+  display: inline-block;
+  background: #ff5a5f;
+  height: 1px;
+  left: 0;
+  top: 1.25rem;
+}
+.header-common ul li:nth-child(1) > span {
+  width: 12.5%;
+}
+.header-common ul li:nth-child(2) > span {
+  width: 37.5%;
+}
+.header-common ul li:nth-child(3) > span {
+  width: 62.5%;
+}
+.header-common ul li:nth-child(4) > span {
+  width: 87.5%;
 }
