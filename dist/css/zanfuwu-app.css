@@ -1914,16 +1914,56 @@ html.retina.ios-6 .message.message-pic img {
   vertical-align: middle;
   display: inline-block;
 }
-.facilitator-container .list-block .item-content .item-inner textarea {
+.facilitator-container .list-block .item-content .item-inner textarea,
+.facilitator-container .list-block .item-content .item-inner input {
   font-size: 0.65rem;
   color: #666;
 }
-.facilitator-container .list-block .item-content .item-inner .alert-text {
+.facilitator-container .list-block .item-content .item-inner .prompt-title-ok {
   font-size: 0.6rem;
   color: #000;
 }
 .facilitator-container .list-block .item-content .item-inner .add-link {
   margin-left: 3.25rem;
+}
+.facilitator-container .list-block .list-block-header {
+  height: 2.25rem;
+  border-bottom: 1px solid #e7e7e7;
+}
+.facilitator-container .list-block .list-block-header h1 {
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0 -0.5rem;
+  font-size: 0.6rem;
+  line-height: 2.25rem;
+  color: #3d4145;
+  text-align: center;
+  white-space: nowrap;
+}
+.facilitator-container .list-block .list-block-header .button-link {
+  top: 0;
+  right: 0.9rem;
+  padding: 0;
+  font-size: 0.6rem;
+  line-height: 2.25rem;
+  height: 2.25rem;
+  color: #ff5a5f;
+  border: 0;
+}
+.facilitator-container .list-block .item-media {
+  margin-left: 0.75rem;
+  font-size: 0.65rem;
+}
+.facilitator-container .case-list .item-inner:after {
+  display: none;
+}
+.modal-title {
+  font-size: 0.65rem;
+}
+.modal-text {
+  font-size: 0.55rem;
 }
 .header-common {
   padding: 1.25rem 0;

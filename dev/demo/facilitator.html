@@ -65,7 +65,7 @@ title: 成为服务商
 			          <div class="item-inner">
 			            <div class="item-title label">擅长领域<span class="">*</span></div>
 			            <div class="item-input">
-			              <a href="#" class="alert-text">+ 添加标签</a>
+			              <a href="#" class="prompt-title-ok add-label">+ 添加标签</a>
 			            </div>
 			          </div>
 			        </div>
@@ -89,33 +89,72 @@ title: 成为服务商
 				          <div class="item-inner">
 				            <div class="item-title label">成功案例</div>
 				            <div class="item-input">
-				              <a href="#" class="alert-text">+ 添加标签</a>
-				              <a href="#" class="alert-text add-link">+ 添加链接</a>
+				              <a href="#" class="prompt-title-ok add-text">+ 添加文本</a>
+				              <a href="#" class="prompt-title-ok add-link">+ 添加链接</a>
 				            </div>
 				          </div>
 				        </div>
 			      </li>
 		      </ul>
 			</div>
-			<div class="list-block">
+			<div class="list-block case-list">
 				<ul>
 					<li>
-						<header class="bar bar-nav">
+						<div class="list-block-header">
 						  <button class="button button-link button-nav pull-right">删除</button>
 						  <h1 class="title">案例</h1>
-						</header>
-						<div class="item-media"><i class="icon icon-form-checkbox"></i></div>
-				        <div class="item-content">
-				        	<div class="item-media">标题</div>
-				          <div class="item-inner">
-				            <div class="item-title label">成功案例</div>
-				            <div class="item-input">
-				              <a href="#" class="alert-text">+ 添加标签</a>
-				              <a href="#" class="alert-text add-link">+ 添加链接</a>
-				            </div>
-				          </div>
+						</div>
+					</li>
+					<li>						
+						<div class="item-content">
+							<div class="item-media">标题</div>
+							<div class="item-inner">
+					            <div class="item-input">
+					              <input type="text" placeholder="请输入" name="" value="方案">
+					            </div>
+					        </div>
+				        </div>						
+					</li>
+					<li>
+						<div class="item-content">
+							<div class="item-media">描述</div>
+							<div class="item-inner">
+					            <div class="item-input">
+					              <textarea name="">方案中产生如视频制作、海报制作、活动奖品等等均由甲方自行承担费用。提供各类优质的推广渠道，费用客户自理。出具事件营销后的效果报告和评估。</textarea>
+					            </div>
+					        </div>
 				        </div>
-			      </li>
+					</li>
+		      </ul>
+			</div>
+			<div class="list-block case-list">
+				<ul>
+					<li>
+						<div class="list-block-header">
+						  <button class="button button-link button-nav pull-right">删除</button>
+						  <h1 class="title">案例</h1>
+						</div>
+					</li>
+					<li>						
+						<div class="item-content">
+							<div class="item-media">标题</div>
+							<div class="item-inner">
+					            <div class="item-input">
+					              <input type="text" placeholder="请输入" name="" value="行癫出任阿里集团">
+					            </div>
+					        </div>
+				        </div>						
+					</li>
+					<li>
+						<div class="item-content">
+							<div class="item-media">链接</div>
+							<div class="item-inner">
+					            <div class="item-input">
+					              <input type="text" value="http://www.huxiu.com/article/14034/1.htm…">
+					            </div>
+					        </div>
+				        </div>
+					</li>
 		      </ul>
 			</div>
 		</div>
@@ -123,7 +162,9 @@ title: 成为服务商
 
 </div>
 <script type="text/javascript">
-	$(document).on('click','.alert-text',function () {
-        $.alert('Here goes alert text');
+	$(document).on('click','.add-label',function () {
+		$.prompt('单个标签字数控制在10个汉字以内', '添加标签', function (value) {
+			 $.alert('Your name is "' + value + '". You clicked Ok button');
+		});
      });
 </script>
