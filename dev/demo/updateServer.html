@@ -1,0 +1,162 @@
+---
+layout: default
+title: 修改服务
+---
+<div class="page-group">
+	<div class="page" id="updateServer" data-title="修改服务">
+		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
+			  <span class="icon icon-left"></span>
+			  返回
+			</a>
+			<a class="button button-link button-nav pull-right js-savePageForm" href="javascript:void(0);">
+			  保存
+			</a>
+			<h1 class="title">修改服务</h1>
+		</header>
+		<div class="content">
+			<form action="" method="post">
+				<div class="list-block upServerList">
+				    <ul>
+						<li class="total">
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">总价&bull;元</div>
+									<div class="item-after">
+									  	<span class="js-totalPrice">6000</span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="js-targetline_1">
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">阶段1费用&bull;元</div>
+									<div class="item-input">
+						              <input type="number" value="2000" class="js-inputPrice">
+						            </div>
+								</div>
+							</div>
+						</li>
+						<li class="js-targetline_2">
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">阶段2费用&bull;元</div>
+									<div class="item-input">
+						              <input type="number" value="2000" class="js-inputPrice">
+						            </div>
+								</div>
+							</div>
+						</li>
+				    </ul>
+				</div>
+				<div class="serverListInfo">
+					<div class="card">
+						<div class="card-header"><span>阶段1</span><a href="javascript:void(0)" class="danger js-del-server" data-target=".js-line_1">删除</a></div>
+						<div class="card-content list-block">
+							<ul>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">阶段</div>
+											<div class="item-input">
+								              <input type="text" value="" placeholder="请输入阶段名">
+								            </div>
+										</div>
+									</div>
+								</li>
+								<li class="align-top">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">描述</div>
+											<div class="item-input">
+								              <textarea placeholder="请输入描述"></textarea>
+								            </div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header"><span>阶段2</span><a href="javascript:void(0)" class="danger js-del-server" data-target=".js-targetline_2">删除</a></div>
+						<div class="card-content list-block">
+							<ul>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">阶段</div>
+											<div class="item-input">
+								              <input type="text" value="" placeholder="请输入阶段名">
+								            </div>
+										</div>
+									</div>
+								</li>
+								<li class="align-top">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">描述</div>
+											<div class="item-input">
+												<textarea placeholder="请输入描述"></textarea>
+								    
+								            </div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="card js-add-server-option" data-temp="#serverListTemplate,#serverListInfoTemplate" data-target=".upServerList ul,.serverListInfo">
+					<div class="card-content">
+						<div class="card-content-inner text-center">
+							＋新增服务阶段
+						</div>
+					</div>
+				</div>
+			</form>
+			<div id="serverListInfoTemplate" style="display: none;">
+				<div class="card">
+					<div class="card-header"><span>阶段{index}</span><a href="javascript:void(0)" class="danger js-del-server" data-target=".js-targetline_{index}">删除</a></div>
+					<div class="card-content list-block">
+						<ul>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">阶段</div>
+										<div class="item-input">
+							              <input type="text" value="" placeholder="请输入阶段名">
+							            </div>
+									</div>
+								</div>
+							</li>
+							<li class="align-top">
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">描述</div>
+										<div class="item-input">
+											<textarea placeholder="请输入描述"></textarea>
+							    
+							            </div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="serverListTemplate" style="display: none;">
+				<li class="js-targetline_{index}">
+					<div class="item-content">
+						<div class="item-inner">
+							<div class="item-title label">阶段{index}费用&bull;元</div>
+							<div class="item-input">
+				              <input type="number" value="" class="js-inputPrice">
+				            </div>
+						</div>
+					</div>
+				</li>
+			</div>
+		</div>
+	</div>
+</div>

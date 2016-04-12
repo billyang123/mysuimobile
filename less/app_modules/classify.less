@@ -1,7 +1,11 @@
 .classify-container{
 	.classify-left-nav{
 		max-height: 552/@ppr;
-	    overflow: auto;
+	    overflow:auto;
+	    &::-webkit-scrollbar {
+			  width: 1px;
+		}
+	    -webkit-overflow-scrolling: touch;
 	    padding-bottom: 50px;
 		.tab-link{
 			width: 100%;
@@ -9,7 +13,7 @@
 			color: #999;
 			float: left;
 			.iconfont{
-				margin-right: 10/@ppr;
+				margin-right: 4/@ppr;
 				color: #000;
 			}
 			img{
@@ -62,6 +66,9 @@
 		.right-nav-content{
 			max-height: 400/@ppr;
 			overflow: auto;
+			&::-webkit-scrollbar {
+				width: 1px;
+			}
 			ul{
 				li{
 					list-style: none;

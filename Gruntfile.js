@@ -120,11 +120,30 @@ module.exports = function(grunt) {
                 ],
                 dest: '<%= meta.distPath %>js/zepto.js'
             },
-            videojs:{
+            cropper:{
                 src: [
-                    'js/videojs/video.js'
+                    'js/cropper.js'
                 ],
-                dest: '<%= meta.distPath %>js/video.js'
+                dest: '<%= meta.distPath %>js/cropper.js'
+            },
+            vue:{
+                src: [
+                    'js/vue.js'
+                ],
+                dest: '<%= meta.distPath %>js/vue.js'
+            },
+            wkim:{
+                src: [
+                    'js/im/wkim-3.2.5.js',
+                    'js/im/myWkim/*.js'
+                ],
+                dest: '<%= meta.distPath %>js/wkim.js'
+            },
+            moment:{
+                src: [
+                    'js/moment/moment.js'
+                ],
+                dest: '<%= meta.distPath %>js/moment.js'
             }
         },
 
@@ -145,10 +164,6 @@ module.exports = function(grunt) {
             dev: {
                 src: '<%= meta.lessPath %>/zanfuwu-app.less',
                 dest: '<%= meta.distPath %>css/<%= pkg.name %>-app.css'
-            },
-            videojs: {
-                src: '<%= meta.lessPath %>/videojs/videojs.less',
-                dest: '<%= meta.distPath %>css/videojs.css'
             }
         },
 
@@ -176,7 +191,7 @@ module.exports = function(grunt) {
             },    
             img: {
                 expand: true,
-                src: 'img/*',
+                src: 'img/**/*',
                 dest: '<%= meta.docsDistPath %>'
             },
             dev: {
@@ -228,10 +243,6 @@ module.exports = function(grunt) {
                     '<%= meta.distPath %>css/zanfuwu-app.css'
                 ],
                 dest: '<%= meta.distPath %>css/<%= pkg.name %>-app.min.css'
-            },
-            videojs: {
-                src: '<%= meta.distPath %>css/videojs.css',
-                dest: '<%= meta.distPath %>css/videojs.min.css'
             }
         },
 
@@ -268,9 +279,21 @@ module.exports = function(grunt) {
             	src: '<%= concat.zepto.dest %>',
                 dest: '<%= meta.distPath %>js/zepto.min.js'
             },
-            videojs:{
-                src:'<%= concat.videojs.dest %>',
-                dest: '<%= meta.distPath %>js/video.min.js'
+            cropper:{
+                src:'<%= concat.cropper.dest %>',
+                dest: '<%= meta.distPath %>js/cropper.min.js'
+            },
+            vue:{
+                src:'<%= concat.vue.dest %>',
+                dest: '<%= meta.distPath %>js/vue.min.js'
+            },
+            wkim:{
+                src:'<%= concat.wkim.dest %>',
+                dest: '<%= meta.distPath %>js/wkim.min.js'
+            },
+            moment:{
+                src:'<%= concat.moment.dest %>',
+                dest: '<%= meta.distPath %>js/moment.min.js'
             }
         },
 
@@ -347,8 +370,8 @@ module.exports = function(grunt) {
     grunt.registerTask('validate-html', ['jekyll']);
     grunt.registerTask('build', ['dist']);
     grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
-    //grunt.registerTask('server', ['dist', 'jekyll', 'watch']);
-    grunt.registerTask('server', ['dist', 'jekyll',"connect", 'watch']);
+    grunt.registerTask('server', ['dist', 'jekyll', 'watch']);
+    //grunt.registerTask('server', ['dist', 'jekyll',"connect", 'watch']);
     if (buildTo) {
         //CDN发布环境
         grunt.registerTask('default', ['build-js', 'build-css', 'copy']);

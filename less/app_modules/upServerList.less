@@ -1,0 +1,84 @@
+.upServerList {
+	margin: 10/@ppr 0;
+	.item-input input{
+		text-align: right;
+	}
+	li {	
+		.item-title.label,.item-input input {
+			font-size: 12/@ppr;
+		}
+		&.total {
+			.item-title.label,.item-after{
+				font-size: 14/@ppr;
+			}
+		}
+	}
+}
+.serverListInfo {
+	.card{
+		.card-header > a {
+			display: none;
+		}
+		&:last-child {
+			.card-header > a {
+				display: inline-block;
+			}
+		}
+	}
+	.card-header {
+		position: relative;
+		font-size: 12/@ppr;
+		> span {
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
+		> a {
+			position: absolute;
+			right: 0.75rem;
+			top: 0.6rem;
+		}
+	}
+	.item-title.label {
+		font-size: 14/@ppr;
+	}
+	textarea {
+		line-height: 28/@ppr;
+	}
+	.list-block textarea,.list-block input{
+		font-size: 12/@ppr;
+	}
+}
+.upprice-singer {
+	margin:10/@ppr;
+	&.list-block .item-inner {
+		padding-top: 25/@ppr;
+    	padding-bottom: 25/@ppr;
+    	padding-right:20/@ppr;
+	}
+	.item-title {
+		font-size: 16/@ppr;
+		color: #000;
+		font-weight: normal !important;
+	}
+	.item-input {
+		width: 50%;
+		input {
+			text-align: right;
+			color: #999;
+			font-size: 14/@ppr;
+		}
+	}
+	.item-content {
+		padding-left: 20/@ppr;
+	}
+	.item-subtitle {
+		font-size: 12/@ppr;
+		text-align: right;
+		margin-top: 4/@ppr;
+		strong {
+			font-weight: normal;
+			color: #ff5a5f;
+		}
+	}
+}
