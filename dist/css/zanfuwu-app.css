@@ -1987,6 +1987,21 @@ html.retina.ios-6 .message.message-pic img {
 .facilitator-container .list-block .item-content .item-inner .add-link {
   margin-left: 3.25rem;
 }
+.facilitator-container .list-block .item-content .item-input .label-info {
+  margin: 0.25rem 0.5rem 0.25rem 0rem;
+  vertical-align: middle;
+  padding: 0.35rem 0.7rem;
+  border-radius: 1.2rem;
+  font-size: 0.6rem;
+  border: 1px solid #f4f4f4;
+  float: left;
+}
+.facilitator-container .list-block .item-content .item-input .add-label {
+  float: left;
+  margin-bottom: 0.25rem;
+  line-height: 2.4rem;
+  margin-left: 0.75rem;
+}
 .facilitator-container .list-block .list-block-header {
   height: 2.25rem;
   border-bottom: 1px solid #e7e7e7;
@@ -2003,7 +2018,7 @@ html.retina.ios-6 .message.message-pic img {
   text-align: center;
   white-space: nowrap;
 }
-.facilitator-container .list-block .list-block-header .button-link {
+.facilitator-container .list-block .list-block-header .pull-right {
   top: 0;
   right: 0.9rem;
   padding: 0;
@@ -2012,6 +2027,7 @@ html.retina.ios-6 .message.message-pic img {
   height: 2.25rem;
   color: #ff5a5f;
   border: 0;
+  z-index: 20;
 }
 .facilitator-container .list-block .item-media {
   margin-left: 0.75rem;
