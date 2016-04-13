@@ -4,7 +4,7 @@ title: 成为服务商
 ---
 <div class="page-group">
 
-	<div class="page facilitator-container" id="pageFacilitator">
+	<div class="page facilitator-container" id="updateServer">
 	<!-- 你的html代码 -->
 		<header class="bar bar-nav">
 			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
@@ -89,7 +89,7 @@ title: 成为服务商
 				          <div class="item-inner">
 				            <div class="item-title label">成功案例</div>
 				            <div class="item-input">
-				              <a href="#" class="prompt-title-ok add-text">+ 添加文本</a>
+				              <a href="#" class="prompt-title-ok add-text js-add-server-option" data-temp="#casetextTemplate" data-target=".case-text">+ 添加文本</a>
 				              <a href="#" class="prompt-title-ok add-link">+ 添加链接</a>
 				            </div>
 				          </div>
@@ -97,7 +97,7 @@ title: 成为服务商
 			      </li>
 		      </ul>
 			</div>
-			<div class="list-block case-list">
+			<div class="list-block case-list case-text">
 				<ul>
 					<li>
 						<div class="list-block-header">
@@ -127,7 +127,7 @@ title: 成为服务商
 					</li>
 		      </ul>
 			</div>
-			<div class="list-block case-list">
+			<div class="list-block case-list case-link">
 				<ul>
 					<li>
 						<div class="list-block-header">
@@ -156,6 +156,39 @@ title: 成为服务商
 				        </div>
 					</li>
 		      </ul>
+			</div>
+			<div id="casetextTemplate" style="display: none;">
+				<ul>
+					<li>
+						<div class="list-block-header">
+						  <a href="javascript:void(0)" class="danger js-del-server pull-right" data-target=".js-targetline_{index}">删除</a>
+						  <h1 class="title">案例{index}</h1>
+						</div>
+					</li>
+					<li>						
+						<div class="item-content">
+							<div class="item-media">标题</div>
+							<div class="item-inner">
+					            <div class="item-input">
+					              <input type="text" placeholder="请输入" name="" value="方案">
+					            </div>
+					        </div>
+				        </div>						
+					</li>
+					<li>
+						<div class="item-content">
+							<div class="item-media">描述</div>
+							<div class="item-inner">
+					            <div class="item-input">
+					              <textarea name="">方案中产生如视频制作、海报制作、活动奖品等等均由甲方自行承担费用。提供各类优质的推广渠道，费用客户自理。出具事件营销后的效果报告和评估。</textarea>
+					            </div>
+					        </div>
+				        </div>
+					</li>
+		      </ul>
+			</div>			
+			<div id="caselinkTemplate" style="display: none;">
+				
 			</div>
 		</div>
 	</div>
