@@ -36,86 +36,34 @@ $(function () {
   //     ].join("");
   //     __app.includeStyleElement(styles,"forAndroidStyles");
   // }
-  __app.xxFileUploader = {
-    fileInput: null,
-    url:null,
-    singe:true,
-    fileFilter: [],
-    filter: function(files) {   //选择文件组的过滤方法
-      return files; 
-    },
-    onSelect: function() {},
-    onProgress: function() {},    //文件上传进度
-    onSuccess: function() {},   //文件上传成功时
-    onFailure: function() {},   //文件上传失败时,
-    onComplete: function() {},  //文件全部上传完毕时
-    funGetFiles: function(e) {    
-      // 获取文件列表对象
-      var files = e.target.files || e.dataTransfer.files;
-      //继续添加文件
-      this.fileFilter = this.fileFilter.concat(this.filter(files));
-      this.funDealFiles();
-      return this;
-    },
-    //选中文件的处理与回调
-    funDealFiles: function() {
-      for (var i = 0, file; file = this.fileFilter[i]; i++) {
-        //增加唯一索引值
-        file.index = i;
-      }
-      //执行选择回调
-      this.onSelect(this.fileFilter);
-      return this;
-    },
-    //文件上传
-    funUploadFile: function() {
-      var self = this;  
-      if (location.host.indexOf("sitepointstatic") >= 0) {
-        //非站点服务器上运行
-        return; 
-      }
-      for (var i = 0, file; file = this.fileFilter[i]; i++) {
-        (function(file) {
-          var xhr = new XMLHttpRequest();
-          if (xhr.upload) {
-            // 上传中
-            xhr.upload.addEventListener("progress", function(e) {
-              self.onProgress(file, e.loaded, e.total);
-            }, false);
+  __app.xxFileUploader =function(element,options){
+      var settings = $.extend({
+        trigger: element,
+        accept: 'image/*',
+        multiple: true,
+        error: function(msg) {
+          if(msg.status == 413) {
+            $.alert("上传的图片过大");
+          }else{
+            $.alert("上传图片失败");
+          }
+        },
+        change: function(files){
+          if(files.length==0){
+            return;
+          }
+          $.showPreloader('正在上传:<span id="uploadPercent">0%</span>')
+          this.submit();
+        },
+        success: function(response,files) {
 
-            // 文件上传成功或是失败
-            xhr.onreadystatechange = function(e) {
-              if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                  self.onSuccess(file, xhr.responseText);
-                  if (!self.fileFilter.length) {
-                    //全部完毕
-                    self.onComplete();  
-                  }
-                } else {
-                  self.onFailure(file, xhr.responseText);   
-                }
-              }
-            };
-
-            // 开始上传
-            xhr.open("POST", self.url, true);
-            xhr.setRequestHeader("X_FILENAME", file.name);
-            xhr.send(file);
-          } 
-        })(file); 
-      }    
-    },
-    init: function() {
-      var self = this;   
-      //文件选择控件选择
-      if (this.fileInput) {
-        $(document).on("change",this.fileInput,function(e){
-           self.funGetFiles(e); self.funUploadFile()
-        })
-        // this.fileInput.addEventListener("change", function(e) { self.funGetFiles(e); self.funUploadFile()}, false); 
-      }
-    }
+        },
+        progress: function(event, position, total, percent, files) {
+          $("#uploadPercent").text(percent+"%")
+          //$('body>.modal .modal-title').text()
+        }
+      },options)
+      new H5Upload(settings);
   }
   __app.hasLoalStorage = function(appString){
     if(!__app[appString]){
@@ -681,6 +629,7 @@ $(function () {
       $(document).on("click",".js-send-code",function(){
         codeData['mobile'] = $('[name="mobile"]').val();
         codeData['code'] =  $("#codeImgInput").val();
+        codeData['id'] = $('.js-getimgcode').data("id");
         __app.sendCode(this,codeData)
       })
       $(document).on("click",".js-getimgcode",function(){
@@ -691,10 +640,29 @@ $(function () {
             dataType:"json",
             success:function(res){
               __target.css({'background-image':'url('+res.ref.img+')'});
-              codeData["id"] = res.ref.id;
-              //__target.data("id",res.ref.id);
+              //codeData["id"] = res.ref.id;
+              __target.data("id",res.ref.id);
             }
           })
+      })
+      $(document).on('click',"#phoneLogin",function(){
+        var __target = $(this);
+        var __form = $(this).closest("form");
+        $.ajax({
+          url:__form.attr("action"),
+          type:__form.attr('method'),
+          dataType:"json",
+          data:__form.serializeArray(),
+          success:function(res){
+            if (res.errorCode == 0) {
+                $.toast("登录成功");
+                $.router.load(__form.data("dir"))
+                // window.location.href=__form.data("dir");
+            } else {
+                $.alert(res.errorInfo);
+            }
+          }
+        })
       })
   }
   iphoneValid();
@@ -759,38 +727,50 @@ $(function () {
       }
       
   });
-  if($.device.ios){
-    $(document).on("change","#cameraInput",function(e){
-      var __this = $(this);
-      var ajaxurl = $(this).data("url")||'/member/save/updateAvatar';
+  __app.uploadByBase64 = function(element,callback){
+      var __this = $(element);
+      var ajaxurl = __this.data("url")||'/member/save/updateAvatar';
+      var preview = __this.data("preview") || ".userimg";
+      var done = __this.data("done");
+      var _name = __this.data("name") || "avatar";
+      var _data = {};
+      
       $.showPreloader("图片上传中...");
-      lrz(this.files[0]).then(function (rst) {
+
+      lrz(__this[0].files[0],{width:800}).then(function (rst) {
+          _data[_name] = rst.base64;
             $.ajax({  
               url: ajaxurl,  
               type: 'POST',  
-              data: {
-                avatar:rst.base64
-              },  
+              data: _data,  
               dataType: 'json',
               success: function(res) {
+  
                   $.hidePreloader();
                   if(res.success){
-                    $(".userimg").css("background-image","url("+res.picUrl+")");         
+                    $(preview).css("background-image","url("+res.picUrl+")");         
                   }else{
-                    $.alert("更改头像失败！")
+                    $.alert("上传图片失败！")
                   }
+                  if (done) {
+                    (new Function('res', done)).call(self, res);
+                  }
+                  callback && callback(res)
               }
           })
         }).catch(function (err) {
-          $.alert("更改头像失败！")
+          $.alert("上传图片失败！")
             // 处理失败会执行
         }).always(function () {
             $.hidePreloader();
             // 不管是成功失败，都会执行
         });
-      //__app.imageUploader("#cameraInput","#uploadImageProview","#uploadImagePopup",this.files);
-    })
   }
+  //if($.device.ios){
+    $(document).on("change","#cameraInput,.js-upload",function(e){
+      __app.uploadByBase64(this);
+    })
+  //}
   $(document).on('click',".js-savePageForm",function(e){
       var __form = $($(this).data("target"));
       var _dir = $(this).data("dirurl");
@@ -885,6 +865,7 @@ $(function () {
       $('.buttons-tab').fixedTab({offset:$('#pageOrder .bar-nav').length>0 ? $('#pageOrder .bar-nav').height():0});
   })
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
+      $.getScript("/assets/js/lrz.bundle.js",function(){})
       if($.device.ios) $("#cameraInput").show();
       var toolbarTmp = '<header class="bar bar-nav"></button><button class="button button-link pull-right close-picker">完成</button><h1 class="title">{{text}}</h1></header>'
       __app.cityPicker({
@@ -942,17 +923,26 @@ $(function () {
       __app.updataServerTotal();
   })
   var myAPWkim = null;
+  var islistConversation = false;
   $(document).on("pageInit", "#pageMessages", function(e, id, page) {
-      myAPWkim = new __app.myWkim();
+     if(!myAPWkim) myAPWkim = new __app.myWkim();
+      islistConversation = true;
   })
   $(document).on("pageInit", "#pageMessagesChat", function(e, id, page) {
       var flag = false;
       if(!myAPWkim) myAPWkim = new __app.myWkim();
-      myAPWkim.myImChatInit();
+      if(islistConversation){
+        myAPWkim.myImChatInit();
+      }
       if(!flag) {
         myAPWkim.faceInit("#chatSendface");
         flag = true;
       }
+  })
+  $(document).on("pageInit","#openShop-uploadintro",function(){
+    $.getScript("/assets/js/lrz.bundle.js",function(){
+
+    })
   })
   $.init();
 });
