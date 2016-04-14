@@ -723,6 +723,7 @@ $(function () {
   });
   __app.uploadByBase64 = function(element,callback){
       var __this = $(element);
+      if(__this[0].files.length==0) return;
       var ajaxurl = __this.data("url")||'/member/save/updateAvatar';
       var preview = __this.data("preview") || ".userimg";
       var done = __this.data("done");
@@ -859,7 +860,8 @@ $(function () {
       $('.buttons-tab').fixedTab({offset:$('#pageOrder .bar-nav').length>0 ? $('#pageOrder .bar-nav').height():0});
   })
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
-      $.getScript("/assets/js/lrz.bundle.js",function(){})
+      var staticDomain = window.staticDomain?window.staticDomain:"";
+      $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
       if($.device.ios) $("#cameraInput").show();
       var toolbarTmp = '<header class="bar bar-nav"></button><button class="button button-link pull-right close-picker">完成</button><h1 class="title">{{text}}</h1></header>'
       __app.cityPicker({
@@ -934,9 +936,8 @@ $(function () {
       }
   })
   $(document).on("pageInit","#openShop-uploadintro",function(){
-    $.getScript("/assets/js/lrz.bundle.js",function(){
-
-    })
+     var staticDomain = window.staticDomain?window.staticDomain:"";
+      $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
   })
   $.init();
 });

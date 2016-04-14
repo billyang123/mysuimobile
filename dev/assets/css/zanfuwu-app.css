@@ -329,6 +329,62 @@ h3 {
   border: 0;
   color: #fff;
 }
+.level {
+  background-image: url("http://s2.renhe.cn/images/icon_level_160122.png");
+  background-repeat: no-repeat;
+  background-size: 4.95rem 2.575rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  position: absolute;
+  right: -7px;
+  bottom: -4px;
+}
+.level-plat {
+  background-position: 0 0;
+}
+.level-gold {
+  background-position: -1.275rem 0;
+}
+.level-auth {
+  background-position: -3.875rem 0;
+}
+.level-vip {
+  background-position: -2.575rem 0;
+}
+.level-sm {
+  width: 0.65rem;
+  height: 0.65rem;
+}
+.level-sm-plat {
+  background-position: 0 -1.275rem;
+}
+.level-sm-gold {
+  background-position: -1.275rem -1.275rem;
+}
+.level-sm-auth {
+  background-position: -3.875rem -1.275rem;
+}
+.level-sm-vip {
+  background-position: -2.575rem -1.275rem;
+}
+.level-xs {
+  width: 0.55rem;
+  height: 0.55rem;
+  right: -0.15rem;
+  bottom: -0.05rem;
+}
+.level-xs-plat {
+  background-position: 0 -2.025rem;
+}
+.level-xs-gold {
+  background-position: -1.275rem -2.025rem;
+}
+.level-xs-auth {
+  background-position: -3.875rem -2.025rem;
+}
+.level-xs-vip {
+  background-position: -2.575rem -2.025rem;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
@@ -1822,6 +1878,22 @@ html.retina.ios-6 .message.message-pic img {
   color: #c2c2c2;
   font-size: 0.6rem;
   margin-top: 0.5rem;
+}
+.openshop-upinfocard .avater-box {
+  padding: 1.25rem;
+}
+.openshop-upinfocard .avater-box .userimg {
+  position: relative;
+}
+.openshop-upinfocard .avater-box h3 {
+  color: #000;
+  font-size: 0.65rem;
+  text-align: center;
+}
+.openshop-upinfocard .avater-box .fc-blue {
+  font-size: 0.55rem;
+  color: #8ec73f;
+  text-align: center;
 }
 .openshop-upcard {
   padding-bottom: 1px;

@@ -144,6 +144,12 @@ module.exports = function(grunt) {
                     'js/moment/moment.js'
                 ],
                 dest: '<%= meta.distPath %>js/moment.js'
+            },
+            lrz:{
+                src:[
+                    'js/lrz/lrz.bundle.js'
+                ],
+                dest: '<%= meta.distPath %>js/lrz.bundle.js'
             }
         },
 
