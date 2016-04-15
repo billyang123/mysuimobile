@@ -1456,6 +1456,10 @@ html.ios-gt-8 .messages-date {
   color: #999999;
   font-size: 0.6rem;
 }
+.messages-list.list-block.media-list .item-inner {
+  padding-top: 1.05rem;
+  padding-bottom: 1rem;
+}
 .faceMainPopup .popop-facehd {
   height: 2.2rem;
 }
@@ -1893,6 +1897,26 @@ html.retina.ios-6 .message.message-pic img {
 .openshop-upinfocard .avater-box .fc-blue {
   font-size: 0.55rem;
   color: #8ec73f;
+  text-align: center;
+}
+.openshop-upinfocard .result-box {
+  text-align: center;
+  padding: 1.25rem;
+}
+.openshop-upinfocard .result-box h3 {
+  font-size: 0.65rem;
+  color: #000;
+  margin: 0;
+  text-align: center;
+}
+.openshop-upinfocard .result-box .fc-red {
+  font-size: 0.65rem;
+  color: #ff3c50;
+}
+.openshop-upinfocard .result-box p {
+  font-size: 0.65rem;
+  color: #acadae;
+  margin: 0;
   text-align: center;
 }
 .openshop-upcard {

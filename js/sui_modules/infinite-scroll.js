@@ -8,7 +8,7 @@
         var scrollTop = scroller.scrollTop();
         var scrollHeight = scroller.scrollHeight();
         var height = inf[0].offsetHeight;
-        var distance = inf[0].getAttribute('data-distance');
+        var distance = parseInt(inf[0].getAttribute('data-distance'),10);
         var virtualListContainer = inf.find('.virtual-list');
         var virtualList;
         var onTop = inf.hasClass('infinite-scroll-top');

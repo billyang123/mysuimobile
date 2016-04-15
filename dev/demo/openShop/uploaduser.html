@@ -11,7 +11,7 @@ title: 账号信息
 			<h1 class="title">成为服务商</h1>
 		</header>
 		<nav class="bar bar-tab store-detail-bar">
-		   	<a class="tab-item external" href="#">
+		   	<a class="tab-item external js-savePageForm" data-target="form" href="#" data-dirurl="#">
 			  下一步
 			</a>
 		</nav>
@@ -38,87 +38,89 @@ title: 账号信息
 					</div>
 				</div>
 			</div>
-			<div class="card openshop-upcard">
-				<div class="list-block">
-					<ul>
-						<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">
-										<span>*</span>真实姓名
-									</div>
-									<div class="item-input">
-										<input type="text" placeholder="请输入真实姓名" name="">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">
-										<span>*</span>身份证号码
-									</div>
-									<div class="item-input">
-										<input type="text" placeholder="请输入身份证号码" name="">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">
-										<span>*</span>身份证照片
-									</div>
-									<div class="item-after">
-										要求身份证正反面关键信息清晰可见。
-									</div>
-								</div>
-
-							</div>
-							<div class="item-content item-upcards">
-								<div class="item-inner">
-									<div class="item-title label">
-										正面
-									</div>
-									<div class="item-input">
-										<div class="upcard-input">
-											
-											<div class="upcard-imgback" id="frontInput">
-												<input type="file" data-preview="#frontInput" class="fileupload js-upload" accept="image/*" data-name="cardPhoto" data-url="/ajax/avter.json" data-done="$('[name=idcardFrontPhoto]').val(res.photoName)">
-												<input type="hidden" name="idcardFrontPhoto">
-											</div>
-											
+			<form action="/ajax/sendcode.json" method="post">
+				<div class="card openshop-upcard">
+					<div class="list-block">
+						<ul>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">
+											<span>*</span>真实姓名
 										</div>
-										
+										<div class="item-input">
+											<input type="text" placeholder="请输入真实姓名" name="">
+										</div>
 									</div>
 								</div>
-
-							</div>
-							<div class="item-content item-upcards">
-								<div class="item-inner">
-									<div class="item-title label">
-										背面
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">
+											<span>*</span>身份证号码
+										</div>
+										<div class="item-input">
+											<input type="text" validate="{rules:{isIdCardNo:true}}" placeholder="请输入身份证号码" name="">
+										</div>
 									</div>
-									<div class="item-input">
-										<div class="upcard-input">
-											
-											<div class="upcard-imgback" id="backInput">
-													<input type="file" data-preview="#backInput" class="fileupload js-upload" accept="image/*" data-name="cardPhoto" data-url="/ajax/avter.json" data-done="$('[name=idcardBackPhoto]').val(res.photoName)">
-													<input type="hidden" name="idcardBackPhoto">
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">
+											<span>*</span>身份证照片
+										</div>
+										<div class="item-after">
+											要求身份证正反面关键信息清晰可见。
+										</div>
+									</div>
+
+								</div>
+								<div class="item-content item-upcards">
+									<div class="item-inner">
+										<div class="item-title label">
+											正面
+										</div>
+										<div class="item-input">
+											<div class="upcard-input">
+												
+												<div class="upcard-imgback" id="frontInput">
+													<input type="file" data-preview="#frontInput" class="fileupload js-upload" accept="image/*" data-name="cardPhoto" data-url="/ajax/avter.json" data-done="$('[name=idcardFrontPhoto]').val(res.photoName)">
+													<input type="hidden" name="idcardFrontPhoto">
+												</div>
+												
 											</div>
 											
 										</div>
 									</div>
+
 								</div>
+								<div class="item-content item-upcards">
+									<div class="item-inner">
+										<div class="item-title label">
+											背面
+										</div>
+										<div class="item-input">
+											<div class="upcard-input">
+												
+												<div class="upcard-imgback" id="backInput">
+														<input type="file" data-preview="#backInput" class="fileupload js-upload" accept="image/*" data-name="cardPhoto" data-url="/ajax/avter.json" data-done="$('[name=idcardBackPhoto]').val(res.photoName)">
+														<input type="hidden" name="idcardBackPhoto">
+												</div>
+												
+											</div>
+										</div>
+									</div>
 
-							</div>
-						</li>
+								</div>
+							</li>
 
-					</ul>
+						</ul>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>
