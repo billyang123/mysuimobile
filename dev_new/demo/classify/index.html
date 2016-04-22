@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>分类</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="/assets/css/zanfuwu.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-extend.css">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-114x114.png">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1457949205_1344323.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-app.css">
+    <script type='text/javascript' src='/assets/js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-config.js' charset='utf-8'></script>
+    <!--  <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?ba76f8230db5f616edc89ce066670710";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ -->
+  </head>
+  <body>
+    <div class="page-group">
+  
+  <div class="page classify-container" id="pageClassify">
+    <header class="bar bar-nav zfw-top-search" id="searchBars" data-url="/ajax/class-item/index.html" data-params="pageNo={index}" data-target="#searchListContent" data-key="query">
+    <div class="searchbar">
+      <a class="searchbar-cancel">取消</a>
+      <div class="search-input">
+        <label class="icon icon-search" for="search"></label>
+        <input type="search" id='search' placeholder='输入关键字...'/>
+      </div>
+    </div>
+    <!-- <a class="iconfont pull-right danger" href="#">&#xe60b;</a> -->
+</header>
+    <!-- 工具栏 -->
+<!-- <nav class="bar bar-tab bar-bottom-nav">
+    <li>
+        <a class="tab-item external active" href="#">
+            <span class="icon iconfont">&#xe603;</span>
+            <span class="tab-label">首页</span>
+        </a>
+    </li>
+    <li>
+        <a class="tab-item external" href="#">
+            <span class="icon iconfont icon-zanfuwutubiao02"></span>
+            <span class="tab-label">分类</span>
+        </a>
+    </li>
+    <li>
+        <a class="tab-item external" href="#">
+            <span class="icon iconfont icon-zanfuwutubiao03"></span>
+            <span class="tab-label">订单</span>
+        </a>
+    </li>
+    <li>
+        <a class="tab-item external" href="#">
+            <span class="icon iconfont icon-zanfuwutubiao04"></span>
+            <span class="tab-label">我</span>
+        </a>
+    </li>
+</nav> -->
+<nav class="bar bar-tab bar-bottom-nav">
+    <a class="tab-item external active" href="#">
+        <span class="icon iconfont">&#xe603;</span>
+        <span class="tab-label">首页</span>
+    </a>
+    <a class="tab-item external" href="#">
+        <span class="icon iconfont">&#xe604;</span>
+        <span class="tab-label">分类</span>
+    </a>
+    <a class="tab-item external" href="#">
+        <span class="icon iconfont">&#xe605;</span>
+        <span class="tab-label">订单</span>
+    </a>
+    <a class="tab-item external" href="#">
+        <span class="icon iconfont">&#xe606;</span>
+        <span class="tab-label">我</span>
+    </a>
+</nav>
+    <div class="content">
+      <div class="row">
+        <div class="classify-left-nav col-40">
+            <a href="#tab1" class="tab-link active">
+                <img src="/images/i-f7.png" alt="">
+                <span class="txt">招聘</span>
+            </a>
+            <a href="#tab2" class="tab-link">
+              <span class="iconfont icon-zanfuwutubiao12"></span>
+              <span class="txt">管理</span>
+            </a>
+            <a href="#tab3" class="tab-link">
+                <span class="iconfont icon-zanfuwutubiao13"></span>
+                <span class="txt">培训</span>
+            </a>
+            <a href="#tab4" class="tab-link">
+                <span class="iconfont icon-zanfuwutubiao11"></span>
+                <span class="txt">法律</span>
+            </a>
+            <a href="#tab5" class="tab-link">
+                <span class="iconfont icon-zanfuwutubiao07"></span>
+                <span class="txt">营销</span>
+            </a>
+            <a href="#tab6" class="tab-link">
+                <span class="iconfont icon-zanfuwutubiao07"></span>
+                <span class="txt">互联网</span>
+            </a>
+            <a href="#tab7" class="tab-link">
+                <span class="iconfont icon-zanfuwutubiao07"></span>
+                <span class="txt">家居</span>
+            </a>
+            <a href="#tab8" class="tab-link">
+                <span class="iconfont icon-zanfuwutubiao07"></span>
+                <span class="txt">音乐</span>
+            </a>
+            <a href="#tab9" class="tab-link">
+                <span class="iconfont icon-zanfuwutubiao07"></span>
+                <span class="txt">其他</span>
+            </a>
+        </div>        
+        <div class="classify-right-nav col-60">
+          <div class="tabs">
+             <div id="tab1" class="tab active">
+                <div class="right-nav-top">招聘      
+                  <div class="sub-title">Hiring</div>
+                  <div class="line"></div>
+                </div>
+                <div class="right-nav-content">
+                  <ul>
+                    <li><a href="">用户体验设计</a></li>
+                    <li><a href="">前端开发</a></li>
+                    <li><a href="">后端开发</a></li>
+                    <li><a href="">产品运营</a></li>
+                    <li><a href="">市场</a></li>
+                    <li><a href="">BD</a></li>
+                    <li><a href="">Growth-hacking</a></li>
+                    <li><a href="">财务出纳</a></li>
+                    <li><a href="">行政薪酬</a></li>
+                    <li><a href="">用户体验设计</a></li>
+                    <li><a href="">前端开发</a></li>
+                    <li><a href="">后端开发</a></li>
+                    <li><a href="">产品运营</a></li>
+                    <li><a href="">市场</a></li>
+                    <li><a href="">BD</a></li>
+                    <li><a href="">Growth-hacking</a></li>
+                    <li><a href="">财务出纳</a></li>
+                    <li><a href="">行政薪酬</a></li>
+                  </ul>
+                </div>
+            </div>
+            <div id="tab2" class="tab">
+                <div class="right-nav-top">管理      
+                  <div class="sub-title">Hiring</div>
+                  <div class="line"></div>
+                </div>
+                <div class="right-nav-content">
+                  <ul>
+                    <li>用户体验设计</li>
+                    <li>前端开发</li>
+                    <li>后端开发</li>
+                    <li>产品运营</li>
+                    <li>市场</li>
+                    <li>BD</li>
+                    <li>Growth-hacking</li>
+                    <li>财务出纳</li>
+                    <li>行政薪酬</li>
+                  </ul>
+                </div>
+            </div>
+            <div id="tab3" class="tab">
+                <div class="right-nav-top">培训
+                  <div class="sub-title">Hiring</div>
+                  <div class="line"></div>
+                </div>
+                <div class="right-nav-content">  
+                  <ul>
+                    <li>用户体验设计</li>
+                    <li>前端开发</li>
+                    <li>后端开发</li>
+                    <li>产品运营</li>
+                    <li>市场</li>
+                    <li>BD</li>
+                    <li>Growth-hacking</li>
+                    <li>财务出纳</li>
+                    <li>行政薪酬</li>
+                  </ul>                
+                </div>
+            </div>
+            <div id="tab4" class="tab">
+                <div class="right-nav-top">法律
+                  <div class="sub-title">Hiring</div>
+                  <div class="line"></div>
+                </div>
+                <div class="right-nav-content">2</div>
+            </div>
+            <div id="tab5" class="tab">
+                <div class="right-nav-top">营销
+                  <div class="sub-title">Hiring</div>
+                  <div class="line"></div>
+                </div>
+                <div class="right-nav-content">2</div>
+            </div>
+            <div id="tab6" class="tab">
+                <div class="right-nav-top">互联网
+                  <div class="sub-title">Hiring</div>
+                  <div class="line"></div>
+                </div>
+                <div class="right-nav-content">2</div>
+            </div>
+            <div id="tab7" class="tab">
+                <div class="right-nav-top">家居
+                  <div class="sub-title">Hiring</div>
+                  <div class="line"></div>
+                </div>
+                <div class="right-nav-content">2</div>
+            </div>
+            <div id="tab8" class="tab">
+                <div class="right-nav-top">音乐
+                  <div class="sub-title">Hiring</div>
+                  <div class="line"></div>
+                </div>
+                <div class="right-nav-content">2</div>
+            </div>
+            <div id="tab9" class="tab">
+                <div class="right-nav-top">其他
+                  <div class="sub-title">Hiring</div>
+                  <div class="line"></div>
+                </div>
+                <div class="right-nav-content">2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+  </div>
+</div>
+
+    <script type='text/javascript' src='/assets/js/zanfuwu.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-extend.js' charset='utf-8'></script>
+    <script src="/assets/js/moment.js"></script>
+    <script src="/assets/js/wkim.js"></script>
+    <script src="/assets/js/zanfuwu-app.js"></script>
+  </body>
+</html>
+

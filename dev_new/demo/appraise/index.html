@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>评价</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="/assets/css/zanfuwu.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-extend.css">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-114x114.png">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1457949205_1344323.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-app.css">
+    <script type='text/javascript' src='/assets/js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-config.js' charset='utf-8'></script>
+    <!--  <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?ba76f8230db5f616edc89ce066670710";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ -->
+  </head>
+  <body>
+    <div class="page-group">
+	<div class="page appraise-container" id="pageBuy">
+	<!-- 你的html代码 -->
+		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
+			  <span class="icon icon-left"></span>
+			</a>
+			<h1 class="title">评价</h1>
+		</header>
+		<nav class="bar bar-tab store-detail-bar">
+		   	<a class="tab-item external" href="#">
+			  提交评价
+			</a>
+		</nav>
+		<div class="content">
+			<textarea name="" id=""  class="appraise-content" placeholder="请写下你对服务的感受吧，对他人帮助很大哦！"></textarea>
+			<div class="list-block">
+			    <ul>
+			      <!-- Text inputs -->
+			      <li>
+			        <div class="item-content">
+			          <div class="item-inner">
+			            <div class="item-title label">服务评分</div>
+			            <div class="item-input">
+			              <div class="panel-comment">
+								<i class="icon iconfont icon-shiliangzhinengduixiang603 danger" index="1"></i>
+								<i class="icon iconfont icon-shiliangzhinengduixiang603" index="2"></i>
+								<i class="icon iconfont icon-shiliangzhinengduixiang603" index="3"></i>
+								<i class="icon iconfont icon-shiliangzhinengduixiang603" index="4"></i>
+								<i class="icon iconfont icon-shiliangzhinengduixiang603" index="5"></i>
+							</div>
+			            </div>
+			          </div>
+			        </div>
+			      </li>
+				</ul>
+			</div>
+			<!-- 这里是页面内容区 -->
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript">
+	$(".panel-comment i").click(function(){
+		var $this =$(this);
+		var index = $this.attr("index");
+		$(".panel-comment i").removeClass("danger");
+		for(var i= 0;i<index;i++){
+			$(".panel-comment i").eq(i).addClass("danger");
+		}
+	});		    
+</script>
+    <script type='text/javascript' src='/assets/js/zanfuwu.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-extend.js' charset='utf-8'></script>
+    <script src="/assets/js/moment.js"></script>
+    <script src="/assets/js/wkim.js"></script>
+    <script src="/assets/js/zanfuwu-app.js"></script>
+  </body>
+</html>
+

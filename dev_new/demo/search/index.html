@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>搜索</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="/assets/css/zanfuwu.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-extend.css">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-114x114.png">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1457949205_1344323.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-app.css">
+    <script type='text/javascript' src='/assets/js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-config.js' charset='utf-8'></script>
+    <!--  <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?ba76f8230db5f616edc89ce066670710";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ -->
+  </head>
+  <body>
+    <div class="page-group">
+  <div class="page" id="pageSearch">
+  	<header class="bar bar-nav zfw-top-search" id="searchBars" data-url="/ajax/class-item/index.html" data-params="pageNo={index}" data-target="#searchListContent" data-key="query">
+    <div class="searchbar">
+      <a class="searchbar-cancel">取消</a>
+      <div class="search-input">
+        <label class="icon icon-search" for="search"></label>
+        <input type="search" id='search' placeholder='输入关键字...'/>
+      </div>
+    </div>
+    <!-- <a class="iconfont pull-right danger" href="#">&#xe60b;</a> -->
+</header>
+  	<div class="content infinite-scroll infinite-scroll-bottom js-searchloadding-more">
+  		<div id="searchHotHistry">
+	  		<div class="card zfw-card">
+				<div class="card-header">
+					<div class="zfw-title">- 热门关键词 -</div>
+				</div>
+				<div class="card-content">
+					<div class="card-content-inner">
+						<div class="zfw-hotsearchkey">
+							<a href="#" class="keytag">管理培训</a>
+							<a href="#" class="keytag">年会策划</a>
+							<a href="#" class="keytag">设计</a>
+							<a href="#" class="keytag">舞蹈表演</a>
+							<a href="#" class="keytag">法律顾问咨询</a>
+							<a href="#" class="keytag">产品用户体验设计咨询</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card zfw-card" id="searchHistory">
+				<div class="card-header">
+					<div class="zfw-title">- 最近搜索 -</div>
+					<a href="#" class="zfw-clear-searchhistory">清空</a>
+				</div>
+				<div class="card-content">
+					<div class="card-content-inner">
+						<div class="list-block zfw-list-text-redcolor">
+						    <ul>
+								<li class="item-content">
+									<div class="item-inner">
+									  <div class="item-title">用户体验设计</div>
+									</div>
+								</li>
+							  	<li class="item-content">
+							        <div class="item-inner">
+							          <div class="item-title">法律咨询</div>
+							        </div>
+							    </li>
+							    <li class="item-content">
+							        <div class="item-inner">
+							          <div class="item-title">商演主持</div>
+							        </div>
+							    </li>
+							    <li class="item-content">
+							        <div class="item-inner">
+							          <div class="item-title">管理培训</div>
+							        </div>
+							    </li>
+							    <li class="item-content">
+							        <div class="item-inner">
+							          <div class="item-title">舞蹈表演</div>
+							        </div>
+							    </li>
+						    </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="searchListContent" style="display: none;">
+			<div class="card zfw-card">
+	          <div class="card-content">
+	              <div class="card-content-inner">
+	              
+	                <div class="row">
+	                  <h3 class="zfw-card-title col-60">说了这么多我们是量身定做的策划和音效的</h3>
+	                  <div class="zfw-card-price col-40">¥ 9998</div>
+	                </div>
+	                <div class="zfw-tags">
+	                <span class="tag">营销</span>
+	                <span class="tag">策划</span>
+	                <span class="tag">产品战略路径规划</span>
+	                <span class="tag">径规划</span>
+	              </div>
+	              <div class="list-block media-list zfw-card-user">
+	                <div class="item-content">
+	                  <div class="item-media">
+	                    <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" style="width: 1.2rem;border-radius: 50%;">
+	                  </div>
+	                  <div class="item-inner">
+	                          一附院     院长／微软大中华区软件研究院用户体验中心总监
+	                      </div>
+	                </div>
+	              </div>
+	              </div>
+	          </div>
+	          <div class="card-footer">
+	            <span>
+	              <a href="#"><i class="iconfont icon-xihuang"></i>200</a>
+	              <a href="#"><i class="iconfont icon-goumai"></i>200</a>
+	            </span>
+	            <span>
+	              <a href="#"><i class="iconfont icon-xiangqing"></i></a>
+	            </span>
+	          </div>
+	        </div>
+		</div>
+		<!-- 加载提示符 -->
+		<div class="infinite-scroll-preloader" style="display: none;">
+		  <div class="preloader"></div>
+		</div>
+		<script type="text/x-handlebars-template" id="searchHistoryTemplate">
+		
+			<li class="item-content">
+				<div class="item-inner .js-search-tag" data-key="">
+				  <div class="item-title"></div>
+				</div>
+			</li>
+		
+		</script>
+  	</div>
+  </div>
+</div>
+    <script type='text/javascript' src='/assets/js/zanfuwu.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-extend.js' charset='utf-8'></script>
+    <script src="/assets/js/moment.js"></script>
+    <script src="/assets/js/wkim.js"></script>
+    <script src="/assets/js/zanfuwu-app.js"></script>
+  </body>
+</html>
+
