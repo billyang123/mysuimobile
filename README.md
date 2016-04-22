@@ -1,6 +1,5 @@
 # 赞服务前端开发代码
-## ui框架 基于 [Framework7](http://framework7.taobao.org/) 的一套SUI Mobile 
-     [demo](http://m.sui.taobao.org/demos/)
+## ui框架 基于 [Framework7](http://framework7.taobao.org/) 的一套SUI Mobile   [demo](http://m.sui.taobao.org/demos/)
 ## 工具：node 
 
         npm install -g grunt-cli
