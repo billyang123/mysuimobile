@@ -1,39 +1,57 @@
 .balance-container{
+	max-width: 750/@ppr;
+	margin: 0 auto;
+	.balance-header-bg{
+		background-image: url("/assets/img/image_yebg.png");
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		padding: 0 20px;
+		height: 150/@ppr;
+		.balance-header-title{
+			font-size: 12/@ppr;
+			color: #fff;
+			padding: 35/@ppr 0 17/@ppr 0;
+		}
+		.balance-header-num{
+			font-size: 36/@ppr;
+			color: #fff;
+		}
+	}
+	.margin-none{
+		margin: 0 !important;
+		.iconfont{
+			color: #999;
+		}
+	}
 	.balance-list{
-		padding-bottom: 30/@ppr;
+		margin: 10/@ppr;
 		.item-title{
 			font-size: 13/@ppr;
 			color: #000;
-		}		
+		}
+		.item-after{
+			color: #000;
+			font-size: 13/@ppr;
+		}
 		.item-subtitle{
 			font-size: 12/@ppr;
 			color: #999;
+			margin-top: 10/@ppr;
 		}
 		.item-inner{
 			padding: 20/@ppr 0/@ppr 20/@ppr 0/@ppr;			
 		}
 		.item-content{
 			padding: 0 26/@ppr;
-			/* &:last-child{
-				.item-after:after {
-				    content: '';
-				    position: absolute;
-				    left: 0;
-				    bottom: 0;
-				    right: auto;
-				    top: auto;
-				    height: 1px;
-				    width: 100%;
-				    background-color: #e7e7e7;
-				    display: block;
-				    z-index: 15;
-				    -webkit-transform-origin: 50% 100%;
-				    transform-origin: 50% 100%;
-				}
-			} */
 		}		
 		.total-num{
 			padding: 0;
+			.item-after{
+				color: #999;
+			}
+			.item-title{
+				font-size: 15/@ppr;
+			}
 			.item-inner{
 				padding: 0 26/@ppr;
 				div{
@@ -45,6 +63,12 @@
 		 ul:after{
 		 	display: none;
 		 }			
+		}
+		.more-link{
+			margin: 0;
+			line-height: 45/@ppr;
+			height: 45/@ppr;
+			text-align: center;
 		}
 	}
 	//余额为空
@@ -76,6 +100,41 @@
 			padding: 0;
 			.item-inner{
 				padding: 20/@ppr 26/@ppr;
+			}
+		}
+	}
+	.balance-detail-tip{
+		background: #fff;
+		.iconfont{
+			font-size: 55/@ppr;
+			margin: 85/@ppr 0 32/@ppr 0;
+			display: inline-block;
+		}
+		.text-center{
+			font-size: 15/@ppr;
+			color: #000;
+			margin-bottom: 55/@ppr;
+		}
+	}
+	.balance-detail-list{
+		width: 80%;
+		margin-left: 10%;
+		border: 1px solid #e7e7e7;
+		margin-bottom: 50/@ppr;
+		.item-content{
+			padding-left: 0;
+			.item-inner{
+				padding-right: 0;
+			}
+			.item-title{
+				margin-left: 15/@ppr;
+				font-size: 13/@ppr;
+				color: #999;
+			}
+			.item-after{
+				font-size: 13/@ppr;
+				color: #000;
+				margin-right: 15/@ppr;
 			}
 		}
 	}

@@ -776,6 +776,7 @@ $(function () {
           container:$(".js-tab-loadding-more").data("target") || "#pageClassifyItemList"
         });
       }
+     
       
   });
   if($.device.ios){
@@ -850,6 +851,16 @@ $(function () {
         $(__target[i]).append($(__temp[i]).html().replace(/\{index\}/g,__app.varConfig["updateServer"].index));
       }
       $("html,body,.content").scrollTop(99999)
+  })
+  $(document).on("click",".more-link",function(e){
+    var self = this;
+     $.ajax({
+          url:$(self).data("url"),
+          type:"get",
+          success:function(html){
+            $(self).replaceWith(html);
+          }
+      })
   })
   $(document).on('input propertychange',"#updateServer .js-inputPrice",function(e){
       __app.updataServerTotal();
@@ -973,5 +984,6 @@ $(function () {
         flag = true;
       }
   })
+
   $.init();
 });
