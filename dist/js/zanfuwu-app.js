@@ -36,86 +36,138 @@ $(function () {
   //     ].join("");
   //     __app.includeStyleElement(styles,"forAndroidStyles");
   // }
-  __app.xxFileUploader = {
-    fileInput: null,
-    url:null,
-    singe:true,
-    fileFilter: [],
-    filter: function(files) {   //选择文件组的过滤方法
-      return files; 
-    },
-    onSelect: function() {},
-    onProgress: function() {},    //文件上传进度
-    onSuccess: function() {},   //文件上传成功时
-    onFailure: function() {},   //文件上传失败时,
-    onComplete: function() {},  //文件全部上传完毕时
-    funGetFiles: function(e) {    
-      // 获取文件列表对象
-      var files = e.target.files || e.dataTransfer.files;
-      //继续添加文件
-      this.fileFilter = this.fileFilter.concat(this.filter(files));
-      this.funDealFiles();
-      return this;
-    },
-    //选中文件的处理与回调
-    funDealFiles: function() {
-      for (var i = 0, file; file = this.fileFilter[i]; i++) {
-        //增加唯一索引值
-        file.index = i;
+  function isIdCardNo(num) {
+      var factorArr = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1);
+      var parityBit = new Array("1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2");
+      var varArray = new Array();
+      var intValue;
+      var lngProduct = 0;
+      var intCheckDigit;
+      var intStrLen = num.length;
+      var idNumber = num;
+      // initialize
+      if ((intStrLen != 15) && (intStrLen != 18)) {
+          return false;
       }
-      //执行选择回调
-      this.onSelect(this.fileFilter);
-      return this;
-    },
-    //文件上传
-    funUploadFile: function() {
-      var self = this;  
-      if (location.host.indexOf("sitepointstatic") >= 0) {
-        //非站点服务器上运行
-        return; 
+      // check and set value
+      for (var i = 0; i < intStrLen; i++) {
+          varArray[i] = idNumber.charAt(i);
+          if ((varArray[i] < '0' || varArray[i] > '9') && (i != 17)) {
+              return false;
+          } else if (i < 17) {
+              varArray[i] = varArray[i] * factorArr[i];
+          }
       }
-      for (var i = 0, file; file = this.fileFilter[i]; i++) {
-        (function(file) {
-          var xhr = new XMLHttpRequest();
-          if (xhr.upload) {
-            // 上传中
-            xhr.upload.addEventListener("progress", function(e) {
-              self.onProgress(file, e.loaded, e.total);
-            }, false);
+      if (intStrLen == 18) {
+          //check date
+          var date8 = idNumber.substring(6, 14);
+          if (isDate8(date8) == false) {
+              return false;
+          }
+          // calculate the sum of the products
+          for (var i = 0; i < 17; i++) {
+              lngProduct = lngProduct + varArray[i];
+          }
+          // calculate the check digit
+          intCheckDigit = parityBit[lngProduct % 11];
+          // check last digit
+          if (varArray[17] != intCheckDigit) {
+              return false;
+          }
+      }
+      else {        //length is 15
+          //check date
+          var date6 = idNumber.substring(6, 12);
+          if (isDate6(date6) == false) {
+              return false;
+          }
+      }
+      return true;
+  }
+  function isDate6(sDate) {
+      if (!/^[0-9]{6}$/.test(sDate)) {
+          return false;
+      }
+      var year, month, day;
+      year = sDate.substring(0, 4);
+      month = sDate.substring(4, 6);
+      if (year < 1700 || year > 2500) return false
+      if (month < 1 || month > 12) return false
+      return true
+  }
 
-            // 文件上传成功或是失败
-            xhr.onreadystatechange = function(e) {
-              if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                  self.onSuccess(file, xhr.responseText);
-                  if (!self.fileFilter.length) {
-                    //全部完毕
-                    self.onComplete();  
-                  }
-                } else {
-                  self.onFailure(file, xhr.responseText);   
+  function isDate8(sDate) {
+      if (!/^[0-9]{8}$/.test(sDate)) {
+          return false;
+      }
+      var year, month, day;
+      year = sDate.substring(0, 4);
+      month = sDate.substring(4, 6);
+      day = sDate.substring(6, 8);
+      var iaMonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+      if (year < 1700 || year > 2500) return false
+      if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) iaMonthDays[1] = 29;
+      if (month < 1 || month > 12) return false
+      if (day < 1 || day > iaMonthDays[month - 1]) return false
+      return true
+  }
+  __app.validRules = {
+      isIdCardNo:[isIdCardNo,"请输入正确身份证号码！"]
+  }
+  __app.myValidate = function(_form,errorback,success){
+      var error = false;
+      var errorText = false;
+      var valDom = _form.find('[validate]');
+      if(valDom.length>0){
+        valDom.each(function(index,item){
+            var json = eval("("+$(this).attr("validate")+")");
+            $.each(json.rules,function(v,idx){
+                var _its = __app.validRules[v];
+                error = !_its[0]($(item).val());
+                if(error) {
+                  errorText = _its[1];
+                  return false;
                 }
-              }
-            };
-
-            // 开始上传
-            xhr.open("POST", self.url, true);
-            xhr.setRequestHeader("X_FILENAME", file.name);
-            xhr.send(file);
-          } 
-        })(file); 
-      }    
-    },
-    init: function() {
-      var self = this;   
-      //文件选择控件选择
-      if (this.fileInput) {
-        $(document).on("change",this.fileInput,function(e){
-           self.funGetFiles(e); self.funUploadFile()
+            })
+            if(error){
+              return false;
+            }
         })
-        // this.fileInput.addEventListener("change", function(e) { self.funGetFiles(e); self.funUploadFile()}, false); 
       }
-    }
+      if(error){
+        errorback && errorback(_form,errorText);
+      }else{
+        success && success(_form);
+      }
+  }
+  __app.xxFileUploader =function(element,options){
+      var settings = $.extend({
+        trigger: element,
+        accept: 'image/*',
+        multiple: true,
+        error: function(msg) {
+          if(msg.status == 413) {
+            $.alert("上传的图片过大");
+          }else{
+            $.alert("上传图片失败");
+          }
+        },
+        change: function(files){
+          if(files.length==0){
+            return;
+          }
+          $.showPreloader('正在上传:<span id="uploadPercent">0%</span>')
+          this.submit();
+        },
+        success: function(response,files) {
+
+        },
+        progress: function(event, position, total, percent, files) {
+          $("#uploadPercent").text(percent+"%")
+          //$('body>.modal .modal-title').text()
+        }
+      },options)
+      new H5Upload(settings);
   }
   __app.hasLoalStorage = function(appString){
     if(!__app[appString]){
@@ -704,11 +756,12 @@ $(function () {
           url:__form.attr("action"),
           type:__form.attr('method'),
           dataType:"json",
+          data:__form.serializeArray(),
           success:function(res){
             if (res.errorCode == 0) {
                 $.toast("登录成功");
                 $.router.load(__form.data("dir"))
-                //window.location.href=__form.data("dir");
+                // window.location.href=__form.data("dir");
             } else {
                 $.alert(res.errorInfo);
             }
@@ -779,53 +832,70 @@ $(function () {
      
       
   });
-  if($.device.ios){
-    $(document).on("change","#cameraInput",function(e){
-      var __this = $(this);
-      var ajaxurl = $(this).data("url")||'/member/save/updateAvatar';
+  __app.uploadByBase64 = function(element,callback){
+      var __this = $(element);
+      if(__this[0].files.length==0) return;
+      var ajaxurl = __this.data("url")||'/member/save/updateAvatar';
+      var preview = __this.data("preview") || ".userimg";
+      var done = __this.data("done");
+      var _name = __this.data("name") || "avatar";
+      var _data = {};
+      
       $.showPreloader("图片上传中...");
-      lrz(this.files[0]).then(function (rst) {
+
+      lrz(__this[0].files[0],{width:800}).then(function (rst) {
+          _data[_name] = rst.base64;
             $.ajax({  
               url: ajaxurl,  
               type: 'POST',  
-              data: {
-                avatar:rst.base64
-              },  
+              data: _data,  
               dataType: 'json',
               success: function(res) {
+  
                   $.hidePreloader();
                   if(res.success){
-                    $(".userimg").css("background-image","url("+res.picUrl+")");         
+                    $(preview).css("background-image","url("+res.picUrl+")");         
                   }else{
-                    $.alert("更改头像失败！")
+                    $.alert("上传图片失败！")
                   }
+                  if (done) {
+                    (new Function('res', done)).call(self, res);
+                  }
+                  callback && callback(res)
               }
           })
         }).catch(function (err) {
-          $.alert("更改头像失败！")
+          $.alert("上传图片失败！")
             // 处理失败会执行
         }).always(function () {
             $.hidePreloader();
             // 不管是成功失败，都会执行
         });
-      //__app.imageUploader("#cameraInput","#uploadImageProview","#uploadImagePopup",this.files);
-    })
   }
+  //if($.device.ios){
+    $(document).on("change","#cameraInput,.js-upload",function(e){
+      __app.uploadByBase64(this);
+    })
+  //}
   $(document).on('click',".js-savePageForm",function(e){
       var __form = $($(this).data("target"));
       var _dir = $(this).data("dirurl");
-      $.ajax({
-        url:__form.attr("action"),
-        type:__form.attr("method")||"post",
-        data:__form.serializeArray(),
-        dataType:"json",
-        success:function(res){
-            if(res.errorCode != 0){
-              $.alert(res.errorInfo);
-            }else{
-              $.router.load(_dir);
-            }
-        }
+      __app.myValidate(__form,function(item,text){
+          $.alert(text);
+      },function(){
+        $.ajax({
+          url:__form.attr("action"),
+          type:__form.attr("method")||"post",
+          data:__form.serializeArray(),
+          dataType:"json",
+          success:function(res){
+              if(res.errorCode != 0){
+                $.alert(res.errorInfo);
+              }else{
+                $.router.load(_dir);
+              }
+          }
+        })
       })
   })
   __app.updataServerTotal = function(){
@@ -915,6 +985,8 @@ $(function () {
       $('.buttons-tab').fixedTab({offset:$('#pageOrder .bar-nav').length>0 ? $('#pageOrder .bar-nav').height():0});
   })
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
+      var staticDomain = window.staticDomain?window.staticDomain:"";
+      $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
       if($.device.ios) $("#cameraInput").show();
       var toolbarTmp = '<header class="bar bar-nav"></button><button class="button button-link pull-right close-picker">完成</button><h1 class="title">{{text}}</h1></header>'
       __app.cityPicker({
@@ -972,18 +1044,33 @@ $(function () {
       __app.updataServerTotal();
   })
   var myAPWkim = null;
+  var islistConversation = false;
   $(document).on("pageInit", "#pageMessages", function(e, id, page) {
-      myAPWkim = new __app.myWkim();
+     if(!myAPWkim) myAPWkim = new __app.myWkim();
+      islistConversation = true;
   })
   $(document).on("pageInit", "#pageMessagesChat", function(e, id, page) {
       var flag = false;
-      if(!myAPWkim) myAPWkim = new __app.myWkim();
-      myAPWkim.myImChatInit();
+      if(!myAPWkim) {
+        myAPWkim = new __app.myWkim();
+      }else{
+        islistConversation = true;
+      }
+      if(islistConversation){
+        myAPWkim.myImChatInit();    
+      }
       if(!flag) {
         myAPWkim.faceInit("#chatSendface");
         flag = true;
       }
   })
+<<<<<<< HEAD
 
+=======
+  $(document).on("pageInit","#openShop-uploadintro",function(){
+     var staticDomain = window.staticDomain?window.staticDomain:"";
+      $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
+  })
+>>>>>>> 270f05cf203c0a137d7d2f4ab24e95905f75731d
   $.init();
 });

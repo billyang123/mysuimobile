@@ -1,3 +1,5 @@
 # mysuimobile
 # npm install
-# grunt server
+# grunt serve
+# less
+

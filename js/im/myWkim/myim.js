@@ -377,7 +377,7 @@ __app.faceObj = {
 }
 var isDev = false;
 __app.chatHref = !isDev? "/im/conv":"/demo/messageschat/index.html";
-
+__app.bindinfinite = false;
 __app.staticDomain = "";
 __app.myWkimDefaultConfig = {
 	url:{
@@ -752,6 +752,9 @@ __app.myWkim.prototype = {
 				data:self.doData(res)
 			}));
 			self.setGenProfile(self.convlistDom);
+			if($("#pageMessagesChat").length>0){
+				self.myImChatInit();
+			}
 		})
 		convListener.on("convAdd", function(res) {
 	        console.log("convAdd")
@@ -931,7 +934,9 @@ __app.myWkim.prototype = {
 	            if(res.length<pageSize){
 	            	$('.infinite-scroll-preloader').hide();
 	            }
-	           	__app.imChat.nextMsg = res[0];
+	           
+	           	__app.imChat.nextMsg = conv.getMsgById(conv.msgIds[0]);
+            	//__app.imChat.prevMsg = res[res.length - 1];
 	            //Setting.chat.nextMsg = conv.getMsgById(conv.msgIds[0]);
 	            __app.imChat.prevMsg = res[res.length - 1];
 	            var baseTime = new Date().getTime();
@@ -948,9 +953,12 @@ __app.myWkim.prototype = {
 	            callback && callback(__res)
 	        })
 	    }
-	    $(document).on('infinite', '.infinite-scroll-top',function() {
+	    !__app.bindinfinite && $(document).on('infinite', '.infinite-scroll-top',function() {
             var scroller = $('.infinite-scroll-top');
             var scrollHeight = scroller[0].scrollHeight; // 获取当前滚动元素的高度
+            // if(scroller.scrollTop()>=50){
+            // 	return;
+            // }
             // 如果正在加载，则退出
             if (timer) {
               clearTimeout(timer);
@@ -962,6 +970,12 @@ __app.myWkim.prototype = {
               //addItemsTop(itemsPerLoad,lastIndex);
              
              	__app.imChat.next(__app.imChat.nextMsg, pageSize, function(res) {
+             		if(res.length==0) {
+             				// 加载完毕，则注销无限加载事件，以防不必要的加载
+		                  $.detachInfiniteScroll($('.infinite-scroll'));
+		                  // 删除加载提示符
+		                  $('.infinite-scroll-preloader').remove();
+             		};
 			    	var data = {
 			    		data:res,
 			    		myOpenId:self.myOpenId
@@ -977,6 +991,7 @@ __app.myWkim.prototype = {
              
             }, 1000);
 	    })
+	    __app.bindinfinite = true;
 	    __app.imChat.next(null, pageSize, function(res) {
 
 	    	var data = {
