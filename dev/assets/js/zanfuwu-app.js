@@ -829,6 +829,7 @@ $(function () {
           container:$(".js-tab-loadding-more").data("target") || "#pageClassifyItemList"
         });
       }
+     
       
   });
   __app.uploadByBase64 = function(element,callback){
@@ -920,6 +921,16 @@ $(function () {
         $(__target[i]).append($(__temp[i]).html().replace(/\{index\}/g,__app.varConfig["updateServer"].index));
       }
       $("html,body,.content").scrollTop(99999)
+  })
+  $(document).on("click",".more-link",function(e){
+    var self = this;
+     $.ajax({
+          url:$(self).data("url"),
+          type:"get",
+          success:function(html){
+            $(self).replaceWith(html);
+          }
+      })
   })
   $(document).on('input propertychange',"#updateServer .js-inputPrice",function(e){
       __app.updataServerTotal();
@@ -1053,9 +1064,13 @@ $(function () {
         flag = true;
       }
   })
+<<<<<<< HEAD
+
+=======
   $(document).on("pageInit","#openShop-uploadintro",function(){
      var staticDomain = window.staticDomain?window.staticDomain:"";
       $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
   })
+>>>>>>> 270f05cf203c0a137d7d2f4ab24e95905f75731d
   $.init();
 });

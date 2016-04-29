@@ -5,6 +5,7 @@
 			padding-left: 0;			
 			.item-inner{
 				padding-left: 15/@ppr;
+				padding-top: 7/@ppr;
 				.item-title{
 					font-size: 13/@ppr;
 					span{
@@ -17,13 +18,14 @@
 				textarea, input{
 					font-size: 13/@ppr;
 					color: #666;
+					padding-left: 5/@ppr;
 				}
 				.prompt-title-ok{
 					font-size: 12/@ppr;
 					color: #000;
 				}
 				.add-link{
-					margin-left: 65/@ppr;
+					margin-left: 50/@ppr;
 				}
 			}
 			.item-input{
@@ -37,11 +39,15 @@
 					float: left;
 				}
 				.add-label{
+					margin: 5/@ppr 10/@ppr 5/@ppr 0/@ppr;
+					padding: 7/@ppr 14/@ppr 7/@ppr 5/@ppr;
 					float: left;
-					margin-bottom: 5/@ppr;
-					line-height: 48/@ppr;
-					margin-left: 15/@ppr;
+					display: inline-block;
 				}
+			}
+			.item-input.row{
+				margin-left: 0;
+				vertical-align: middle;
 			}
 		}
 		.list-block-header{
@@ -87,6 +93,9 @@
 }
 .modal-text{
 	font-size: 11/@ppr;
+}
+.flex-start{
+	align-items:flex-start !important;
 }
 .header-common{
 	padding: 25/@ppr 0;
