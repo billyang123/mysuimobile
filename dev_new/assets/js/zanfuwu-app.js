@@ -829,6 +829,7 @@ $(function () {
           container:$(".js-tab-loadding-more").data("target") || "#pageClassifyItemList"
         });
       }
+     
       
   });
   __app.uploadByBase64 = function(element,callback){
@@ -921,6 +922,16 @@ $(function () {
       }
       $("html,body,.content").scrollTop(99999)
   })
+  $(document).on("click",".more-link",function(e){
+    var self = this;
+     $.ajax({
+          url:$(self).data("url"),
+          type:"get",
+          success:function(html){
+            $(self).replaceWith(html);
+          }
+      })
+  })
   $(document).on('input propertychange',"#updateServer .js-inputPrice",function(e){
       __app.updataServerTotal();
   })
@@ -975,7 +986,7 @@ $(function () {
   })
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
       var staticDomain = window.staticDomain?window.staticDomain:"";
-      $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
+      $.getScript(staticDomain+"/js/lrz.bundle.js",function(){})
       if($.device.ios) $("#cameraInput").show();
       var toolbarTmp = '<header class="bar bar-nav"></button><button class="button button-link pull-right close-picker">完成</button><h1 class="title">{{text}}</h1></header>'
       __app.cityPicker({
@@ -1055,7 +1066,7 @@ $(function () {
   })
   $(document).on("pageInit","#openShop-uploadintro",function(){
      var staticDomain = window.staticDomain?window.staticDomain:"";
-      $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
+      $.getScript(staticDomain+"/js/lrz.bundle.js",function(){})
   })
   $.init();
 });

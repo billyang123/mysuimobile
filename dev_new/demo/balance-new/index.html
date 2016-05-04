@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>账号信息</title>
+    <title>余额</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,64 +32,74 @@ var _hmt = _hmt || [];
   <body>
     <div class="page-group">
 
-	<div class="page account-info-container" id="pageAccountInfo">
+	<div class="page balance-container" id="pageBalance">
 	<!-- 你的html代码 -->
 		<header class="bar bar-nav">
 			<a class="button button-link button-nav pull-left back" href="/index.html" data-transition='slide-out'>
 			  <span class="icon icon-left"></span>
 			</a>
-			<h1 class="title">账号信息</h1>
+			<h1 class="title">余额</h1>
 		</header>
 		<div class="content">
-			<!-- 这里是页面头部结束 -->
-			<div class="text-center"><div class="userimg" style="box-sizing: border-box; line-height: 0; width: 3.2rem; height: 3.2rem; border:2px solid #fff;background-image: url(http://zanfuwuimg.b0.upaiyun.com/userface/1000/103/20151211143908.jpg!u150); background-size: contain; background-position: 50% 50%; background-repeat: no-repeat;"></div></div>
-			<div class="list-block">
+			<div class="balance-header-bg">
+				<div class="balance-header-title">余额(元)</div>
+				<div class="balance-header-num">8000.00</div>
+			</div>
+			<div class="list-block margin-none">
 			    <ul>
-			      <li class="item-content item-link">
-			        <div class="item-media"><i class="icon icon-f7"></i></div>
-			        <div class="item-inner">
-			          <div class="item-title">姓名</div>
-			          <div class="item-after">张三三</div>
-			        </div>
+			      <li>
+			      	<a href="#"  class="item-content item-link">
+				        <div class="item-media"><i class="iconfont">&#xe637;</i></div>
+				        <div class="item-inner">
+				          <div class="item-title">明细</div>
+				        </div>
+			        </a>
 			      </li>
-			      <li class="item-content item-link">
-			        <div class="item-media"><i class="icon icon-f7"></i></div>
-			        <div class="item-inner">
-			          <div class="item-title">公司</div>
-			          <div class="item-after">杭州阿里巴巴集团</div>
-			        </div>
-			      </li>
-			      <li class="item-content item-link">
-			        <div class="item-media"><i class="icon icon-f7"></i></div>
-			        <div class="item-inner">
-			          <div class="item-title">职位</div>
-			          <div class="item-after">杭州阿里巴巴集团</div>
-			        </div>
-			      </li>
-			      <li class="item-content item-link">
-			        <div class="item-media"><i class="icon icon-f7"></i></div>
-			        <div class="item-inner">
-			          <div class="item-title">地区</div>
-			          <div class="item-after">杭州</div>
-			        </div>
-			      </li>
-			      <li class="item-content item-link">
-			        <div class="item-media"><i class="icon icon-f7"></i></div>
-			        <div class="item-inner">
-			          <div class="item-title">行业</div>
-			          <div class="item-after">互联网</div>
-			        </div>
-			      </li>
-			      <li class="item-content item-link">
-			        <div class="item-media"><i class="icon icon-f7"></i></div>
-			        <div class="item-inner">
-			          <div class="item-title">从事年限</div>
-			          <div class="item-after">3</div>
-			        </div>
+			      <li>
+			      	<a href="#" class="item-link item-content">
+				        <div class="item-media"><i class="iconfont">&#xe636;</i></div>
+				        <div class="item-inner">
+				          <div class="item-title">提现</div>
+				        </div>
+			        </a>
 			      </li>
 			    </ul>
 			  </div>
-			</div>
+			<div class="list-block balance-list card">
+			    <ul>
+			      <li class="item-content total-num">
+			        <div class="item-inner">
+			          <div class="item-title danger">店铺交易记录</div>
+			          <div class="item-after">交易总额：<span class="danger">10000.00</span></div>
+			        </div>
+			      </li>
+			      <li class="item-content">
+			        <div class="item-inner">
+			          <div class="item-title">品牌突围策划<br><span class="item-subtitle">2015/12/20</span></div>
+			          <div class="item-after danger">+2000</div>
+			        </div>
+			      </li>
+			      <li class="item-content">
+			        <div class="item-inner">
+			          <div class="item-title">公开课：如何打造企业营销原子弹<br><span class="item-subtitle">2015/12/20</span></div>
+			          <div class="item-after danger">+2000</div>
+			        </div>
+			      </li>
+			      <li class="item-content">
+			        <div class="item-inner">
+			          <div class="item-title">品牌突围策划<br><span class="item-subtitle">2015/12/20</span></div>
+			          <div class="item-after danger">+2000</div>
+			        </div>
+			      </li>
+			      <li class="item-content">
+			        <div class="item-inner">
+			          <div class="item-title">公开课：如何打造企业营销原子弹<br><span class="item-subtitle">2015/12/20</span></div>
+			          <div class="item-after danger">+2000</div>
+			        </div>
+			      </li>
+			      <li class="more-link" data-url="/ajax/balance-list.html">更多交易记录</li>
+		       </ul>
+		  	</div>
 			<!-- 这里是页面内容区 -->
 		</div>
 	</div>

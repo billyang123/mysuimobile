@@ -986,7 +986,7 @@ $(function () {
   })
   $(document).on("pageInit","#pageAccountInfo",function(e, id, page){
       var staticDomain = window.staticDomain?window.staticDomain:"";
-      $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
+      $.getScript(staticDomain+"/js/lrz.bundle.js",function(){})
       if($.device.ios) $("#cameraInput").show();
       var toolbarTmp = '<header class="bar bar-nav"></button><button class="button button-link pull-right close-picker">完成</button><h1 class="title">{{text}}</h1></header>'
       __app.cityPicker({
@@ -1064,13 +1064,9 @@ $(function () {
         flag = true;
       }
   })
-<<<<<<< HEAD
-
-=======
   $(document).on("pageInit","#openShop-uploadintro",function(){
      var staticDomain = window.staticDomain?window.staticDomain:"";
-      $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
+      $.getScript(staticDomain+"/js/lrz.bundle.js",function(){})
   })
->>>>>>> 270f05cf203c0a137d7d2f4ab24e95905f75731d
   $.init();
 });
