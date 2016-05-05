@@ -1064,13 +1064,9 @@ $(function () {
         flag = true;
       }
   })
-<<<<<<< HEAD
-
-=======
   $(document).on("pageInit","#openShop-uploadintro",function(){
      var staticDomain = window.staticDomain?window.staticDomain:"";
       $.getScript(staticDomain+"/assets/js/lrz.bundle.js",function(){})
   })
->>>>>>> 270f05cf203c0a137d7d2f4ab24e95905f75731d
   $.init();
 });

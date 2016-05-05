@@ -1590,7 +1590,7 @@ html.retina.ios-6 .message.message-pic img {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding: 0 20px;
-  height: 7.5rem;
+  width: 100%;
 }
 .balance-container .balance-header-bg .balance-header-title {
   font-size: 0.6rem;
@@ -1600,6 +1600,7 @@ html.retina.ios-6 .message.message-pic img {
 .balance-container .balance-header-bg .balance-header-num {
   font-size: 1.8rem;
   color: #fff;
+  padding-bottom: 2.75rem;
 }
 .balance-container .margin-none {
   margin: 0 !important;
