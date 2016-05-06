@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>上传图片</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="/assets/css/zanfuwu.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-extend.css">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-114x114.png">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1461637071_0992136.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-app.css">
+    <script type='text/javascript' src='/assets/js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-config.js' charset='utf-8'></script>
+    <!--  <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?ba76f8230db5f616edc89ce066670710";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ -->
+  </head>
+  <body>
+    <div class="page-group">
+	<div class="page" id="uplaodImages2" data-title="上传图片">
+		<link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet">
+        <link href="//cdn.bootcss.com/cropper/2.3.0/cropper.css" rel="stylesheet">
+        <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);border:0}.sr-only--focusable:active,.sr-only--focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto}body{margin:0;color:#333;font-family:"Helvetica","Arial",sans-serif;font-size:14px;font-weight:400;line-height:20px}.header{position:relative;z-index:1;height:48px;padding-left:16px;padding-right:16px;background-color:#666}@media (min-width: 768px){.header{padding-left:24px;padding-right:24px}}.title{float:left;display:block;font-size:18px;line-height:48px;color:#fff}.main{position:absolute;top:48px;right:0;bottom:0;left:0;background-color:#333}.main>img{display:table-cell;max-width:100%;vertical-align:middle}.footer{position:absolute;right:0;bottom:0;left:0;height:0}.menu{float:right}.menu__button{float:left;display:block;width:48px;height:48px;border-width:0;font-size:16px;line-height:48px;text-align:center;background-color:transparent;color:#fff;cursor:pointer}.menu__button:focus{outline:none}.menu__button:hover{background-color:#0074d9;color:#fff}.menu__button--success:hover{background-color:#2ecc40}.menu__button--danger:hover{background-color:#ff4136}.toolbar{position:absolute;left:50%;bottom:16px;z-index:2015;width:256px;height:32px;margin-left:-128px;background-color:rgba(0,0,0,0.5);color:#fff}.toolbar__button{float:left;display:block;width:32px;height:32px;border-width:0;font-size:14px;text-align:center;background-color:transparent;color:#fff;cursor:pointer}.toolbar__button:focus{outline:none}.toolbar__button:hover{background-color:#0074d9;color:#fff}.upload{display:table;width:100%;height:100%;overflow:hidden}.upload>p{display:table-cell;color:#999;text-align:center;vertical-align:middle}.browse{margin-left:4px;color:#0074d9;cursor:pointer}.browse:hover{color:#0d8eff;text-decoration:underline}.canvas{width:100%;height:100%}.editor{height:100%;overflow:hidden}.editor>img{display:block;max-width:100%;max-height:100%;margin:auto;vertical-align:middle}</style>
+        <header class="header">
+            <span class="title">Photo Editor</span>
+            <button-box></button-box>
+        </header>
+        <main class="main">
+            <upload-box></upload-box>
+            <canvas-box></canvas-box>
+        </main>
+        <script id="button-box" type="text/x-template">
+            <div @click="click" class="menu">
+                <label for="file" title="Upload" v-show="!uploaded" class="menu__button"><span class="fa fa-upload"></span></label>
+                <button data-action="restore" title="Undo (Ctrl + Z)" v-show="cropped" class="menu__button">
+                    <span class="fa fa-undo"></span>
+                </button>
+                <button data-action="remove" title="Delete (Delete)" v-show="uploaded &amp;&amp; !cropping" class="menu__button menu__button--danger">
+                    <span class="fa fa-trash"></span>
+                </button>
+                <button data-action="clear" title="Cancel (Esc)" v-show="cropping" class="menu__button menu__button--danger">
+                    <span class="fa fa-ban"></span>
+                </button>
+                <button data-action="crop" title="OK (Enter)" v-show="cropping" class="menu__button menu__button--success">
+                    <span class="fa fa-check"></span>
+                </button>
+                <a data-action="download" href="" title="Download" download="" v-show="url" class="menu__button menu__button--success">
+                    <span class="fa fa-download"></span>
+                </a>
+                <a data-action="download" href="https://github.com/fengyuanchen/photo-editor" title="View on GitHub" class="menu__button">
+                    <span class="fa fa-github"></span>
+                </a>
+            </div>
+        </script>
+        <script id="upload-box" type="text/x-template">
+            <div @change="change" @dragover="dragover" @drop="drop" v-show="!uploaded" class="upload">
+                <p>Drop image here or
+                    <label class="browse">browse...<input id="file" type="file" accept="image/*" class="sr-only"></label>
+                </p>
+            </div>
+        </script>
+        <script id="canvas-box" type="text/x-template">
+            <div v-show="editable" class="canvas">
+                <div @dblclick="dblclick" class="editor">
+                    <template v-if="url"><img src="" alt="" @load="load"></template>
+                </div>
+                <div @click="click" v-show="cropper" class="toolbar">
+                    <button data-action="move" title="Move (M)" class="toolbar__button"><span class="fa fa-arrows"></span></button>
+                    <button data-action="crop" title="Crop (C)" class="toolbar__button"><span class="fa fa-crop"></span></button>
+                    <button data-action="zoom-in" title="Zoom In (I)" class="toolbar__button">
+                        <span class="fa fa-search-plus"></span>
+                    </button>
+                    <button data-action="zoom-out" title="Zoom Out (O)" class="toolbar__button">
+                        <span class="fa fa-search-minus"></span>
+                    </button>
+                    <button data-action="rotate-left" title="Rotate Left (L)" class="toolbar__button">
+                        <span class="fa fa-rotate-left"></span>
+                    </button>
+                    <button data-action="rotate-right" title="Rotate Right (R)" class="toolbar__button">
+                        <span class="fa fa-rotate-right"></span>
+                    </button>
+                    <button data-action="flip-horizontal" title="Flip Horizontal (H)" class="toolbar__button">
+                        <span class="fa fa-arrows-h"></span>
+                    </button>
+                    <button data-action="flip-vertical" title="Flip Vertical (V)" class="toolbar__button">
+                        <span class="fa fa-arrows-v"></span>
+                    </button>
+                </div>
+            </div>
+        </script>
+        <script src="/assets/js/vue.min.js"></script>
+        <script src="/assets/js/cropper.min.js"></script>
+        <script>
+            !function(e){function t(o){if(a[o])return a[o].exports;var r=a[o]={exports:{},id:o,loaded:!1};return e[o].call(r.exports,r,r.exports,t),r.loaded=!0,r.exports}var a={};return t.m=e,t.c=a,t.p="",t(0)}([function(e,t,a){"use strict";function o(e){return e&&e.__esModule?e:{"default":e}}var r=a(1),i=o(r),s=a(2),n=o(s),c=a(3),p=o(c),l=a(4),d=o(l);window.vm=new i["default"]({el:"body",components:{ButtonBox:n["default"],UploadBox:p["default"],CanvasBox:d["default"]},events:{broadcast:function(e,t){this.$broadcast(e,t)}}})},function(e,t){e.exports=window.Vue},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t["default"]={data:function(){return{uploaded:!1,cropping:!1,cropped:!1,download:"undefined"!=typeof document.createElement("a").download,url:"",name:""}},template:"#button-box",methods:{click:function(e){var t=e.target,a=t.dataset.action||t.parentNode.dataset.action;if(a){switch(a){case"restore":this.restore();break;case"remove":this.remove();break;case"clear":case"crop":this.cropping=!1}this.$dispatch("broadcast",a)}},restore:function(){this.cropped=!1,this.url="",this.name=""},remove:function(){this.uploaded=!1,this.cropping=!1,this.cropped&&this.restore()}},events:{uploaded:function(){this.uploaded=!0},cropping:function(){this.cropping=!0},cleared:function(){this.cropping=!1},restored:function(){this.restore()},removed:function(){this.remove()},cropped:function(e){this.cropped=!0,this.cropping=!1,this.download&&(this.url=e.url,this.name=e.name)}}}},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t["default"]={data:function(){return{uploaded:!1}},template:"#upload-box",methods:{read:function(e){var t=this,a=arguments.length<=1||void 0===arguments[1]?function(){}:arguments[1],o=null;e?/^image\/\w+$/.test(e.type)?(o=new FileReader,o.onload=function(){t.uploaded=!0,t.$dispatch("broadcast","uploaded",{type:e.type,name:e.name,url:o.result}),a()},o.readAsDataURL(e)):(window.alert("Please choose an image file."),a()):a()},change:function(e){var t=e.target,a=t.files;this.read(a&&a[0],function(){t.value=""})},dragover:function(e){e.preventDefault()},drop:function(e){var t=e.dataTransfer.files;e.preventDefault(),this.read(t&&t[0])}},events:{remove:function(){this.uploaded=!1},removed:function(){this.uploaded=!1}}}},function(e,t,a){"use strict";function o(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var r=a(5),i=o(r);t["default"]={data:function(){return{editable:!1,cropper:!1,cropping:!1,data:null,canvasData:null,cropBoxData:null,image:null,type:"",name:"",url:"",originalUrl:""}},template:"#canvas-box",ready:function(){window.addEventListener("keydown",this.keydown,!1)},beforeDestory:function(){window.removeEventListener("keydown",this.keydown,!1)},methods:{load:function(e){this.image||(this.image=e.target,this.start())},click:function(e){var t=this.cropper,a=e.target,o="";if(t)switch(o=a.dataset.action||a.parentNode.dataset.action){case"move":case"crop":t.setDragMode(o);break;case"zoom-in":t.zoom(.1);break;case"zoom-out":t.zoom(-.1);break;case"rotate-left":t.rotate(-90);break;case"rotate-right":t.rotate(90);break;case"flip-horizontal":t.scaleX(-this.cropper.getData().scaleX||-1);break;case"flip-vertical":t.scaleY(-this.cropper.getData().scaleY||-1)}},keydown:function(e){var t=this.cropper,a=e.key||e.keyCode||e.which||e.charCode;switch(a){case 90:e.ctrlKey&&(e.preventDefault(),this.restore(!0));break;case 46:this.remove(!0)}if(t)switch(a){case 13:this.crop(!0);break;case 27:this.clear(!0);break;case 37:e.preventDefault(),t.move(-1,0);break;case 38:e.preventDefault(),t.move(0,-1);break;case 39:e.preventDefault(),t.move(1,0);break;case 40:e.preventDefault(),t.move(0,1);break;case 67:t.setDragMode("crop");break;case 77:t.setDragMode("move");break;case 73:t.zoom(.1);break;case 79:t.zoom(-.1);break;case 76:t.rotate(-90);break;case 82:t.rotate(90);break;case 72:t.scaleX(-this.cropper.getData().scaleX||-1);break;case 86:t.scaleY(-this.cropper.getData().scaleY||-1)}},dblclick:function(e){e.target.className.indexOf("cropper-face")>=0&&(e.preventDefault(),e.stopPropagation(),this.crop(!0))},start:function(){var e=this;this.cropper||(this.cropper=new i["default"](this.image,{autoCrop:!1,dragMode:"move",background:!1,built:function(){e.data&&(this.cropper.crop().setData(e.data).setCanvasData(e.canvasData).setCropBoxData(e.cropBoxData),e.data=null,e.canvasData=null,e.cropBoxData=null)},crop:function(t){t.width>0&&t.height>0&&!e.cropping&&(e.cropping=!0,e.$dispatch("broadcast","cropping"))}}))},stop:function(){this.cropper&&(this.cropper.destroy(),this.cropper=null,this.cropping=!1)},crop:function(e){var t=this.cropper,a=this.type;this.cropping&&(this.originalUrl=this.url,this.data=t.getData(),this.canvasData=t.getCanvasData(),this.cropBoxData=t.getCropBoxData(),this.url=t.getCroppedCanvas("image/png"===a?null:{fillColor:"#fff"}).toDataURL(a),this.stop(),e&&this.$dispatch("broadcast","cropped",{url:this.url,name:this.name}))},clear:function(e){this.cropping&&(this.cropper.clear(),this.cropping=!1,e&&this.$dispatch("broadcast","cleared"))},restore:function(e){this.cropper||(this.image=null,this.url=this.originalUrl,this.originalUrl="",e&&this.$dispatch("broadcast","restored"))},remove:function(e){this.cropping||(this.stop(),this.editable=!1,this.data=null,this.image=null,this.type="",this.name="",this.url="",this.originalUrl="",e&&this.$dispatch("broadcast","removed"))}},events:{uploaded:function(e){var t=e.url,a=e.type,o=e.name;this.editable=!0,this.type=a,this.name=o,this.url=t},remove:function(){this.remove()},crop:function(){this.crop(!0)},clear:function(){this.clear()},restore:function(){this.restore()}}}},function(e,t){e.exports=window.Cropper}]);
+        </script>
+	</div>
+</div>
+    <script type='text/javascript' src='/assets/js/zanfuwu.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-extend.js' charset='utf-8'></script>
+    <script src="/assets/js/moment.js"></script>
+    <script src="/assets/js/wkim.js"></script>
+    <script src="/assets/js/zanfuwu-app.js"></script>
+  </body>
+</html>
+
