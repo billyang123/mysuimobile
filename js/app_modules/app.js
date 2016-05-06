@@ -661,6 +661,8 @@ $(function () {
           if(res.errorCode!=0){
             $.closeModal();
             $.alert(res.errorInfo);
+            __send = false;
+            __this.removeClass("disabled").removeAttr("disabled");
           }else{
             new __app.myTime(__this.data("num"),function(num){
               __this.text(num+"秒");
