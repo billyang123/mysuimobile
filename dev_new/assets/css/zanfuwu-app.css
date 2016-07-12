@@ -10,7 +10,7 @@
 }
 .icon-left,
 .icon-right {
-  color: #999;
+  color: #666;
   font-size: 0.65rem !important;
 }
 .userimg {
@@ -385,6 +385,69 @@ h3 {
 .level-xs-vip {
   background-position: -2.575rem -2.025rem;
 }
+.photo-browser .photo-caption-text {
+  padding: 1.5rem 0.75rem;
+  font-size: 0.65rem;
+  line-height: 1.05rem;
+}
+.photo-browser .photo-caption-text > div {
+  text-align: left;
+  text-indent: 1.4rem;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.pbStandaloneBox {
+  padding: 1rem 0.5rem 0 0.5rem;
+  padding-top: 1rem !important;
+}
+.pbStandaloneBox .swiper-container {
+  width: 100%;
+  height: 6rem;
+}
+.pbStandaloneBox .swiper-slide {
+  width: 5rem;
+  height: 5rem;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.pbStandaloneBox .swiper-slide .iconfont {
+  position: absolute;
+  color: #fff;
+  left: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: -1rem;
+  top: 50%;
+  margin-top: -1.5rem;
+  z-index: 10;
+}
+.pbStandaloneBox .swiper-slide img {
+  width: 5rem;
+  height: 5rem;
+}
+.photo-browser-dark .bar {
+  background-color: #000;
+}
+.photo-browser-dark .bar .sliding {
+  color: #999;
+}
+.photo-browser-dark .bar:after {
+  background-color: transparent;
+}
 .zfw-detail-header {
   position: relative;
   background-color: #fff;
@@ -558,14 +621,57 @@ h3 {
   padding: 0 0.75rem;
   min-height: 1rem;
 }
+.zfw-card .zfw-commit .item-content.gray {
+  color: #999;
+}
+.zfw-card .zfw-commit .item-inner:after {
+  content: none;
+}
 .zfw-card .zfw-commit .item-content:nth-child(2) {
+  font-size: 0.65rem;
+  line-height: 1.05rem;
   padding-left: 0;
   margin: 0 0.75rem;
-  border-bottom: 1px solid #e7e7e7;
-  padding-bottom: 0.55rem;
 }
 .zfw-card .zfw-commit .item-content:nth-child(2) .item-inner:after {
   background-color: #fff;
+}
+.zfw-card .zfw-commit .item-content:nth-child(3) {
+  padding-left: 0;
+  margin: 0 0.75rem;
+}
+.zfw-card .zfw-commit .item-content:nth-child(3) .item-inner {
+  padding-bottom: 1rem;
+}
+.zfw-card .zfw-commit .item-content:nth-child(3) .item-inner:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #e5e5e5;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+.zfw-card .zfw-commit .fwinfo {
+  font-size: 0.55rem;
+  margin-bottom: 0.25rem;
+}
+.zfw-card .zfw-commit .fwinfo .tt {
+  font-size: 0.55rem;
+  color: #999;
+  margin-right: 0.45rem;
+}
+.zfw-card .zfw-commit .fwinfo .ttname {
+  color: #000;
+}
+.zfw-card .zfw-commit .fwinfo .price {
+  color: #ff5a5f;
 }
 .bar-tab.store-detail-bar a {
   color: #fff;
@@ -756,6 +862,13 @@ h3 {
 }
 .service-detail-container .buttons-tab:after {
   background-color: #fff !important;
+}
+.zan-icman .iconfont {
+  font-size: 0.8rem;
+  color: #c2c2c2;
+}
+.zan-icman .iconfont.act {
+  color: #ff5a5f;
 }
 .zfw-top-search {
   background-color: #fff;
@@ -1586,10 +1699,9 @@ html.retina.ios-6 .message.message-pic img {
   margin: 0 auto;
 }
 .balance-container .balance-header-bg {
-  background-image: url("/assets/img/image_yebg.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  padding: 0 20px;
+  background: url("/assets/img/image_yebg.png") #fe5b5f top center no-repeat;
+  background-size: 17.5rem 7.5rem;
+  padding: 0 1rem;
   height: 7.5rem;
 }
 .balance-container .balance-header-bg .balance-header-title {

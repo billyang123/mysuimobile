@@ -7,6 +7,12 @@ $(function () {
       console.log('This browser does NOT support localStorage');
   }
   __app.varConfig = {};
+  __app.varConfig.scrollTop = {};
+  // window.addEventListener("popstate", function(e) {
+  //   if($.device.isWeixin){
+  //     $.router._doSwitchDocument(location.href,false,"from-left-to-right")
+  //   }
+  // }, false);
   __app.includeStyleElement = function(styles,styleId){
     if (document.getElementById(styleId)) {
       return
@@ -195,7 +201,7 @@ $(function () {
     }else{
       $(element).show()
     }
-    $(element).html(template(__app[appString]));
+    $(element).find("ul").html(template(__app[appString]));
   }
   __app.loadMoreLink = function(options){
       // 加载flag
@@ -204,10 +210,14 @@ $(function () {
       //容器
       this.$infinite = $('.infinite-scroll');
       this._loadEl = $('.infinite-scroll-preloader');
+      //this.element = this.options.element || this.container;
       this.loading = false;
       this.loaded = false;
       this.container = $(this.options.container) || $('.infinite-scroll-bottom .list-container');
-      this.page = this.options.page || 1;
+      //this.page = this.options.page || 1;
+      //this.element = this.options.element || this.container;
+      this.page = this.container.attr("page") || this.options.page || 1
+      
       this.data = this.options.data;
       this.url = this.options.url;
       // this.callback = this.options.callback;
@@ -231,6 +241,7 @@ $(function () {
               }
 
               self.page++;
+              self.container.attr("page",self.page)
             }
         })
       }
@@ -254,7 +265,7 @@ $(function () {
         $.detachInfiniteScroll(self.$infinite);
         $.attachInfiniteScroll(self.$infinite);
       }
-      $(document).on('infinite', '.infinite-scroll-bottom',function() {
+      $(document).off('infinite', '.infinite-scroll-bottom').on('infinite', '.infinite-scroll-bottom',function() {
         // 如果正在加载，则退出
         if (self.loading) return;
         // 设置flag
@@ -273,18 +284,22 @@ $(function () {
   }
   __app.tabLoadMore = function(options){
     var oldTabLink = $('.mytab-link.active');
+    var element = $($(".js-tab-loadding-more").data('target')||"#pageClassifyItemList");
+    var _loadMoreLink = element.data("_loadMoreLink")
     var options = $.extend({
         container:"#pageClassifyItemList",
         url:oldTabLink.data("url"),
         data:oldTabLink.data("params")
     },options)
-    var _loadMoreLink = new __app.loadMoreLink(options)
-    _loadMoreLink.init(function(){
+    if(!_loadMoreLink){
+      _loadMoreLink = new __app.loadMoreLink(options);
+    }
+    !element.attr("page") &&  _loadMoreLink.init(function(){
       if(oldTabLink.attr("data-more-pages")=="N"){
         $('.infinite-scroll-preloader').hide();
       }
     });
-    $('.mytab-link').on('click',function(){
+    $('.mytab-link').off("click").on('click',function(){
         oldTabLink.removeClass("active");
         oldTabLink = $(this).addClass("active");
         _loadMoreLink.set({
@@ -306,13 +321,21 @@ $(function () {
   }
   __app.loadMore = function(element){
       var _jloadding = $(element);
-      var options = $.extend({
-          container:_jloadding.data("target"),
-          url:_jloadding.data("url"),
-          data:_jloadding.data("params"),
-          page:2
-      },options)
-      var _loadMoreLink = new __app.loadMoreLink(options);
+      var _loadMoreLink = _jloadding.data("_loadMoreLink");
+
+      if(!_loadMoreLink){
+        var options = $.extend({
+            element:_jloadding,
+            container:_jloadding.data("target"),
+            url:_jloadding.data("url"),
+            data:_jloadding.data("params"),
+            page:2
+        },options)
+        if(_jloadding.attr("data-more-pages")=="N"){
+          $('.infinite-scroll-preloader').hide();
+        }
+        _loadMoreLink = new __app.loadMoreLink(options);
+      }
       return _loadMoreLink;
   }
   __app.industryData = [];
@@ -592,7 +615,7 @@ $(function () {
           __searchHotHistry.show();
           $(__content).hide();
           _loadMoreLink._remove();
-          __app.setStorageToHtml("#searchHistory ul","#searchHistoryTemplate","zfwSearchHistory");
+          __app.setStorageToHtml("#searchHistory","#searchHistoryTemplate","zfwSearchHistory");
           $('input[type="search"]').val("").trigger("blur");
           _isCancel = true;
           $('.infinite-scroll-preloader').hide();
@@ -677,19 +700,16 @@ $(function () {
       })
       return $(element);
   }
-  $(document).on("pageAnimationStart",function(e, id, page){
-      var title = $("#"+id).data("title");
-      if(title){
-        $("title").text(title);
-      }
-      $.closeModal();
-  })
+  
   //data-link
   $(document).on("click",'[data-link]:not(a)',function(evt){
     if($(evt.target).closest("a").length>0) return;
     if(evt.target.tagName=="A") return;
-    window.location.href= $(this).data("link");
-
+    if($(evt.target).hasClass("external")){
+      window.location.href= $(this).data("link");
+    }else{
+      $.router.load($(this).data("link"))
+    }
   });
   $(document).on('click','.js-confirm-dirlink', function () {
       var title = $(this).data("title");
@@ -770,6 +790,7 @@ $(function () {
     __app.zfwSearchHistory = [];
     localStorage.zfwSearchHistory = '[]';
     $("#searchHistory ul").html("");
+    $("#searchHistory").hide();
   })
   //修改价格
   var pageUpdatePrice = null;
@@ -806,16 +827,25 @@ $(function () {
       $.pickerModal('#pageUpdatePrice');
   })
   $(document).on("pageAnimationStart",function(e, id, page){
-      var title = $("#"+id).data("title");
+      var pageContent = $("#"+id);
+      var title = pageContent.data("title");
       if(title){
         $("title").text(title);
       }
+      
   })
-  $(document).on("pageLoadComplete",function(){
-    $.closeModal();
+  $(document).on("beforePageSwitch",function(e, id, page){
+      $.closeModal();
+      __app.varConfig.scrollTop[location.href] = $(".content").scrollTop();
   })
+  // $(document).on("pageLoadComplete",function(){
+
+  //   $.closeModal();
+
+  // })
   $(document).on("pageInit", function(e, pageId, $page) {
       __send = false;
+      //if($.router.cache[window.location.href]) return;
       if($(".js-loadding-more").length>0){
         __app.loadMore(".js-loadding-more");
       }
@@ -874,17 +904,23 @@ $(function () {
     })
   //}
   $(document).on('click',".js-savePageForm",function(e){
+      var _this = $(this);
       var __form = $($(this).data("target"));
       var _dir = $(this).data("dirurl");
       __app.myValidate(__form,function(item,text){
           $.alert(text);
       },function(){
+        if(_this.prop("disabled")) return;
+        _this.prop("disabled",true);
+        _this.addClass("disabled");
         $.ajax({
           url:__form.attr("action"),
           type:__form.attr("method")||"post",
           data:__form.serializeArray(),
           dataType:"json",
           success:function(res){
+              _this.prop("disabled",false);
+              _this.removeClass("disabled");
               if(res.errorCode != 0){
                 $.alert(res.errorInfo);
               }else{
@@ -903,7 +939,58 @@ $(function () {
     $("#updateServer .js-totalPrice").text(total);
     $("#updateServer [name=totalPrice]").val(total);
   }
+  var ImageData = [{url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'}];
+  __app.ImageData = function(element){
+    var result = [];
+    element.find(".imagedata").each(function(){
+      var url = $(this).data("url") || $(this).attr("src"),
+          caption = $(this).data("caption") || $(this).attr("alt"),
+          html = $(this).data("html");
+      var caps = {};
+      if(html) {
+        caps.html = html;
+      }else{
+        caps.url = url;
+      }
+      if(caption) caps.caption = caption;
+      result.push(caps);
+    })
+    return result;
+  }
+  __app.pbStandalone = function(element,options,idx){
+      var _filed = element.attr("data-pb-filed");
+      var _thisPhotoBrowser = element.data("myPhotoBrowser");
+      var index = idx||1;
+      if(!_thisPhotoBrowser){
+        var _settings = $.extend({
+          photos : __app[_filed] || ImageData,
+          theme: 'dark',
+          type: 'standalone',
+          ofText:'/',
+          toolbarTemplate:'<div></div>'
+        },options)
+        _thisPhotoBrowser = $.photoBrowser(_settings)
+        element.data("myPhotoBrowser",_thisPhotoBrowser)
+      }
+      _thisPhotoBrowser.open(parseInt(index-1, 10));
+  }
+  $(document).on('click','.js-pb-standalone',function () {
+      var _target = $($(this).data("target"));
+      var idx = $(this).data("idx");
+      __app.pbStandalone(_target,{
+        photos:__app.ImageData(_target),
+        captionTemplate:'<div class="photo-browser-caption photo-caption-text" data-caption-index="{{captionIndex}}"><div>{{caption}}</div></div>'
+      },idx);
+  });
   $(document).on("click","#updateServer .js-del-server",function(){
+      var swiper = $.Swiper('.swiper-container', {
+          scrollbar: '.swiper-scrollbar',
+          scrollbarHide: true,
+          slidesPerView: 'auto',
+          centeredSlides: true,
+          spaceBetween: 30,
+          grabCursor: true
+      });
       $(this).closest(".card").remove();
       $($(this).data("target")).remove();
       __app.updataServerTotal();
@@ -933,29 +1020,20 @@ $(function () {
   })
   $(document).on("pageInit", "#pageStoreDetail,#pageServiceDetail", function(e, id, page) {
       var ImageData = [{url:'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'}]
-      $(document).on('click','.js-pb-standalone',function () {
-        var _filed = $(this).attr("data-pb-filed");
-        var _thisPhotoBrowser = $(this).data("myPhotoBrowser");
-        if(!_thisPhotoBrowser){
-          _thisPhotoBrowser = $.photoBrowser({
-            photos : __app[_filed] || ImageData,
-            theme: 'dark',
-            type: 'standalone'
-          })
-          $(this).data("myPhotoBrowser",_thisPhotoBrowser)
-        }
-        _thisPhotoBrowser.open();
-      });
-      var mySwiper = $('#storeDetailswiper')[0].swiper;
-      var oldTabLink = $('.mytab-link.active');
-      $('.mytab-link').on('click',function(){
-          mySwiper.slideTo($(this).attr("href").substr(4)*1-1);
-          return false;
+
+      // var mySwiper = $('#storeDetailswiper')[0].swiper;
+      // var oldTabLink = $('.mytab-link.active');
+      $(".tab-link").on('active',function(){
+          var inx = $(this).attr("href").substr(4)*1-1;
+          //var swiper = $("#"+id+" .swiper-container");
+          if(inx==1){
+            $.initSwiper("#"+id)
+          }
       })
-      mySwiper.on("slideChangeStart",function(n,e){
-        oldTabLink.removeClass("active");
-        oldTabLink = $('.mytab-link[href="#tab'+(n.activeIndex+1)+'"]').addClass("active");
-      })
+      // mySwiper.on("slideChangeStart",function(n,e){
+      //   oldTabLink.removeClass("active");
+      //   oldTabLink = $('.mytab-link[href="#tab'+(n.activeIndex+1)+'"]').addClass("active");
+      // })
 
   })
   $(document).on("pageInit", "#pagePayResult_1", function(e, id, page) {
@@ -1026,13 +1104,21 @@ $(function () {
           picker.input.data("id",value.join(" "))
       });
   })
+  $(document).on("pageLoadStart",function(e, id, page){
+      if(id=="pageClassify"){
+        var classifyLeftTop = $(".classify-left-nav").scrollTop();
+        var classifyRightTop = $(".classify-right-nav").scrollTop();
+        console.log(classifyLeftTop,classifyRightTop)
+      }
+      
+  })
   $(document).on("pageInit","#pageSearch",function(e, id, page){
       
       __app.search({
           element:"#searchBars",
           searchHotHistry:"#searchHotHistry"
       })
-      __app.setStorageToHtml("#searchHistory ul","#searchHistoryTemplate","zfwSearchHistory");
+      __app.setStorageToHtml("#searchHistory","#searchHistoryTemplate","zfwSearchHistory");
   })
   $(document).on("pageInit", "#updateServer", function(e, id, page) {
       __app.varConfig[id] = {};

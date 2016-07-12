@@ -170,6 +170,7 @@ var Zepto = (function() {
   // takes a CSS selector and an optional context (and handles various
   // special cases).
   // This method can be overriden in plugins.
+  
   zepto.init = function(selector, context) {
     var dom
     // If nothing given, return an empty Zepto collection
@@ -329,7 +330,9 @@ var Zepto = (function() {
     for (name in obj) return false
     return true
   }
-
+  $.isNumeric = function( obj ) {
+    return !isNaN( parseFloat(obj) ) && isFinite( obj );
+  }
   $.inArray = function(elem, array, i){
     return emptyArray.indexOf.call(array, elem, i)
   }
@@ -400,6 +403,9 @@ var Zepto = (function() {
     map: function(fn){
       return $($.map(this, function(el, i){ return fn.call(el, i, el) }))
     },
+    isNumeric: function( obj ) {
+      return !isNaN( parseFloat(obj) ) && isFinite( obj );
+    },
     slice: function(){
       return $(slice.apply(this, arguments))
     },
@@ -436,6 +442,7 @@ var Zepto = (function() {
         return zepto.matches(element, selector)
       }))
     },
+
     add: function(selector,context){
       return $(uniq(this.concat($(selector,context))))
     },
