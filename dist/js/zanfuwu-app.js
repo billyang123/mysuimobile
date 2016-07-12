@@ -738,6 +738,11 @@ $(function () {
         codeData['id'] = $('.js-getimgcode').data("id");
         __app.sendCode(this,codeData)
       })
+      var newCodeData = {};
+      $(document).on("click",".new-send-code",function(){
+        newCodeData['password'] =  $('[name="password"]').val();
+        __app.sendCode(this,newCodeData);
+      })
       $(document).on("click",".js-getimgcode",function(){
           var __target = $(this);
           $.ajax({
@@ -874,9 +879,49 @@ $(function () {
             // 不管是成功失败，都会执行
         });
   }
+  __app.newUploadByBase64 = function(element,callback){
+      var __this = $(element);
+      if(__this[0].files.length==0) return;
+      var ajaxurl = __this.data("url");
+      var preview = __this.data("preview");
+      var done = __this.data("done");
+      var _name = __this.data("name");
+      var _data = {};      
+      $.showPreloader("图片上传中...");
+      lrz(__this[0].files[0],{width:800}).then(function (rst) {
+          _data[_name] = rst.base64;
+            $.ajax({  
+              url: ajaxurl,  
+              type: 'POST',  
+              data: _data,  
+              dataType: 'json',
+              success: function(res) {  
+                  $.hidePreloader();
+                  if(res.success){
+                    $(preview).attr("src","url("+res.picUrl+")");         
+                  }else{
+                    $.alert("上传图片失败！")
+                  }
+                  if (done) {
+                    (new Function('res', done)).call(self, res);
+                  }
+                  callback && callback(res)
+              }
+          })
+        }).catch(function (err) {
+          $.alert("上传图片失败！")
+            // 处理失败会执行
+        }).always(function () {
+            $.hidePreloader();
+            // 不管是成功失败，都会执行
+        });
+  }
   //if($.device.ios){
     $(document).on("change","#cameraInput,.js-upload",function(e){
       __app.uploadByBase64(this);
+    })
+    $(document).on("change",".new-js-upload",function(e){
+      __app.newUploadByBase64(this);
     })
   //}
   $(document).on('click',".js-savePageForm",function(e){

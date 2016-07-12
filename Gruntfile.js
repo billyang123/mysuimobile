@@ -198,7 +198,7 @@ module.exports = function(grunt) {
             img: {
                 expand: true,
                 src: 'img/**/*',
-                dest: '<%= meta.docsDistPath %>'
+                dest: 'dev/'
             },
             dev: {
                 expand: true,

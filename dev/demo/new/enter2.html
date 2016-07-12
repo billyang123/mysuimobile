@@ -1,0 +1,102 @@
+---
+layout: default
+title: 免费入驻
+---
+<div class="page-group">
+	<div class="page new-common new-enter-container">
+		<div class="content">
+			<form class="newEnterForm">
+				<div class="text-center">
+					<img src="/assets/img/icon_avatar_w@3x.png" class="enter-user-img mt60" alt="">
+				</div>
+				<div class="mt30 mb60 uploader-pic">						
+					<div class="text-center">添加头像</div>
+					<input type="file" class="uploder-img new-js-upload" accept="image/*"  data-preview=".enter-user-img"  data-name="avatar" data-url="">
+				</div>
+				<div class="list-block">
+					<ul class="item-input-group">
+						<li>
+							<div class="item-content">
+					          <div class="item-inner">
+					          	<div class="item-title label">姓名</div>
+					            <div class="item-input">
+					               <input value="张慧慧" type="text" name="" placeholder="点击输入真实姓名">
+					            </div>
+					          </div>
+					        </div>
+						</li>
+						<li>
+							<div class="item-content">
+					          <div class="item-inner">
+					          	<div class="item-title label">公司</div>
+					            <div class="item-input">
+						            <input value="" type="text" name="" placeholder="点击输入当前所在公司" >
+					            </div>
+					          </div>
+					        </div>
+						</li>
+						<li>
+							<div class="item-content">
+					          <div class="item-inner">
+					          	<div class="item-title label">职位</div>
+					            <div class="item-input">
+						            <input value="" type="text" name="" placeholder="点击输入当前职位" >
+					            </div>
+					          </div>
+					        </div>
+						</li>
+					</ul>
+					<div class="alone-input mt20">
+						<div class="item-content">
+							<div class="item-inner">
+								<div class="item-title label">擅长</div>
+								<div class="item-input item-label-info">
+									<div>
+								  		<span class="add-label">+ 添加标签</span>
+								  	</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<p><a href="#" class="button button-submit button-danger mt60 js-savePageForm" target="newEnterForm" dirurl="">>完成</a></p>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	/*
+	  /**
+	  *删除数组指定下标或指定对象
+	  */
+	  Array.prototype.remove=function(obj){
+	      for(var i =0;i <this.length;i++){
+	          var temp = this[i];
+	          if(!isNaN(obj)){
+	              temp=i;
+	          }
+	          if(temp == obj){
+	              for(var j = i;j <this.length;j++){
+	                  this[j]=this[j+1];
+	              }
+	              this.length = this.length-1;
+	          }   
+	      }
+	  }
+	var tags=[];	
+	$(document).on('click','.add-label',function () {
+		$.prompt('单个标签字数控制在10个汉字以内', '添加标签', function (value) {
+			$(".add-label").parent().before("<div class='mb15'><span class='label-info'>"+value+"</span></div>");
+			tags.push(value);
+			$(".tags").attr("value",tags.toString());
+		});
+    });
+	$(document).on('click','.label-info',function () {
+		var $this = $(this);
+		$.confirm('您确定要删除吗？', function (value) {
+			$this.remove();
+			tags.remove($this.text());
+			$(".tags").attr("value",tags.toString());
+		});
+     });
+</script>
