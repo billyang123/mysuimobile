@@ -13,6 +13,6 @@ permalink:    pretty
 
 # Server
 source:       dev
-destination:  _site
+destination:  dev_new
 host:         0.0.0.0
 port:         4000

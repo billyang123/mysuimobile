@@ -395,7 +395,7 @@ __app.myWkimDefaultConfig = {
 	template:{
 		"listConversation":'{{#each data}}'+
 							'{{#is hidden "not" 1}}'+
-							'<li>'+
+							'<li data-cid="{{cid}}">'+
 								'<a class="item-content" href="'+__app.chatHref+'?cid={{cid}}">'+
 									'<div class="item-media">'+
 										'{{#is isSingleChat "===" false}}'+
@@ -709,7 +709,7 @@ __app.myWkim.prototype = {
 		var data = {
 			data:this.doData([res])
 		};
-		var lastmsgDom = self.convlistDom.find('[href="#conversation_'+res.cid+'"]').parent("li");
+		var lastmsgDom = self.convlistDom.find('[data-cid="'+res.cid+'"]');
 		var _lihtml = $(self.template(self.config.template['listConversation'])(data));
 		if(res.isSingleChat){
 			this.setGenProfile(_lihtml);

@@ -3,7 +3,7 @@
 	text-align: center !important;
 }
 .icon-left, .icon-right{
-	color: #999;
+	color: #666;
 	font-size: 13/@ppr !important;
 }
 .userimg {
@@ -413,5 +413,75 @@ h3{
 		&-vip {
 		    background-position: -103/2/@ppr -81/2/@ppr;
 		}
+	}
+}
+.photo-browser {
+	.photo-caption-text {
+		padding: 30/@ppr 15/@ppr;
+		font-size: 13/@ppr;
+		line-height: 21/@ppr;
+		> div {
+			text-align: left;
+			text-indent: 28/@ppr;
+			word-break:break-all;
+		  display:-webkit-box;
+		  -webkit-line-clamp:4;
+		  -webkit-box-orient:vertical;
+		  overflow:hidden;
+		}
+	}
+}
+.pbStandaloneBox {
+	padding: 20/@ppr 10/@ppr 0 10/@ppr;
+	padding-top: 20/@ppr !important;
+	.swiper-container {
+        width: 100%;
+        height: 120/@ppr;
+    }
+	.swiper-slide {
+		width: 100/@ppr;
+		height: 100/@ppr;
+		text-align: center;
+        font-size: 18px;
+        background: #fff;
+        .iconfont {
+        	position: absolute;
+        	color: #fff;
+        	left: 50%;
+		    font-size: 40/@ppr;
+		    font-weight: bold;
+		    margin-left: -20/@ppr;
+		    top: 50%;
+		    margin-top: -30/@ppr;
+        	z-index: 10;
+        }
+		img {
+			width: 100/@ppr;
+			height: 100/@ppr;
+		}
+		/* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+	}
+}
+.photo-browser-dark {
+	.bar {
+		background-color: #000;
+	}
+	.bar .sliding {
+		color: #999;
+	}
+	.bar:after {
+		background-color:transparent;
 	}
 }
