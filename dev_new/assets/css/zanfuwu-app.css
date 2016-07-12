@@ -515,6 +515,7 @@ h3 {
   margin: 0 0.375rem 0.25rem 0;
 }
 .zfw-card {
+  z-index: 40rem;
   font-size: 0.35rem;
 }
 .zfw-card-title {
