@@ -752,11 +752,6 @@ $(function () {
         codeData['id'] = $('.js-getimgcode').data("id");
         __app.sendCode(this,codeData)
       })
-      var newCodeData = {};
-      $(document).on("click",".new-send-code",function(){
-        newCodeData['password'] =  $('[name="password"]').val();
-        __app.sendCode(this,newCodeData);
-      })
       $(document).on("click",".js-getimgcode",function(){
           var __target = $(this);
           $.ajax({
@@ -922,7 +917,11 @@ $(function () {
               success: function(res) {  
                   $.hidePreloader();
                   if(res.success){
-                    $(preview).attr("src","url("+res.picUrl+")");         
+                    if(__this.hasClass('new-js-upload') == true){
+                      $(preview).attr("src",res.picUrl);  
+                    } else {
+                      $(preview).attr("src","url("+res.picUrl+")");
+                    }         
                   }else{
                     $.alert("上传图片失败！")
                   }

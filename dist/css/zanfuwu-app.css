@@ -2451,7 +2451,7 @@ html.retina.ios-6 .message.message-pic img {
   margin: 0 auto;
   padding-top: 1.65rem;
 }
-.new-common .button-danger.button-submit {
+.new-common .button-danger {
   height: 2.25rem;
   line-height: 2.25rem;
   color: rgba(255, 255, 255, 0.4);
@@ -2536,6 +2536,7 @@ html.retina.ios-6 .message.message-pic img {
   width: 3rem;
   height: 3rem;
   display: inline-block;
+  border-radius: 50%;
 }
 .new-common .uploader-pic {
   position: relative;
@@ -2634,4 +2635,17 @@ html.retina.ios-6 .message.message-pic img {
   margin-bottom: 3.25rem;
   font-size: 0.75rem;
   color: #666;
+}
+.div-width300 {
+  width: 7.5rem;
+}
+#pop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  overflow: auto;
 }
