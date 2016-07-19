@@ -2682,7 +2682,7 @@ html.retina.ios-6 .message.message-pic img {
 }
 .lecture-container .lecture-body .ft20 {
   color: #333;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   text-align: center;
   line-height: 1.5;
 }
@@ -2715,7 +2715,7 @@ html.retina.ios-6 .message.message-pic img {
   margin-bottom: 0.5rem;
 }
 .lecture-container .lecture-teacher .tearch-info-text {
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   line-height: 1.5;
 }
 .lecture-container .lecture-teacher img {
@@ -2732,27 +2732,27 @@ html.retina.ios-6 .message.message-pic img {
   padding: 1.375rem 0rem 1.375rem 1.5rem;
 }
 .lecture-container .panel-enroll .panel-enroll-title {
-  font-size: 0.55rem;
+  font-size: 0.8rem;
   color: #fff;
   margin-bottom: 0.75rem;
 }
 .lecture-container .panel-enroll .ft20 {
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   line-height: 1.5;
   color: #fff;
 }
 .lecture-container .panel-partner {
   background: #f3f2f2;
-  padding: 1.625rem 0;
+  padding: 2.5rem 0;
 }
 .lecture-container .panel-partner .ft22 {
-  font-size: 0.55rem;
+  font-size: 0.75rem;
   line-height: 1.8;
   color: #333;
   text-align: center;
 }
 .lecture-container .panel-partner .ft20 {
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   line-height: 1.8;
   color: #333;
   text-align: center;
@@ -2767,7 +2767,6 @@ html.retina.ios-6 .message.message-pic img {
 }
 .lecture-container #lecture-form .form-group input {
   height: 1.5rem;
-  line-height: 1.5rem;
   border: 1px solid #eaeaea;
   border-radius: 0.125rem;
   padding: 0.125rem 0 0 6%;
