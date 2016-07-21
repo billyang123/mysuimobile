@@ -815,7 +815,6 @@ h3 {
 }
 .service-detail-container .service-header-img {
   width: 100%;
-  height: 10.55rem;
 }
 .service-detail-container .ft-gray {
   font-size: 0.6rem;
@@ -2794,4 +2793,180 @@ html.retina.ios-6 .message.message-pic img {
 }
 .lecture-container .no-form .btn-danger {
   margin-top: 0rem;
+}
+.requirement-container {
+  background: #eee;
+}
+.requirement-container .content-block-title {
+  margin: 0.75rem 0 0.5rem 1rem;
+}
+.requirement-container .list-block input {
+  height: 3rem;
+}
+.requirement-container .list-block .item-content {
+  padding-left: 0;
+}
+.requirement-container .list-block .item-media + .item-inner {
+  margin-left: 0;
+}
+.requirement-container .list-block .icon-voice {
+  background-image: url("/img/icon_yuyliuy@xhdpi.png");
+  background-size: 1.2rem 1.6rem;
+  width: 1.2rem;
+  height: 1.6rem;
+}
+.requirement-container .list-block .icon-voice-play {
+  background-image: url("/img/icon_yyliuy_wj@xhdpi.png");
+  background-size: 1.3rem 1.3rem;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+.requirement-container .list-block .icon-voice-loading {
+  background-image: url("/img/icon_yyliuy_zt@xhdpi.png");
+  background-size: 1.3rem 1.3rem;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+.requirement-container .list-block .item-inner {
+  padding-left: 0.75rem;
+}
+.requirement-container .list-block .item-inner .item-title {
+  font-size: 0.65rem;
+  margin-left: 0.5rem;
+  width: 10%;
+}
+.requirement-container .list-block .item-inner .item-container {
+  width: 80%;
+}
+.requirement-container .list-block .item-inner .item-hide {
+  display: none;
+}
+.requirement-container .list-block .item-height {
+  height: 3rem;
+}
+.requirement-container .list-block .item-height .item-title {
+  font-size: 0.55rem;
+  color: #333;
+}
+.requirement-container .list-block .item-height .item-after {
+  font-size: 0.65rem;
+  color: #ff5a5f;
+}
+.requirement-container .list-block .item-media {
+  margin: 0 0rem 0 1rem;
+}
+.requirement-container .list-block textarea {
+  padding-top: 1rem;
+  line-height: 1.05rem;
+  color: #666;
+  font-size: 0.65rem;
+}
+.requirement-container .button-uncick {
+  width: 90%;
+  margin-left: 5%;
+  background: #ff5a5f;
+  opacity: 0.3;
+  border: none;
+  height: 2.25rem;
+  color: #fff;
+  line-height: 2.25rem;
+}
+.requirement-container .button-click {
+  width: 90%;
+  margin-left: 5%;
+  background: #ff5a5f;
+  border: none;
+  height: 2.25rem;
+  color: #fff;
+  line-height: 2.25rem;
+}
+.requirement-container .tip-info {
+  padding: 7.65rem 0 1.25rem 0;
+}
+.requirement-container .tip-info img {
+  width: 3rem;
+  height: 3rem;
+}
+.requirement-container .tip-text {
+  font-size: 30 / ppr2;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+.requirement-container .ft26 {
+  font-size: 0.65rem;
+  color: #999;
+  line-height: 1.05rem;
+  margin-bottom: 2rem;
+}
+.requirement-container .btn-none-bg {
+  width: 5.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  border-radius: 0.05rem;
+  border: 1px solid #999;
+  font-size: 0.65rem;
+  color: #666;
+  display: inline-block;
+}
+.voice-modal {
+  /*Chrome Safari*/
+}
+.voice-modal .modal-title {
+  margin: 0.5rem 0 1.6rem 0;
+}
+.voice-modal .title {
+  font-size: 0.7rem;
+  color: #333;
+  line-height: 1.05rem;
+}
+.voice-modal .modal-text {
+  margin-top: 5rem;
+}
+.voice-modal .modal-text .record-img {
+  margin-bottom: 1.75rem;
+  width: 3rem;
+  height: 3rem;
+}
+.voice-modal .modal-buttons {
+  height: 2.25rem;
+}
+.voice-modal .modal-buttons .modal-button {
+  background: #f2f2f2;
+  font-size: 0.7rem;
+  color: #999;
+  border-radius: none;
+}
+.voice-modal .modal-buttons .btn-danger {
+  color: #ff5a5f !important;
+}
+.voice-modal .recording {
+  width: 7.025rem;
+  background-image: url("/img/icon_yyli_mkf_01.png");
+  background-size: 7.025rem 3rem;
+  background-repeat: no-repeat;
+  -webkit-animation: change 1s linear infinite alternate;
+  display: inline-block;
+  margin-left: -0.25rem;
+}
+@keyframes change {
+  0% {
+    background-image: url("/img/icon_yyli_mkf_01.png");
+  }
+  50% {
+    background-image: url("/img/icon_yyli_mkf_02.png");
+  }
+  100% {
+    background-image: url("/img/icon_yyli_mkf_03.png");
+  }
+}
+@-webkit-keyframes change {
+  0% {
+    background-image: url("/img/icon_yyli_mkf_01.png");
+  }
+  50% {
+    background-image: url("/img/icon_yyli_mkf_02.png");
+  }
+  100% {
+    background-image: url("/img/icon_yyli_mkf_03.png");
+  }
 }
