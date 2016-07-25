@@ -869,6 +869,49 @@ h3 {
 .zan-icman .iconfont.act {
   color: #ff5a5f;
 }
+.fuwu-detail-info {
+  position: relative;
+}
+.fuwu-detail-info .icon-bg {
+  background-image: url('/img/image_bg_fwxq_shuju.png');
+  background-size: 17.75rem 4rem;
+  position: absolute;
+  bottom: 0.3rem;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+}
+.fuwu-detail-info .icon-bg .pull-right {
+  margin-top: 2.5rem;
+}
+.fuwu-detail-info .icon-bg .pull-right .icon-info {
+  color: #fff;
+  display: inline-block;
+}
+.fuwu-detail-info .icon-bg .pull-right .icon-info:first-child {
+  margin-right: 1rem;
+}
+.fuwu-detail-info .icon-bg .pull-right .icon-info:last-child {
+  margin-right: 0.75rem;
+}
+.fuwu-detail-info .icon-bg .pull-right .icon-info .icon-buy {
+  background-image: url('/img/icon_xiaoliang@2x.png');
+  background-repeat: no-repeat;
+  background-size: 0.9rem 0.75rem;
+  width: 1.2rem;
+  height: 1rem;
+  margin-right: 0.4rem;
+  display: inline-block;
+}
+.fuwu-detail-info .icon-bg .pull-right .icon-info .icon-collect {
+  background-image: url('/img/icon_shoucx@2x.png');
+  background-repeat: no-repeat;
+  background-size: 0.9rem 0.8rem;
+  margin-right: 0.4rem;
+  width: 1.2rem;
+  height: 1.05rem;
+  display: inline-block;
+}
 .zfw-top-search {
   background-color: #fff;
 }
@@ -1073,6 +1116,21 @@ h3 {
 .zfw-shutdown .zfw-title .iconfont {
   margin-left: 0.5rem;
   font-size: 0.6rem;
+}
+.icon-requirement {
+  background-image: url("/img/icon_tbar_plus@2x.png");
+  background-repeat: no-repeat;
+  background-size: 2.25rem 2.25rem;
+  margin-top: -0.875rem !important;
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  border-radius: 50%;
+}
+.requirement-text {
+  margin-top: -0.125rem;
+}
+.bar-tab .tab-item {
+  height: 2.5rem !important;
 }
 .classify-container .classify-left-nav {
   max-height: 27.6rem;
@@ -2800,11 +2858,41 @@ html.retina.ios-6 .message.message-pic img {
 .requirement-container .content-block-title {
   margin: 0.75rem 0 0.5rem 1rem;
 }
-.requirement-container .list-block input {
-  height: 3rem;
-}
 .requirement-container .list-block .item-content {
   padding-left: 0;
+}
+.requirement-container .list-block .item-input input {
+  height: 3rem;
+  line-height: 1.6rem;
+  padding-top: 0.125rem;
+  font-size: 0.65rem;
+}
+.requirement-container .list-block .item-voice {
+  height: 3rem;
+}
+.requirement-container .list-block .item-voice .item-after {
+  font-size: 0.65rem;
+  color: #ff5a5f;
+  margin-right: 0.75rem;
+}
+.requirement-container .list-block .item-voice .item-hide {
+  display: none;
+}
+.requirement-container .list-block .item-voice .panel-voice {
+  height: 100%;
+  width: 80%;
+  padding-top: 0.7rem;
+}
+.requirement-container .list-block .item-voice .panel-voice i {
+  float: left;
+  margin-left: 0.75rem;
+}
+.requirement-container .list-block .item-voice .panel-voice .item-title {
+  color: #999;
+  font-size: 0.55rem;
+  margin-left: 1.1rem;
+  line-height: 1.6rem;
+  float: left;
 }
 .requirement-container .list-block .item-media + .item-inner {
   margin-left: 0;
@@ -2837,9 +2925,6 @@ html.retina.ios-6 .message.message-pic img {
 }
 .requirement-container .list-block .item-inner .item-container {
   width: 80%;
-}
-.requirement-container .list-block .item-inner .item-hide {
-  display: none;
 }
 .requirement-container .list-block .item-height {
   height: 3rem;
