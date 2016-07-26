@@ -815,6 +815,7 @@ h3 {
 }
 .service-detail-container .service-header-img {
   width: 100%;
+  display: block;
 }
 .service-detail-container .ft-gray {
   font-size: 0.6rem;
@@ -873,16 +874,15 @@ h3 {
   position: relative;
 }
 .fuwu-detail-info .icon-bg {
-  background-image: url('/img/image_bg_fwxq_shuju.png');
-  background-size: 17.75rem 4rem;
-  position: absolute;
-  bottom: 0.3rem;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 4rem;
+  position: absolute;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(51, 51, 51, 0.8));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(51, 51, 51, 0.8));
 }
 .fuwu-detail-info .icon-bg .pull-right {
-  margin-top: 2.5rem;
+  height: 2.25rem;
 }
 .fuwu-detail-info .icon-bg .pull-right .icon-info {
   color: #fff;
@@ -897,20 +897,39 @@ h3 {
 .fuwu-detail-info .icon-bg .pull-right .icon-info .icon-buy {
   background-image: url('/img/icon_xiaoliang@2x.png');
   background-repeat: no-repeat;
-  background-size: 0.9rem 0.75rem;
+  background-size: 0.6rem 0.5rem;
   width: 1.2rem;
-  height: 1rem;
+  height: 2.25rem;
   margin-right: 0.4rem;
   display: inline-block;
+  background-position: center;
+  line-height: 2.25rem;
 }
 .fuwu-detail-info .icon-bg .pull-right .icon-info .icon-collect {
   background-image: url('/img/icon_shoucx@2x.png');
   background-repeat: no-repeat;
-  background-size: 0.9rem 0.8rem;
+  background-size: 0.6rem 0.525rem;
   margin-right: 0.4rem;
   width: 1.2rem;
-  height: 1.05rem;
+  height: 2.25rem;
   display: inline-block;
+  background-position: center;
+  line-height: 2.25rem;
+}
+.fuwu-detail-info .icon-bg .pull-right .icon-info span {
+  line-height: 2.25rem;
+}
+.fuwu-detail-info .clearfix:before,
+.fuwu-detail-info .clearfix:after {
+  content: "";
+  display: table;
+}
+.fuwu-detail-info .clearfix:after {
+  clear: both;
+}
+.fuwu-detail-info .clearfix {
+  *zoom: 1;
+  /*IE/7/6*/
 }
 .zfw-top-search {
   background-color: #fff;
