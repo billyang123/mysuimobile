@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>免费入驻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="/assets/css/zanfuwu.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-extend.css">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-114x114.png">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1463019082_1278996.css">
+    <link rel="stylesheet" href="/assets/css/zanfuwu-app.css">
+    <script type='text/javascript' src='/assets/js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-config.js' charset='utf-8'></script>
+    <!--  <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?ba76f8230db5f616edc89ce066670710";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ -->
+    <script>
+        window.staticDomain = "/assets"
+    </script>
+  </head>
+  <body>
+    <div class="page-group">
+	<div class="page new-common">
+		<div class="content">
+			<form class="find-password-form1"  action="" method="post" data-dir="">
+				<div class="list-block  alone-input">
+					<div class="item-content">
+						<div class="item-inner">
+					        <div class="item-input">
+					          <input type="password" name="password" placeholder="设置密码(8-16位数字英文组合)">
+					        </div>
+					        <div class="item-after"><img src="/img/icon_mimabuxians@3x.png" alt="" class="icon-eye"></div>
+					    </div>
+					</div>
+				</div>
+				<p><a href="#" class="button button-submit button-danger mt30 color-fff">确定</a></p>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(".icon-eye").click(function(){
+		$("input[type='password']").attr("type","text");
+	});
+	$(document).on('click',".find-password-form1",function(){
+	    var __target = $(this);
+	    var __form = $(this).closest("form");
+	    console.log(__form);
+	    $.ajax({
+	      url:__form.attr("action"),
+	      type:__form.attr('method'),
+	      dataType:"json",
+	      data:__form.serializeArray(),
+	      success:function(res){
+	        if (res.errorCode == 0) {
+	            //$.toast("登录成功");
+	            //$.router.load(__form.data("dir"))
+	            $.modal({
+			      text: '<div class="text-center"><img src="/assets/img/icon_chenggongla@3x.png" class="success-tip"/></div><div class="text-center success-tip-text">登录成功</div>',
+			      extraClass:"success-tip-modal"      
+			    });
+	        } else {
+	            //$.alert(res.errorInfo);
+	            $.alert('密码错误');
+	        }
+	      }
+	    })
+	  });
+</script>
+    <script type='text/javascript' src='/assets/js/zanfuwu.js' charset='utf-8'></script>
+    <script type='text/javascript' src='/assets/js/zanfuwu-extend.js' charset='utf-8'></script>
+    <script src="/assets/js/moment.js"></script>
+    <script src="/assets/js/wkim.js"></script>
+    <script src="/assets/js/zanfuwu-app.js"></script>
+  </body>
+</html>
+
