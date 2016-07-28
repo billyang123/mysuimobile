@@ -1156,11 +1156,11 @@ h3 {
 }
 .panel-hot-server {
   background: #fff;
-  margin-top: 0.375rem;
+  padding-top: 1rem;
 }
 .panel-hot-server .hot-server-title {
   font-size: 0.65rem;
-  padding: 1rem 0;
+  padding: 0rem 0 1rem 0;
   text-align: center;
   color: #666;
 }
@@ -1196,10 +1196,12 @@ h3 {
   color: #ff5a5f;
   font-size: 0.6rem;
 }
+.mt20 {
+  margin-top: 0.5rem;
+}
 .panel-feature {
   background: #fff;
-  margin-top: 0.375rem;
-  padding: 0 0.375rem 0.375rem 0.375rem;
+  padding: 0.375rem 0.375rem 0.375rem 0.375rem;
 }
 .panel-feature .panel-feature-title {
   font-size: 0.65rem;
