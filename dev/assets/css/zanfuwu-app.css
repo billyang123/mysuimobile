@@ -254,6 +254,12 @@
   transition: 300ms;
   font-size: 0.65rem;
 }
+.ellipsis {
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .page,
 .page-group {
   background-color: #DFE3E6;
@@ -1223,6 +1229,15 @@ h3 {
   position: absolute;
   background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(51, 51, 51, 0.8));
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(51, 51, 51, 0.8));
+}
+.panel-feature .feature-info .icon-bg > .pull-left {
+  width: 61%;
+}
+.panel-feature .feature-info .icon-bg > .pull-left .item-inner {
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .panel-feature .feature-info .icon-bg .pull-right {
   height: 2.25rem;
