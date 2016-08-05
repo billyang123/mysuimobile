@@ -40,13 +40,16 @@ title: 店铺详情
             		<span class="tab-label">收藏</span>
         		</span>
 	        </a>
-	        <a class="tab-item external active" href="#">
+	        <a class="tab-item external ask-nav active" href="javascript:void(0);">
 	        	<span class="tab-span">
-		            <span class="icon iconfont">&#xe62a;</span>
-		            <span class="tab-label">咨询</span>
+            <span class="icon iconfont">&#xe62a;</span>
+            <span class="tab-label">咨询</span>
 	            </span>
 	        </a>
 		</nav>
+		<!-- <nav class="bar bar-tab store-bottom-nav text-center">
+			        <a href="#" class="manage-store">管理店铺</a>
+		</nav> -->
 		<div class="content">
 			{% include store-detail-header.html %}
 
@@ -534,3 +537,59 @@ title: 店铺详情
 	</div>
 
 </div>
+<script>
+	/*$(document).on('click','.ask-nav',function () {
+		var modal = $.modal({
+			extraClass:"update-tip",
+			text: '<div class="text-center"><img class="software-update" src="/img/image_xiazaizbb.png" /></div>'+
+				'<div class="text-center ft36">软件更新提示</div>'+
+                '<div class="text-left ft22">赞服务新版震撼来袭，服务类别<br>更全，找服务更方便，仅在赞服务1.2新版独享！<br>1.优化服务类别类目；<br>2.优化搜索算法；<br>3.图标优化；</div>',
+            buttons: [
+		        {
+		          text: '取消'
+		        },
+		        {
+		          text: '下载更新'
+		        },
+		    ]
+	    })
+     });*/
+     $(document).on('click','.ask-nav',function () {
+		var modal = $.modal({
+			extraClass:"update-tip",
+			text: '<div class="text-center"><img class="software-update" src="/img/image_xiazaizbb.png" /></div>'+
+				'<div class="text-center ft36">下载赞服务&nbsp;马上咨询</div>'+
+                '<div class="text-left ft22">赞服务是一个整合个人能力为企业服务的专业服务交易平台，涵盖微信代运营、管理咨询、营销策划、设计开发、人力资源、心理咨询、法律、理财、培训等专业。</div>',
+            buttons: [
+		        {
+		          text: '取消'
+		        },
+		        {
+		          text: '下载',
+		          onClick: function() {
+		            window.location.href="";
+		          }
+		        },
+		    ]
+	    })
+     });
+	/*$(document).on('click','.ask-nav',function () {
+		var modal = $.modal({
+			extraClass:"update-tip",
+			text: '<div class="text-center"><img class="load-update" src="/img/image_dianpuguanli.png" /></div>'+
+				'<div class="text-center ft36">下载赞服务商家版<br>随时管理店铺</div>'+
+                '<div class="text-left ft22">赞服务商家版是移动版赞服务管理后台，您可以随时管理您的咨询、订单、店铺和服务，更方便您使用赞服务平台。</div>',
+            buttons: [
+		        {
+		          text: '取消'
+		        },
+		        {
+		          text: '下载',
+		          onClick: function() {
+		            window.location.href="";
+		          }
+		        },
+		    ]
+	    })
+     });*/
+</script>

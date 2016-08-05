@@ -131,6 +131,9 @@ myVoicePulgin.prototype = {
 				    // 录音时间超过一分钟没有停止的时候会执行 complete 回调
 				    complete: function (res) {
 				        self.voice.localId = res.localId;
+				        self.tm && clearInterval(self.tm);
+						$(self.settings.itemTitle).text(self.voice.second+'"');
+						self.$icon.removeClass('icon-voice-loading').addClass('icon-voice-play');
 				    }
 				});
 			}

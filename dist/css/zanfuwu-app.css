@@ -692,6 +692,9 @@ h3 {
   font-size: 0.5rem;
   color: rgba(255, 255, 255, 0.6);
 }
+.bar-tab.store-detail-bar .tab-item {
+  height: 2.5rem;
+}
 .bar-tab.store-detail-update {
   padding: 0 0.75rem;
   overflow: hidden;
@@ -724,6 +727,65 @@ h3 {
 }
 .circle {
   border-radius: 9999px;
+}
+.update-tip {
+  width: 11.75rem;
+  left: 55%;
+}
+.update-tip .modal-inner {
+  padding: 1.45rem 1.4rem 0.6rem 1.4rem;
+}
+.update-tip .modal-inner:after {
+  display: none;
+}
+.update-tip .software-update {
+  padding: 0rem 0 0.75rem 0;
+  width: 3.5rem;
+}
+.update-tip .load-update {
+  padding: 0rem 0 0.75rem 0;
+  width: 3.075rem;
+}
+.update-tip .ft36 {
+  font-size: 0.9rem;
+  color: #ff5a5f;
+  margin-bottom: 1rem;
+}
+.update-tip .text-left {
+  text-align: left;
+  font-size: 0.55rem;
+  line-height: 0.65rem;
+  color: #999;
+}
+.update-tip .modal-buttons {
+  background: #fff;
+  border-radius: 0 0 0.35rem 0.35rem;
+}
+.update-tip .modal-buttons .modal-button {
+  border-radius: 0;
+  width: 4.95rem;
+  height: 1.75rem;
+  line-height: 1.75rem;
+  font-size: 0.65rem;
+}
+.update-tip .modal-buttons .modal-button:first-child {
+  color: #333;
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-right: 0.65rem;
+}
+.update-tip .modal-buttons .modal-button:last-child {
+  color: #fff;
+  background: #ff5a5f;
+}
+.manage-store {
+  width: 6.5rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  font-size: 0.65rem;
+  color: #fff;
+  background: #ff5a5f;
+  display: inline-block;
 }
 .stage-left {
   position: relative;
@@ -1034,6 +1096,10 @@ h3 {
 .order-media-list {
   margin: 0.5rem;
 }
+.a {
+  background-position: top center;
+  padding-top: 209px;
+}
 .account-info-container .text-center {
   text-align: center;
   background-color: #fff;
@@ -1156,9 +1222,6 @@ h3 {
 }
 .requirement-text {
   margin-top: -0.125rem;
-}
-.bar-tab .tab-item {
-  height: 2.5rem !important;
 }
 .panel-hot-server {
   background: #fff;
@@ -1321,7 +1384,7 @@ h3 {
   margin-bottom: 0;
 }
 .hot-server-detail:last-child {
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 .classify-container .classify-left-nav {
   max-height: 27.6rem;
@@ -2396,6 +2459,7 @@ html.retina.ios-6 .message.message-pic img {
   border: none;
   color: #fff;
   font-size: 0.65rem;
+  line-height: 1.6rem !important;
 }
 .upServerList {
   margin: 0.5rem 0;
