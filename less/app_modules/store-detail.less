@@ -13,7 +13,6 @@
 			background-size:cover;
 			background-repeat: no-repeat;
 			background-color: #fff;
-
 		}
 		.zfw-icon-heart {
 			position: absolute;
@@ -263,6 +262,9 @@
 			color: rgba(255, 255, 255, 0.6);
 		}
 	}
+	.tab-item{
+		height: 50/@ppr;
+	}
 }
 .bar-tab.store-detail-update {
 	padding: 0 15/@ppr;
@@ -296,4 +298,63 @@
 }
 .circle {
     border-radius: 9999px;
+}
+.update-tip{
+	width: 470/@ppr2;
+	left: 55%;
+	.modal-inner{
+		padding: 58/@ppr2 56/@ppr2 24/@ppr2 56/@ppr2;
+		&:after{
+			display: none;
+		}
+	}
+	.software-update{
+		padding: 0/@ppr2 0 30/@ppr2 0;
+		width: 140/@ppr2;
+	}
+	.load-update{
+		padding: 0/@ppr2 0 30/@ppr2 0;
+		width: 123/@ppr2;
+	}
+	.ft36{
+		font-size: 36/@ppr2;
+		color: #ff5a5f;
+		margin-bottom: 40/@ppr2;
+	}
+	.text-left{
+		text-align: left;
+		font-size: 22/@ppr2;
+		line-height: 26/@ppr2;
+		color: #999;
+	}
+	.modal-buttons {
+		background: #fff;
+		border-radius: 0 0 0.35rem 0.35rem;
+		.modal-button{
+			border-radius:0;
+			width: 198/@ppr2;
+			height:70/@ppr2;
+			line-height: 70/@ppr2;
+			font-size: 26/@ppr2;
+			&:first-child{
+				color: #333;
+				background: #fff;
+				border: 1px solid #ddd;
+				margin-right: 26/@ppr2;
+			}
+			&:last-child{
+				color: #fff;
+				background: #ff5a5f;
+			}
+		}
+	}
+}
+.manage-store{
+	width: 260/@ppr2;
+	height: 64/@ppr2;
+	line-height: 64/@ppr2;
+	font-size: 26/@ppr2;
+	color: #fff;
+	background: #ff5a5f;
+	display: inline-block;
 }

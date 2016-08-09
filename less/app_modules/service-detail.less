@@ -5,7 +5,7 @@
 .service-detail-container{
 	.service-header-img{
 		width: 100%;
-		height: 211/@ppr;
+		display: block;
 	}
 	.ft-gray{
 		font-size: 12/@ppr;
@@ -63,5 +63,63 @@
 	color: #c2c2c2;
 	&.act {
 		color: #ff5a5f;
+	}
+}
+.fuwu-detail-info{
+	position: relative;
+	.icon-bg{
+		bottom: 0;
+		left: 0;
+		width:100%;
+	    position: absolute;
+	    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(51, 51, 51, 0.8));
+		.pull-right{
+			height: 90/@ppr2;
+			.icon-info{				
+				color: #fff;
+				display: inline-block;
+				&:first-child{
+					margin-right: 40/@ppr2;	
+				}
+				&:last-child{
+					margin-right: 30/@ppr2;	
+				}
+				.icon-buy{
+					background-image: url('/img/icon_xiaoliang@2x.png');
+					background-repeat: no-repeat;
+					background-size: 24/@ppr2 20/@ppr2;
+					width: 24/@ppr;
+					height: 90/@ppr2;
+					margin-right: 16/@ppr2;
+					display: inline-block;
+					background-position: center;
+					line-height: 90/@ppr2;
+				}
+				.icon-collect{
+					background-image: url('/img/icon_shoucx@2x.png');
+					background-repeat: no-repeat;
+					background-size: 24/@ppr2 21/@ppr2;
+					margin-right: 16/@ppr2;
+					width: 24/@ppr;
+					height: 90/@ppr2;
+					display: inline-block;
+					background-position: center;
+					line-height: 90/@ppr2;
+				}
+				span{
+					line-height: 90/@ppr2;
+				}
+			}
+			
+		}
+		
+		.clearfix:before,.clearfix:after{ 
+		    content:""; 
+		    display:table; 
+		} 
+		.clearfix:after{clear:both;} 
+		.clearfix{ 
+		    *zoom:1;/*IE/7/6*/ 
+		}
 	}
 }

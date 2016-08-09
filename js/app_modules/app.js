@@ -231,6 +231,7 @@ $(function () {
                 $.detachInfiniteScroll(self.$infinite);
                 // 删除加载提示符
                 self._loadEl.hide();
+                //self.container[type](html);
               }else{
 
                 callback && callback(html);
@@ -850,7 +851,8 @@ $(function () {
         __app.loadMore(".js-loadding-more");
       }
       if($(".js-tab-loadding-more").length>0){
-        $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()||0});
+
+        $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()|| 0 });
         __app.tabLoadMore({
           container:$(".js-tab-loadding-more").data("target") || "#pageClassifyItemList"
         });
