@@ -38,7 +38,7 @@ var _hmt = _hmt || [];
 		<div class="content">
 			<form class="newEnterForm">
 				<div class="text-center">
-					<img src="/assets/img/icon_avatar_w@3x.png" class="enter-user-img mt60" alt="">
+					<img src="/img/icon_avatar_w@3x.png" class="enter-user-img mt60" alt="">
 				</div>
 				<div class="mt30 mb60 uploader-pic">						
 					<div class="text-center">添加头像</div>
@@ -117,9 +117,14 @@ var _hmt = _hmt || [];
 	var tags=[];	
 	$(document).on('click','.add-label',function () {
 		$.prompt('单个标签字数控制在10个汉字以内', '添加标签', function (value) {
-			$(".add-label").parent().before("<div class='mb15'><span class='label-info'>"+value+"</span></div>");
+			$(".add-label").parent().before("<div class='mb15'><span class='label-info'><input type='hidden' name='tag'/>"+value+"</span></div>");
 			tags.push(value);
-			$(".tags").attr("value",tags.toString());
+			console.log(tags.length);
+			if (tags.length == 3) {
+				$(".add-label").hide();
+			} else if(tags.length < 3){
+				$(".add-label").show();
+			}
 		});
     });
 	$(document).on('click','.label-info',function () {
@@ -127,7 +132,11 @@ var _hmt = _hmt || [];
 		$.confirm('您确定要删除吗？', function (value) {
 			$this.remove();
 			tags.remove($this.text());
-			$(".tags").attr("value",tags.toString());
+			if (tags.length == 3) {
+				$(".add-label").hide();
+			} else if(tags.length < 3){
+				$(".add-label").show();
+			}
 		});
      });
 </script>

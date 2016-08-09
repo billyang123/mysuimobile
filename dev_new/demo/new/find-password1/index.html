@@ -36,16 +36,8 @@ var _hmt = _hmt || [];
     <div class="page-group">
 	<div class="page new-common">
 		<div class="content">
-			<form class="enter1Form">
-				<div class="list-block alone-input">
-					<div class="item-content">
-						<div class="item-inner">
-							<div class="item-input">
-							  <input type="text" placeholder="验证码" name="verifyCode">
-							</div>
-							<div class="item-after"><span class="ft26 new-send-code" data-num="60" data-url="/ajax/sendcode.json">获取验证码</span></div>
-						</div>
-					</div>
+			<form class="find-password-form1"  action="" method="post" data-dir="">
+				<div class="list-block  alone-input">
 					<div class="item-content">
 						<div class="item-inner">
 					        <div class="item-input">
@@ -55,7 +47,7 @@ var _hmt = _hmt || [];
 					    </div>
 					</div>
 				</div>
-				<p><a href="#" class="button button-submit button-danger mt60 js-savePageForm" target="enter1Form" dirurl="">下一步</a></p>
+				<p><a href="#" class="button button-submit button-danger mt30 color-fff">确定</a></p>
 			</form>
 		</div>
 	</div>
@@ -64,6 +56,30 @@ var _hmt = _hmt || [];
 	$(".icon-eye").click(function(){
 		$("input[type='password']").attr("type","text");
 	});
+	$(document).on('click',".find-password-form1",function(){
+	    var __target = $(this);
+	    var __form = $(this).closest("form");
+	    console.log(__form);
+	    $.ajax({
+	      url:__form.attr("action"),
+	      type:__form.attr('method'),
+	      dataType:"json",
+	      data:__form.serializeArray(),
+	      success:function(res){
+	        if (res.errorCode == 0) {
+	            //$.toast("登录成功");
+	            //$.router.load(__form.data("dir"))
+	            $.modal({
+			      text: '<div class="text-center"><img src="/assets/img/icon_chenggongla@3x.png" class="success-tip"/></div><div class="text-center success-tip-text">登录成功</div>',
+			      extraClass:"success-tip-modal"      
+			    });
+	        } else {
+	            //$.alert(res.errorInfo);
+	            $.alert('密码错误');
+	        }
+	      }
+	    })
+	  });
 </script>
     <script type='text/javascript' src='/assets/js/zanfuwu.js' charset='utf-8'></script>
     <script type='text/javascript' src='/assets/js/zanfuwu-extend.js' charset='utf-8'></script>
