@@ -2766,7 +2766,7 @@ html.retina.ios-6 .message.message-pic img {
 .new-common .button-danger {
   height: 2.25rem;
   line-height: 2.25rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: #fff;
   font-size: 0.75rem;
   margin-top: 0.5rem;
   border-radius: 0.05rem;
