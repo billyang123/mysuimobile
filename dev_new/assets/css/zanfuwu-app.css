@@ -254,6 +254,12 @@
   transition: 300ms;
   font-size: 0.65rem;
 }
+.ellipsis {
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .page,
 .page-group {
   background-color: #DFE3E6;
@@ -686,6 +692,9 @@ h3 {
   font-size: 0.5rem;
   color: rgba(255, 255, 255, 0.6);
 }
+.bar-tab.store-detail-bar .tab-item {
+  height: 2.5rem;
+}
 .bar-tab.store-detail-update {
   padding: 0 0.75rem;
   overflow: hidden;
@@ -718,6 +727,65 @@ h3 {
 }
 .circle {
   border-radius: 9999px;
+}
+.update-tip {
+  width: 11.75rem;
+  left: 55%;
+}
+.update-tip .modal-inner {
+  padding: 1.45rem 1.4rem 0.6rem 1.4rem;
+}
+.update-tip .modal-inner:after {
+  display: none;
+}
+.update-tip .software-update {
+  padding: 0rem 0 0.75rem 0;
+  width: 3.5rem;
+}
+.update-tip .load-update {
+  padding: 0rem 0 0.75rem 0;
+  width: 3.075rem;
+}
+.update-tip .ft36 {
+  font-size: 0.9rem;
+  color: #ff5a5f;
+  margin-bottom: 1rem;
+}
+.update-tip .text-left {
+  text-align: left;
+  font-size: 0.55rem;
+  line-height: 0.65rem;
+  color: #999;
+}
+.update-tip .modal-buttons {
+  background: #fff;
+  border-radius: 0 0 0.35rem 0.35rem;
+}
+.update-tip .modal-buttons .modal-button {
+  border-radius: 0;
+  width: 4.95rem;
+  height: 1.75rem;
+  line-height: 1.75rem;
+  font-size: 0.65rem;
+}
+.update-tip .modal-buttons .modal-button:first-child {
+  color: #333;
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-right: 0.65rem;
+}
+.update-tip .modal-buttons .modal-button:last-child {
+  color: #fff;
+  background: #ff5a5f;
+}
+.manage-store {
+  width: 6.5rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  font-size: 0.65rem;
+  color: #fff;
+  background: #ff5a5f;
+  display: inline-block;
 }
 .stage-left {
   position: relative;
@@ -922,15 +990,15 @@ h3 {
 .fuwu-detail-info .icon-bg .pull-right .icon-info span {
   line-height: 2.25rem;
 }
-.fuwu-detail-info .clearfix:before,
-.fuwu-detail-info .clearfix:after {
+.fuwu-detail-info .icon-bg .clearfix:before,
+.fuwu-detail-info .icon-bg .clearfix:after {
   content: "";
   display: table;
 }
-.fuwu-detail-info .clearfix:after {
+.fuwu-detail-info .icon-bg .clearfix:after {
   clear: both;
 }
-.fuwu-detail-info .clearfix {
+.fuwu-detail-info .icon-bg .clearfix {
   *zoom: 1;
   /*IE/7/6*/
 }
@@ -1027,6 +1095,10 @@ h3 {
 }
 .order-media-list {
   margin: 0.5rem;
+}
+.a {
+  background-position: top center;
+  padding-top: 209px;
 }
 .account-info-container .text-center {
   text-align: center;
@@ -1151,8 +1223,168 @@ h3 {
 .requirement-text {
   margin-top: -0.125rem;
 }
-.bar-tab .tab-item {
-  height: 2.5rem !important;
+.panel-hot-server {
+  background: #fff;
+  padding-top: 1rem;
+}
+.panel-hot-server .hot-server-title {
+  font-size: 0.65rem;
+  padding: 0rem 0 1rem 0;
+  text-align: center;
+  color: #666;
+}
+.panel-hot-server .hot-server-img {
+  width: 16.25rem;
+  height: 5.75rem;
+  display: inline-block;
+  margin-bottom: 1.8rem;
+}
+.panel-hot-server .row {
+  width: 90%;
+  margin-left: 5%;
+}
+.panel-hot-server .hot-server-item {
+  margin-bottom: 2rem;
+}
+.panel-hot-server .hot-server-item img {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.6rem;
+  display: inline-block;
+}
+.panel-hot-server .hot-server-item span {
+  font-size: 0.65rem;
+  color: #666;
+  display: block;
+  text-align: center;
+}
+.panel-hot-server .more {
+  padding: 0.25rem 0 1.25rem 0;
+}
+.panel-hot-server .more a {
+  color: #ff5a5f;
+  font-size: 0.6rem;
+}
+.mt20 {
+  margin-top: 0.5rem;
+}
+.panel-feature {
+  background: #fff;
+  padding: 0.375rem 0.375rem 0.375rem 0.375rem;
+}
+.panel-feature .panel-feature-title {
+  font-size: 0.65rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: #666;
+}
+.panel-feature .feature-info {
+  position: relative;
+}
+.panel-feature .feature-info .service-header-img {
+  width: 100%;
+  display: block;
+}
+.panel-feature .feature-info .icon-bg {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(51, 51, 51, 0.8));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(51, 51, 51, 0.8));
+}
+.panel-feature .feature-info .icon-bg > .pull-left {
+  width: 61%;
+}
+.panel-feature .feature-info .icon-bg > .pull-left .item-inner {
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.75rem;
+}
+.panel-feature .feature-info .icon-bg .pull-right {
+  height: 2.25rem;
+}
+.panel-feature .feature-info .icon-bg .pull-right .icon-info {
+  color: #fff;
+  display: inline-block;
+}
+.panel-feature .feature-info .icon-bg .pull-right .icon-info:first-child {
+  margin-right: 1rem;
+}
+.panel-feature .feature-info .icon-bg .pull-right .icon-info:last-child {
+  margin-right: 0.75rem;
+}
+.panel-feature .feature-info .icon-bg .pull-right .icon-info .icon-buy {
+  background-image: url('/img/icon_xiaoliang@2x.png');
+  background-repeat: no-repeat;
+  background-size: 0.6rem 0.5rem;
+  width: 1.2rem;
+  height: 2.25rem;
+  margin-right: 0.4rem;
+  display: inline-block;
+  background-position: center;
+  line-height: 2.25rem;
+}
+.panel-feature .feature-info .icon-bg .pull-right .icon-info .icon-collect {
+  background-image: url('/img/icon_shoucx@2x.png');
+  background-repeat: no-repeat;
+  background-size: 0.6rem 0.525rem;
+  margin-right: 0.4rem;
+  width: 1.2rem;
+  height: 2.25rem;
+  display: inline-block;
+  background-position: center;
+  line-height: 2.25rem;
+}
+.panel-feature .feature-info .icon-bg .pull-right .icon-info span {
+  line-height: 2.25rem;
+  font-size: 0.6rem;
+}
+.panel-feature .feature-info .icon-bg .zfw-card-user {
+  padding-left: 0.75rem;
+}
+.panel-feature .feature-info .icon-bg .zfw-card-user .item-media img {
+  width: 1.3rem;
+  border: 0.05rem solid #fff;
+}
+.panel-feature .feature-info .icon-bg .zfw-card-user .item-inner {
+  color: #fff;
+}
+.panel-feature .card-content {
+  border: 1px solid #ddd;
+  border-top: none;
+}
+.panel-feature .card-content-text {
+  font-size: 0.65rem;
+  color: #333;
+  line-height: 1.05rem;
+}
+.panel-feature .panel-feature-item {
+  margin-bottom: 0.375rem;
+}
+.panel-feature .more {
+  padding: 1rem 0 1rem 0;
+}
+.panel-feature .more a {
+  color: #ff5a5f;
+  font-size: 0.6rem;
+}
+.hot-server-detail {
+  background: #f0f0f0;
+  padding: 0.5rem 0.5rem 0rem 0.5rem;
+  margin-top: 0rem;
+}
+.hot-server-detail .card-content {
+  background: #fff;
+  border: none;
+}
+.hot-server-detail .panel-feature-item {
+  margin-bottom: 0;
+}
+.hot-server-detail:last-child {
+  padding-bottom: 0.25rem;
 }
 .classify-container .classify-left-nav {
   max-height: 27.6rem;
@@ -2227,6 +2459,7 @@ html.retina.ios-6 .message.message-pic img {
   border: none;
   color: #fff;
   font-size: 0.65rem;
+  line-height: 1.6rem !important;
 }
 .upServerList {
   margin: 0.5rem 0;
@@ -2533,7 +2766,7 @@ html.retina.ios-6 .message.message-pic img {
 .new-common .button-danger {
   height: 2.25rem;
   line-height: 2.25rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: #fff;
   font-size: 0.75rem;
   margin-top: 0.5rem;
   border-radius: 0.05rem;

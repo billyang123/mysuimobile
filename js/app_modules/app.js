@@ -231,7 +231,7 @@ $(function () {
                 $.detachInfiniteScroll(self.$infinite);
                 // 删除加载提示符
                 self._loadEl.hide();
-                self.container[type](html);
+                //self.container[type](html);
               }else{
 
                 callback && callback(html);
@@ -851,7 +851,12 @@ $(function () {
         __app.loadMore(".js-loadding-more");
       }
       if($(".js-tab-loadding-more").length>0){
+<<<<<<< HEAD
         //$('.buttons-tab').fixedTab({offset:$('.bar-nav').height()|| 0 });
+=======
+
+        $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()|| 0 });
+>>>>>>> 85eb252d6fc950e1dca0c36cf6f26fd851c775fd
         __app.tabLoadMore({
           container:$(".js-tab-loadding-more").data("target") || "#pageClassifyItemList"
         });
