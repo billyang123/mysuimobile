@@ -857,12 +857,8 @@ $(function () {
         __app.loadMore(".js-loadding-more");
       }
       if($(".js-tab-loadding-more").length>0){
-<<<<<<< HEAD
-        //$('.buttons-tab').fixedTab({offset:$('.bar-nav').height()|| 0 });
-=======
 
-        $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()|| 0 });
->>>>>>> 85eb252d6fc950e1dca0c36cf6f26fd851c775fd
+        //$('.buttons-tab').fixedTab({offset:$('.bar-nav').height()|| 0 });
         __app.tabLoadMore({
           container:$(".js-tab-loadding-more").data("target") || "#pageClassifyItemList"
         });
