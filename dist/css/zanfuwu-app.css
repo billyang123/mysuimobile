@@ -3396,6 +3396,10 @@ html.retina.ios-6 .message.message-pic img {
 .thirdpartnar-container .three-section .data-info .col-33 .pull-left.ft36 {
   margin-bottom: 0 !important;
 }
+.thirdpartnar-container .three-section .col-33 {
+  width: 31.333333333333332%;
+  margin-left: 0;
+}
 .thirdpartnar-container .four-section {
   padding: 1.825rem 0.5rem 0rem 0.5rem;
 }
@@ -3539,10 +3543,6 @@ html.retina.ios-6 .message.message-pic img {
   margin-top: 1rem;
   color: #e84255;
   font-size: 0.9rem;
-}
-.thirdpartnar-container .col-33 {
-  width: 31.333333333333332%;
-  margin-left: 0;
 }
 .thirdpartnar-container .ft300 {
   font-size: 7.5rem;
