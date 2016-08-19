@@ -2735,12 +2735,6 @@ html.retina.ios-6 .message.message-pic img {
   color: #007aff;
   font-size: 0.75rem;
 }
-.success-tip {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-bottom: 0.75rem;
-  margin-top: 2.375rem;
-}
 .success-tip-text {
   font-size: 0.65rem;
   color: #000;
@@ -2750,6 +2744,12 @@ html.retina.ios-6 .message.message-pic img {
   border-radius: 0.75rem;
   width: 5.85rem;
   left: 70%;
+}
+.success-tip-modal .success-tip {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-bottom: 0.75rem;
+  margin-top: 2.375rem;
 }
 .success-tip-modal .modal-inner {
   background: #fff;

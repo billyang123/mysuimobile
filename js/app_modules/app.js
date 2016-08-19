@@ -577,6 +577,66 @@ $(function () {
       }
       getAjaxCity();
   }
+  __app.loadByJson = function(options){
+    var _this = this;
+    this.page = 1;
+    this.loading = false;
+    this.options = $.extend(true,{
+      url:"/doSearch",
+      data:{
+        pageNo:1
+      },
+      template:false
+    },options);
+    this.url = this.options.url;
+    this.data = this.options.data;
+    this.template = this.options.template;
+    this._load = function(callback){
+      _this.data.pageNo = _this.page;
+      $.ajax({
+          url:_this.url,
+          type:"get",
+          dataType:"json",
+          data:_this.data,
+          success:function(data){
+            if(!_this.template || !_this.options.container || !data.hasNext){
+              return $.detachInfiniteScroll(_this.options.infinite);
+            }
+            var template = Handlebars.compile(_this.template);
+            var _html = template(data);
+            if(_this.page == 1){
+              _this.options.container.html(_html);
+            }else{
+              _this.options.container.find('.infinite-scroll-preloader').replaceWith(_html);
+            }
+            callback && callback(data);
+            _this.page++;
+            _this.options.container.attr("page",_this.page);
+          }
+      })
+    }
+    this.set = function(obg){
+      $.each(obg,function(index,item){
+          _this[index] = item;
+      })
+    }
+    this.init = function(callback){
+        $.detachInfiniteScroll(_this.options.infinite);
+        $.attachInfiniteScroll(_this.options.infinite);
+        _this._load(callback)
+    }
+    $(document).off('infinite', '.infinite-scroll-bottom').on('infinite', '.infinite-scroll-bottom',function() {
+        // 如果正在加载，则退出
+        if (_this.loading) return;
+        // 设置flag
+        _this.loading = true;
+        // 模拟1s的加载过程
+        _this._load(function(data){
+            _this.loading = false;
+            $.refreshScroller();
+        })
+    });
+  }
   __app.search = function(options){
       var __element = $(options.element);
       var __keyName = __element.data("key");
@@ -589,40 +649,40 @@ $(function () {
       var _propertychange = false;
       var _isCancel = true;
       if(!_loadMoreLink){
-        _loadMoreLink = new __app.loadMoreLink({
-            container:__content,
-            url:__url,
-            data:__element.data("params"),
-            page:2
-        });
+        // _loadMoreLink = new __app.loadMoreLink({
+        //     container:__content,
+        //     url:__url,
+        //     data:__element.data("params"),
+        //     page:2
+        // });
+        _loadMoreLink = new __app.loadByJson({
+          container:$(__content),
+          url:__url,
+          infinite:$('.infinite-scroll'),
+          template:$('#searchItemTemp').html()
+        })
         __element.data("_loadMoreLink",_loadMoreLink);
       }
       var __search = function(__key,callback){
+          var data = {};
+          data[__keyName] = __key;
           _loadMoreLink.set({
             "page":1,
-            "data":__params+"&"+__keyName+"="+__key,
+            "data":data,
             "url":__url,
-            "loading":false,
-            "loaded":false
+            "loading":false
           });
           _loadMoreLink.init(function(){
             __app.setStorage(__key,"zfwSearchHistory");
-            if(_isCancel){
-              $('.infinite-scroll-preloader').hide();
-            }
           });
       }
       var __cancelSearch = function(){
           __searchHotHistry.show();
-          $(__content).hide();
-          _loadMoreLink._remove();
           __app.setStorageToHtml("#searchHistory","#searchHistoryTemplate","zfwSearchHistory");
           $('input[type="search"]').val("").trigger("blur");
           _isCancel = true;
-          $('.infinite-scroll-preloader').hide();
       }
       if(_propertychange) return;
-
       __element.on("input propertychange",'input[type="search"]',function(e){
           var __this = $(e.target);
           _isCancel = false;
