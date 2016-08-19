@@ -3423,7 +3423,7 @@ html.retina.ios-6 .message.message-pic img {
   background-image: url("/img/thirdpartnar-750x497-bg.png");
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 2.25rem 0.75rem 2.5rem 0.75rem;
+  padding: 2.25rem 0.5rem 2.5rem 0.5rem;
 }
 .thirdpartnar-container .five-section .row {
   margin-left: 0;
@@ -3499,6 +3499,7 @@ html.retina.ios-6 .message.message-pic img {
   background-image: url("/img/thirdpartnar-750x974-bg-bottom.png");
   background-size: cover;
   background-repeat: no-repeat;
+  text-align: center;
 }
 .thirdpartnar-container .seven-section div {
   color: #fff;
@@ -3514,8 +3515,12 @@ html.retina.ios-6 .message.message-pic img {
 .thirdpartnar-container .seven-section .ft30 {
   margin-bottom: 1rem;
 }
+.thirdpartnar-container .seven-section .thirdpartnar-form {
+  width: 12rem;
+  display: inline-block;
+}
 .thirdpartnar-container .seven-section .thirdpartnar-form .row {
-  margin-left: 2.125rem;
+  margin-left: 0rem;
   margin-bottom: 0.625rem;
 }
 .thirdpartnar-container .seven-section .thirdpartnar-form .row .text-right {
@@ -3539,7 +3544,7 @@ html.retina.ios-6 .message.message-pic img {
   line-height: 2rem;
   border-radius: 0.25rem;
   border: none;
-  margin-left: 5.875rem;
+  margin-left: 2.5rem;
   margin-top: 1rem;
   color: #e84255;
   font-size: 0.9rem;
