@@ -912,7 +912,7 @@ $(function () {
       }
       if($(".js-tab-loadding-more").length>0){
 
-        $('.buttons-tab').fixedTab({offset:$('.bar-nav').height()|| 0 });
+        //$('.buttons-tab').fixedTab({offset:$('.bar-nav').height()|| 0 });
         __app.tabLoadMore({
           container:$(".js-tab-loadding-more").data("target") || "#pageClassifyItemList"
         });
