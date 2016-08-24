@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # mysuimobile
 # npm install
 # grunt serve
@@ -15,4 +14,3 @@
         
 ## javascript
  业务：app.js
->>>>>>> 6d4a13cbe0a18189d8ce5cff84d50a35a35c432e
